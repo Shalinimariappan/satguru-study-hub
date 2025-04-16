@@ -24,6 +24,12 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				satguru: {
+					DEFAULT: '#5B39CC',
+					light: '#8A71E5',
+					dark: '#452D9E',
+					foreground: '#FFFFFF'
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
