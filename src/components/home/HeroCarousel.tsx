@@ -9,7 +9,7 @@ const carouselItems = [
     title: "Excellence in Education",
     subtitle: "Providing quality tuition for students from LKG to XII",
     description: "Join Satguru Study Centre to excel in your academics with our expert guidance.",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format",
+    image: "/assets/students.JPG",
     ctaText: "Explore Courses",
     ctaLink: "/courses"
   },
@@ -18,7 +18,7 @@ const carouselItems = [
     title: "98% Success Rate",
     subtitle: "Proven track record of academic excellence",
     description: "Our students consistently achieve top scores in their examinations.",
-    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1200&auto=format",
+    image: "/assets/about.jpg",
     ctaText: "View Results",
     ctaLink: "/results"
   },
@@ -27,7 +27,7 @@ const carouselItems = [
     title: "Expert Teachers",
     subtitle: "Learn from qualified and experienced educators",
     description: "Our faculty brings years of teaching experience to help students reach their potential.",
-    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format",
+    image: "assets/staffs.JPG",
     ctaText: "About Us",
     ctaLink: "/about"
   }
@@ -76,7 +76,7 @@ export default function HeroCarousel() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center px-4 max-w-3xl">
               <h2 className="text-white text-4xl md:text-5xl font-bold mb-2">{item.title}</h2>
-              <h3 className="text-satguru-light text-xl md:text-2xl mb-4">{item.subtitle}</h3>
+              <h3 className="text-white text-xl md:text-2xl mb-4">{item.subtitle}</h3>
               <p className="text-white text-lg mb-8">{item.description}</p>
               <Button
                 asChild

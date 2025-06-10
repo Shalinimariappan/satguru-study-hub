@@ -54,7 +54,7 @@ export default function AboutSection() {
           <div className="relative">
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=600&auto=format" 
+                src="assets/child.JPG" 
                 alt="Students studying" 
                 className="w-full h-full object-cover"
               />

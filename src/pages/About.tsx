@@ -1,18 +1,33 @@
 
-import { GraduationCap, Users, Award, Clock, BookOpen, Target } from "lucide-react";
+import { GraduationCap, Users, Award, Clock, BookOpen, Target, Component } from "lucide-react";
+import promoter from './Promoter'
+import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
     <div>
-      {/* Page Header */}
-      <div className="bg-satguru py-16">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">About Us</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Learn more about Satguru Study Centre and our commitment to educational excellence
-          </p>
-        </div>
-      </div>
+      <div className="relative py-16">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center opacity-40"
+    style={{
+      backgroundImage:
+        "url('/assets/banner.jpg')",
+    }}
+  ></div>
+
+  {/* Color Overlay with 65% opacity */}
+  <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }}></div>
+
+  {/* Content */}
+  <div className="relative container mx-auto px-4 text-center text-white">
+    <h1 className="text-4xl font-bold mb-4">About Us</h1>
+    <p className="text-xl max-w-2xl mx-auto">
+      Learn more about Satguru Study Centre and our commitment to educational excellence
+    </p>
+  </div>
+</div>
+
 
       {/* Our Story */}
       <section className="py-16">
@@ -36,7 +51,7 @@ export default function About() {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format" 
+                src="assets/students.JPG" 
                 alt="Students studying" 
                 className="rounded-lg shadow-xl"
               />
@@ -153,7 +168,9 @@ export default function About() {
                 <p className="text-satguru mb-3">Principal</p>
                 <p className="text-gray-600">
                   With over 15 years of teaching experience, Dr. Kumar leads our institution with vision and dedication.
-                </p>
+                </p><Link to="promoter">
+  <button>View</button>
+</Link>
               </div>
             </div>
             

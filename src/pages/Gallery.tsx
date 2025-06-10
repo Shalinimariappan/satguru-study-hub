@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const galleryImages = [
   // Year 1
-  "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=600&auto=format",
+  "assets/about.jpg",
   "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format",
   "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=600&auto=format",
   "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format",
@@ -116,16 +116,27 @@ export default function Gallery() {
 
   return (
     <div>
-      {/* Page Header */}
-      <div className="bg-satguru py-16">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">Gallery</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Visual highlights from our 6 years of educational journey
-          </p>
-        </div>
-      </div>
+      <div className="relative py-16">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center opacity-40"
+    style={{
+      backgroundImage:
+        "url('/assets/banner.jpg')",
+    }}
+  ></div>
 
+  {/* Color Overlay with 65% opacity */}
+  <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }}></div>
+
+  {/* Content */}
+  <div className="relative container mx-auto px-4 text-center text-white">
+    <h1 className="text-4xl font-bold mb-4">Gallery</h1>
+    <p className="text-xl max-w-2xl mx-auto">
+      Learn more about Satguru Study Centre and our commitment to educational excellence
+    </p>
+  </div>
+</div>
       {/* Gallery */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -158,7 +169,7 @@ export default function Gallery() {
               }`}
               onClick={() => setActiveFilter("year-1")}
             >
-              Year 1
+              2019-2020
             </button>
             <button
               className={`px-5 py-2 m-1 rounded-full font-medium transition-colors ${
@@ -168,7 +179,7 @@ export default function Gallery() {
               }`}
               onClick={() => setActiveFilter("year-2")}
             >
-              Year 2
+              2020-2021
             </button>
             <button
               className={`px-5 py-2 m-1 rounded-full font-medium transition-colors ${
@@ -178,7 +189,7 @@ export default function Gallery() {
               }`}
               onClick={() => setActiveFilter("year-3")}
             >
-              Year 3
+              2021-2022
             </button>
             <button
               className={`px-5 py-2 m-1 rounded-full font-medium transition-colors ${
@@ -188,7 +199,7 @@ export default function Gallery() {
               }`}
               onClick={() => setActiveFilter("year-4")}
             >
-              Year 4
+              2022-2023
             </button>
             <button
               className={`px-5 py-2 m-1 rounded-full font-medium transition-colors ${
@@ -198,7 +209,7 @@ export default function Gallery() {
               }`}
               onClick={() => setActiveFilter("year-5")}
             >
-              Year 5
+              2023-2024
             </button>
             <button
               className={`px-5 py-2 m-1 rounded-full font-medium transition-colors ${
@@ -208,7 +219,7 @@ export default function Gallery() {
               }`}
               onClick={() => setActiveFilter("year-6")}
             >
-              Year 6
+              2024-2025
             </button>
           </div>
 

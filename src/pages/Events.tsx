@@ -3,124 +3,119 @@ import { useState } from "react";
 import { Calendar, Image, Award, BookOpen } from "lucide-react";
 
 export default function Events() {
-  const [activeTab, setActiveTab] = useState("drawing");
+  const [activeTab, setActiveTab] = useState("Cooking");
 
   const events = {
-    drawing: {
+    Cooking: {
       title: "Art & Drawing Competition",
       description: "Our annual drawing competition helps students express their creativity and develop artistic skills.",
       aim: "To encourage creative expression and artistic skills in students of all age groups.",
       images: [
-        "https://images.unsplash.com/photo-1560421683-6856ea585c78?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1504151932400-72d4384f04b3?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1471666875520-c75081f42081?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1535016120720-40c646be5580?q=80&w=500&auto=format"
+        "assets/cook1.jpg",
+        "assets/cook2.jpg",
+        "assets/cook3.jpg",
+        "assets/cook4.jpg"
       ]
     },
-    handwriting: {
+    Cultural: {
       title: "Handwriting Workshop",
       description: "Our handwriting workshops focus on developing neat, legible handwriting which is essential for exams.",
       aim: "To improve students' handwriting skills, which directly impacts their academic performance in written exams.",
       images: [
-        "https://images.unsplash.com/photo-1455885661740-29cbf08a42fa?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=500&auto=format"
+        "assets/cultural1.JPG",
+        "assets/cultural2.jpg",
+        "assets/cultural3.jpg",
+        "assets/cultural4.JPG"
       ]
     },
-    career: {
+    Farewell: {
       title: "Career Guidance Seminar",
       description: "Expert-led seminars to help students make informed decisions about their academic and career paths.",
       aim: "To provide students with the necessary information and guidance to make well-informed decisions about their future academic and career paths.",
       images: [
-        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?q=80&w=500&auto=format"
+        "assets/farewell1.jpg",
+        "assets/students.JPG",
       ]
     },
-    science: {
+    Kamarajarday: {
       title: "Science Exhibition",
       description: "Annual science exhibition where students showcase their innovative projects and experiments.",
       aim: "To foster scientific curiosity, innovation, and practical application of scientific concepts through hands-on projects.",
       images: [
-        "https://images.unsplash.com/photo-1619468129361-605ebea04b44?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1581092921461-6484e3a4c2e8?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1574169208538-4f45163ade8d?q=80&w=500&auto=format",
-        "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=500&auto=format"
+        "assets/kam1.jpg",
+        "assets/kam2.jpg",
+        "assets/kam3.jpg",
+        "assets/kam4.jpg"
+      ]
+    },
+    Independentday: {
+      title: "Science Exhibition",
+      description: "Annual science exhibition where students showcase their innovative projects and experiments.",
+      aim: "To foster scientific curiosity, innovation, and practical application of scientific concepts through hands-on projects.",
+      images: [
+       "assets/independent1.jpg",
+        "assets/independent2.jpg",
+        "assets/independent3.jpg",
+        "assets/independent4.jpg"
+      ]
+    },
+      Parentsmeet: {
+      title: "Science Exhibition",
+      description: "Annual science exhibition where students showcase their innovative projects and experiments.",
+      aim: "To foster scientific curiosity, innovation, and practical application of scientific concepts through hands-on projects.",
+      images: [
+        "assets/parent1.jpg",
+        "assets/parent2.jpg",
+        "assets/parent3.jpg",
+        "assets/parent4.jpg"
+      ]
+    },
+     Staffmeet: {
+      title: "Science Exhibition",
+      description: "Annual science exhibition where students showcase their innovative projects and experiments.",
+      aim: "To foster scientific curiosity, innovation, and practical application of scientific concepts through hands-on projects.",
+      images: [
+        "assets/staff1.jpg",
+        "assets/staff2.jpg",
+        "assets/staff3.jpg"
+      ]
+    },
+      Tour: {
+      title: "Science Exhibition",
+      description: "Annual science exhibition where students showcase their innovative projects and experiments.",
+      aim: "To foster scientific curiosity, innovation, and practical application of scientific concepts through hands-on projects.",
+      images: [
+        "assets/tour1.jpg",
+        "assets/tour2.jpg",
+        "assets/tour3.jpg",
+        "assets/tour4.jpg"
       ]
     },
   };
 
   return (
     <div>
-      {/* Page Header */}
-      <div className="bg-satguru py-16">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">Our Events</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Explore the various events and activities we organize to enhance students' learning experience
-          </p>
-        </div>
-      </div>
+      <div className="relative py-16">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center opacity-40"
+    style={{
+      backgroundImage:
+        "url('/assets/banner.jpg')",
+    }}
+  ></div>
 
-      {/* Events Overview */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What We Offer</h2>
-            <div className="w-20 h-1 bg-satguru mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              At Satguru Study Centre, we believe in the holistic development of students.
-              Beyond academic coaching, we organize various events to nurture creativity,
-              critical thinking, and practical skills.
-            </p>
-          </div>
+  {/* Color Overlay with 65% opacity */}
+  <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }}></div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-satguru/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Image className="h-8 w-8 text-satguru" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Art & Drawing</h3>
-              <p className="text-gray-600">
-                Annual competitions to encourage artistic expression and creativity.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-satguru/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="h-8 w-8 text-satguru" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Handwriting</h3>
-              <p className="text-gray-600">
-                Workshops focused on improving handwriting skills for better academic performance.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-satguru/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8 text-satguru" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Career Guidance</h3>
-              <p className="text-gray-600">
-                Seminars with industry experts to help students make informed career choices.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="bg-satguru/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Calendar className="h-8 w-8 text-satguru" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Science Exhibition</h3>
-              <p className="text-gray-600">
-                Annual exhibition showcasing student projects and scientific experiments.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+  {/* Content */}
+  <div className="relative container mx-auto px-4 text-center text-white">
+    <h1 className="text-4xl font-bold mb-4">Events</h1>
+    <p className="text-xl max-w-2xl mx-auto">
+      Learn more about Satguru Study Centre and our commitment to educational excellence
+    </p>
+  </div>
+</div>  
       {/* Event Details with Tabs */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -136,43 +131,83 @@ export default function Events() {
           <div className="flex flex-wrap justify-center mb-10">
             <button
               className={`px-6 py-3 font-medium transition-colors ${
-                activeTab === "drawing"
+                activeTab === "Cooking"
                   ? "bg-satguru text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
-              onClick={() => setActiveTab("drawing")}
+              onClick={() => setActiveTab("Cooking")}
             >
-              Drawing
+              Cooking
             </button>
             <button
               className={`px-6 py-3 font-medium transition-colors ${
-                activeTab === "handwriting"
+                activeTab === "Cultural"
                   ? "bg-satguru text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
-              onClick={() => setActiveTab("handwriting")}
+              onClick={() => setActiveTab("Cultural")}
             >
-              Handwriting
+              Cultural
             </button>
             <button
               className={`px-6 py-3 font-medium transition-colors ${
-                activeTab === "career"
+                activeTab === "Farewell"
                   ? "bg-satguru text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
-              onClick={() => setActiveTab("career")}
+              onClick={() => setActiveTab("Farewell")}
             >
-              Career Guidance
+              Farewell
             </button>
             <button
               className={`px-6 py-3 font-medium transition-colors ${
-                activeTab === "science"
+                activeTab === "Kamarajarday"
                   ? "bg-satguru text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
-              onClick={() => setActiveTab("science")}
+              onClick={() => setActiveTab("Kamarajarday")}
             >
-              Science Exhibition
+            Kamarajar day
+            </button>
+             <button
+              className={`px-6 py-3 font-medium transition-colors ${
+                activeTab === "Independentday"
+                  ? "bg-satguru text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+              onClick={() => setActiveTab("Independentday")}
+            >
+            Independent day
+            </button>
+             <button
+              className={`px-6 py-3 font-medium transition-colors ${
+                activeTab === "Parentsmeet"
+                  ? "bg-satguru text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+              onClick={() => setActiveTab("Parentsmeet")}
+            >
+            Parents meet
+            </button>
+             <button
+              className={`px-6 py-3 font-medium transition-colors ${
+                activeTab === "Staffmeet"
+                  ? "bg-satguru text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+              onClick={() => setActiveTab("Staffmeet")}
+            >
+            Staff meet
+            </button>
+             <button
+              className={`px-6 py-3 font-medium transition-colors ${
+                activeTab === "Tour"
+                  ? "bg-satguru text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+              onClick={() => setActiveTab("Tour")}
+            >
+            Tour
             </button>
           </div>
 
