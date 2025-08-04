@@ -32,8 +32,8 @@ export default function WhyJoinSection() {
   const features = [
     {
       icon: <UserCheck className="h-5 w-5" />,
-      title: "Personalized Attention",
-      description: "Individual attention to each student to understand their strengths and areas of improvement."
+      title: "Focus on Individual Attention",
+      description: "We believe that personal support makes all the difference. That’s why we maintain small groups, encourage questions, and provide regular test analysis for improvement."
     },
     {
       icon: <Lightbulb className="h-5 w-5" />,
@@ -47,8 +47,8 @@ export default function WhyJoinSection() {
     },
     {
       icon: <BookOpen className="h-5 w-5" />,
-      title: "Comprehensive Curriculum",
-      description: "Well-structured curriculum covering all aspects of the syllabus with additional learning resources."
+      title: "Strong Academic Support",
+      description: "Our coaching is syllabus-based, exam-oriented, and thoroughly aligned with school standards. Whether it’s basics in primary classes or board exam prep in higher secondary, we provide complete academic guidance."
     },
     {
       icon: <Clock className="h-5 w-5" />,
@@ -57,8 +57,8 @@ export default function WhyJoinSection() {
     },
     {
       icon: <Users className="h-5 w-5" />,
-      title: "Strong Student Community",
-      description: "Join a community of 200+ students who are pursuing academic excellence together."
+      title: "Parent-Teacher Connection",
+      description: "We maintain regular communication with parents through timely updates and shared academic plans. A portion sheet will be provided for each subject, and students are expected to get it signed weekly by their parents. Dedicated parent–teacher meetings will also be held for Classes X, XI, and XII during board exam preparation to ensure focused support and progress tracking."
     }
   ];
 
@@ -79,20 +79,7 @@ export default function WhyJoinSection() {
           ))}
         </div>
         
-        <div className="mt-12 bg-white p-6 rounded-lg shadow-md border border-gray-100">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="bg-satguru text-white text-4xl font-bold py-4 px-6 rounded-lg mb-4 md:mb-0 md:mr-6">
-              98%
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-2">Exceptional Success Rate</h3>
-              <p className="text-gray-600">
-                Our students consistently achieve remarkable results, with a 98% success rate in board and school examinations.
-                This is a testament to our dedicated teaching methods and personalized attention to each student.
-              </p>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

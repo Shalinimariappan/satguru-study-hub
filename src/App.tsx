@@ -6,9 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Godwin from "./pages/Godwin";
+import Malini from "./pages/Malini";
+import Keerthika from "./pages/Keerthika";
 import Results from "./pages/Results";
 import Events from "./pages/Events";
-import Gallery from "./pages/Gallery";
 import Courses from "./pages/Courses";
 import Notes from "./pages/Notes";
 import Contact from "./pages/Contact";
@@ -41,9 +43,11 @@ const App = () => (
                 <Route element={<Layout />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
+                  <Route path="/godwin" element={<Godwin />} />
+                  <Route path="/malini" element={<Malini />} />
+                  <Route path="/keerthika" element={<Keerthika />} />
                   <Route path="/results" element={<Results />} />
                   <Route path="/events" element={<Events />} />
-                  <Route path="/gallery" element={<Gallery />} />
                   <Route path="/courses" element={<Courses />} />
                   <Route path="/notes" element={<Notes />} />
                   <Route path="/notes/:subject" element={<NoteResources />} />

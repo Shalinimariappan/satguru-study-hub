@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-8">
+    <footer className="bg-black text-white pt-12 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {/* About */}
@@ -56,7 +56,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start">
                 <Phone className="h-5 w-5 mr-2 text-satguru-light mt-0.5" />
-                <span className="text-gray-300">+91 XXXXX XXXXX</span>
+                <span className="text-gray-300">+91 72000 15773</span>
               </li>
               <li className="flex items-start">
                 <Mail className="h-5 w-5 mr-2 text-satguru-light mt-0.5" />

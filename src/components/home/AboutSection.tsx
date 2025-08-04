@@ -10,17 +10,19 @@ export default function AboutSection() {
           <h2 className="text-3xl font-bold text-gray-900 mb-2">About Satguru Study Centre</h2>
           <div className="w-20 h-1 bg-satguru mx-auto mb-4"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Providing quality education to students from LKG to XII for the past 6 years in Chennai.
+            Welcome to Satguru Study Centre- The best place to learn, grow, and succeed.
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h3 className="text-2xl font-semibold mb-4">Nurturing Young Minds for a Brighter Future</h3>
+            <h3 className="text-2xl font-semibold mb-4">Empowering Minds since 2019</h3>
             <p className="text-gray-600 mb-4">
-              At Satguru Study Centre, we believe in providing personalized attention to each student
-              to help them excel in their academics. Our approach combines traditional teaching methods
-              with modern educational techniques to ensure comprehensive learning.
+              Satguru Study Centre is one of the most trusted educational institutions in New Washermenpet, Chennai. For over 6 years, we have been committed to shaping the academic journey of students from I to XII by providing structured, syllabus-oriented, and value-driven education.
+At Satguru, we don’t just teach; we build strong foundations that lead to academic excellence, personal growth, and lifelong learning.
+With small batch sizes, focused attention, and timely feedback, our centre becomes a second home for learning — where doubts are welcomed, and success is celebrated.
+We help every student build a strong foundation for the future.
+
             </p>
             <p className="text-gray-600 mb-6">
               With a team of dedicated teachers and a structured curriculum, we have been
@@ -53,11 +55,15 @@ export default function AboutSection() {
           
           <div className="relative">
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
-              <img 
-                src="assets/child.JPG" 
-                alt="Students studying" 
-                className="w-full h-full object-cover"
-              />
+             <video
+  className="w-full h-full object-cover"
+  autoPlay
+  muted
+  loop
+>
+  <source src="assets/child.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
             </div>
             <div className="absolute -bottom-4 -right-4 w-48 h-48 bg-satguru rounded-lg opacity-20"></div>
             <div className="absolute -top-4 -left-4 w-32 h-32 bg-satguru-light rounded-lg opacity-20"></div>

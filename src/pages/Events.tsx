@@ -254,71 +254,7 @@ export default function Events() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Upcoming Events</h2>
-            <div className="w-20 h-1 bg-satguru mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Stay updated with our upcoming events. Register early to secure your spot!
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-              <div className="bg-satguru text-white text-center py-2 px-4 rounded-lg mb-4">
-                <p className="text-sm font-medium">COMING SOON</p>
-                <p className="text-2xl font-bold">TBD</p>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Annual Science Exhibition</h3>
-              <p className="text-gray-600 mb-4">
-                Showcase your scientific knowledge and creativity with innovative projects.
-              </p>
-              <a
-                href="/contact"
-                className="block text-center bg-satguru hover:bg-satguru-dark text-white py-2 rounded-lg font-medium transition-colors"
-              >
-                Register Interest
-              </a>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-              <div className="bg-satguru text-white text-center py-2 px-4 rounded-lg mb-4">
-                <p className="text-sm font-medium">COMING SOON</p>
-                <p className="text-2xl font-bold">TBD</p>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Handwriting Workshop</h3>
-              <p className="text-gray-600 mb-4">
-                Improve your handwriting skills with guidance from calligraphy experts.
-              </p>
-              <a
-                href="/contact"
-                className="block text-center bg-satguru hover:bg-satguru-dark text-white py-2 rounded-lg font-medium transition-colors"
-              >
-                Register Interest
-              </a>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-              <div className="bg-satguru text-white text-center py-2 px-4 rounded-lg mb-4">
-                <p className="text-sm font-medium">COMING SOON</p>
-                <p className="text-2xl font-bold">TBD</p>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Career Guidance Seminar</h3>
-              <p className="text-gray-600 mb-4">
-                Get insights from industry professionals about various career options.
-              </p>
-              <a
-                href="/contact"
-                className="block text-center bg-satguru hover:bg-satguru-dark text-white py-2 rounded-lg font-medium transition-colors"
-              >
-                Register Interest
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 }

@@ -33,7 +33,7 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Left - Info */}
             <div>
-              <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
+              <h2 className="text-3xl font-bold mb-6">Have a doubt? Let’s clear it together.</h2>
               <p className="text-gray-600 mb-8">
                 Have questions about our tuition programs? Want to enroll your child?
                 Fill out the form or contact us directly through the information provided.
@@ -46,7 +46,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Our Location</h3>
-                    <p className="text-gray-600">Chennai - 81</p>
+                    <p className="text-gray-600">📍 Satguru Study Centre
+New Washermenpet, Chennai – 600 081.
+Tamil Nadu, India 
+</p>
                   </div>
                 </div>
 
@@ -68,7 +71,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Call Us</h3>
-                    <p className="text-gray-600">+91 XXXXX XXXXX</p>
+                    <p className="text-gray-600">+91 72000 15773</p>
                   </div>
                 </div>
 
@@ -78,8 +81,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Opening Hours</h3>
-                    <p className="text-gray-600">Monday - Saturday: 9:00 AM - 7:00 PM</p>
-                    <p className="text-gray-600">Sunday: Closed</p>
+                    <p className="text-gray-600">5.30 p.m. to 9.30 p.m.</p>
                   </div>
                 </div>
               </div>

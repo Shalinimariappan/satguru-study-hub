@@ -1,6 +1,5 @@
 
 import { GraduationCap, Users, Award, Clock, BookOpen, Target, Component } from "lucide-react";
-import promoter from './Promoter'
 import { Link } from 'react-router-dom';
 
 export default function About() {
@@ -146,66 +145,73 @@ export default function About() {
       </section>
 
       {/* Our Team */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Team</h2>
-            <div className="w-20 h-1 bg-satguru mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Meet our dedicated team of educators who are passionate about teaching and committed to student success.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg overflow-hidden shadow-md">
-              <img 
-                src="https://randomuser.me/api/portraits/men/32.jpg" 
-                alt="Principal" 
-                className="w-full h-64 object-cover object-center"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-1">Dr. Ramesh Kumar</h3>
-                <p className="text-satguru mb-3">Principal</p>
-                <p className="text-gray-600">
-                  With over 15 years of teaching experience, Dr. Kumar leads our institution with vision and dedication.
-                </p><Link to="promoter">
-  <button>View</button>
-</Link>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg overflow-hidden shadow-md">
-              <img 
-                src="https://randomuser.me/api/portraits/women/44.jpg" 
-                alt="Science Teacher" 
-                className="w-full h-64 object-cover object-center"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-1">Mrs. Anjali Sharma</h3>
-                <p className="text-satguru mb-3">Science Department Head</p>
-                <p className="text-gray-600">
-                  An expert in Physics and Chemistry, Mrs. Sharma has helped numerous students excel in science subjects.
-                </p>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg overflow-hidden shadow-md">
-              <img 
-                src="https://randomuser.me/api/portraits/men/67.jpg" 
-                alt="Mathematics Teacher" 
-                className="w-full h-64 object-cover object-center"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-1">Mr. Suresh Patel</h3>
-                <p className="text-satguru mb-3">Mathematics Expert</p>
-                <p className="text-gray-600">
-                  Known for making mathematics simple and engaging, Mr. Patel has a track record of producing top scorers.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Our Leadership */}
+<section className="py-16 bg-white">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold mb-4">Our Leadership</h2>
+      <p className="text-gray-600 max-w-2xl mx-auto">
+        Meet the people who guide our vision and lead our mission.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+      {/* Leader 1 */}
+     <div className="group relative overflow-hidden rounded-lg shadow hover:shadow-xl transition-shadow duration-300">
+  <img
+    src="https://randomuser.me/api/portraits/women/44.jpg"
+    alt="Leader"
+    className="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-300"
+  />
+  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+    <div className="p-4 text-white">
+      <h3 className="text-xl font-semibold">Malini Shankar</h3>
+      <p className="text-sm mb-2">Science Department Head</p>
+      <Link to="/Malini" className="text-sm underline">
+        Read Bio
+      </Link>
+    </div>
+  </div>
+</div>
+
+     {/* Leader 2 */}
+<div className="group relative overflow-hidden rounded-lg shadow hover:shadow-xl transition-shadow duration-300">
+  <img
+    src="https://randomuser.me/api/portraits/women/44.jpg"
+    alt="Leader"
+    className="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-300"
+  />
+  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+    <div className="p-4 text-white">
+      <h3 className="text-xl font-semibold">Godwin</h3>
+      <p className="text-sm mb-2">Science Department Head</p>
+      <Link to="/Godwin" className="text-sm underline">
+        Read Bio
+      </Link>
+    </div>
+  </div>
+</div>
+
+      {/* Leader 3 */}
+     <div className="group relative overflow-hidden rounded-lg shadow hover:shadow-xl transition-shadow duration-300">
+  <img
+    src="https://randomuser.me/api/portraits/women/44.jpg"
+    alt="Leader"
+    className="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-300"
+  />
+  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+    <div className="p-4 text-white">
+      <h3 className="text-xl font-semibold">Keerthika</h3>
+      <p className="text-sm mb-2">Science Department Head</p>
+      <Link to="/Keerthika" className="text-sm underline">
+        Read Bio
+      </Link>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
 
       {/* Call to Action */}
       <section className="py-16 bg-satguru">

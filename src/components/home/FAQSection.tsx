@@ -37,29 +37,25 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: "What age groups do you provide tuition for?",
-      answer: "We provide tuition for students from LKG to Class XII (ages 4-18). Our programs are tailored to suit the learning needs of different age groups."
+      question: "What classes do you offer coaching for?",
+      answer: "We provide coaching for students from I to Class XII (State Board). Subjects include languages, mathematics, science, social science, commerce, and more."
     },
     {
-      question: "How many students are there in a batch?",
-      answer: "We maintain small batch sizes to ensure individual attention. Typically, our batches have 10-15 students to create an optimal learning environment."
-    },
-    {
-      question: "Do you provide study materials?",
-      answer: "Yes, we provide comprehensive study materials, practice papers, and worksheets that are aligned with the school curriculum to help students prepare thoroughly."
-    },
-    {
-      question: "How often do you conduct tests?",
-      answer: "We conduct weekly tests to assess student progress and provide feedback. Additionally, monthly comprehensive tests help track overall improvement."
-    },
-    {
-      question: "What is the fee structure?",
-      answer: "The fee structure varies depending on the grade and subjects. For example, Class V fees are ₹50 per day, totaling ₹1500 per month. Please visit our Courses page for detailed fee information for all classes."
-    },
-    {
-      question: "Do you offer online classes?",
-      answer: "Yes, we offer both in-person and online tuition options to accommodate different learning preferences and situations."
-    }
+    question: "Is there regular testing?",
+    answer: "Absolutely. Weekly and monthly tests are conducted to track student performance. Tests marks are shared with both students and parents."
+  },
+  {
+    question: "What makes Satguru Study Centre different?",
+    answer: "At Satguru, we combine strong academic guidance with personal attention, structured notes, regular testing, and constant parent involvement — all in a safe, motivating environment."
+  },
+  {
+    question: "How can I enroll my child?",
+    answer: "You can visit the Contact Us section or walk into our centre directly."
+  },
+  {
+    question: "How often are parent–teacher meetings conducted?",
+    answer: "We conduct parent–teacher meetings at key points during the academic year, especially before board exams for Classes X, XI, and XII. Additional meetings can be scheduled on request."
+  }
   ];
 
   const toggleFAQ = (index: number) => {

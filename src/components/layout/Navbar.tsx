@@ -88,9 +88,7 @@ export default function Navbar() {
                   <Link to="/events" className="block px-4 py-2 text-sm text-gray-700 hover:bg-satguru hover:text-white">
                     Events
                   </Link>
-                  <Link to="/gallery" className="block px-4 py-2 text-sm text-gray-700 hover:bg-satguru hover:text-white">
-                    Gallery
-                  </Link>
+                 
                 </div>
               </div>
 
