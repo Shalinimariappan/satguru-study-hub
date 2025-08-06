@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+/*import { useState, useEffect, useRef } from "react";
 import { auth } from "../firebase";
 import {
   signInWithPhoneNumber,
@@ -86,7 +86,7 @@ export default function SignInPopup({ onSuccess, onClose }: Props) {
 
   return (
     <>
-      {/* ✅ Always-rendered hidden reCAPTCHA container */}
+      }
       <div id="recaptcha-container" className="hidden" />
 
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -138,4 +138,4 @@ export default function SignInPopup({ onSuccess, onClose }: Props) {
       </div>
     </>
   );
-}
+}*/

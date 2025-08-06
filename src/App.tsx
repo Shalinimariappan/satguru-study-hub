@@ -15,7 +15,6 @@ import Courses from "./pages/Courses";
 import Notes from "./pages/Notes";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import SignIn from "./pages/SignInPopup";
 import NoteResources from "./pages/NoteResources";
 import { AuthProvider } from "./AuthContext";
 import WhatsAppButton from "./pages/WhatsAppButton"; // ✅ Import added
