@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useAuth } from "../AuthContext";
+import { useState, useEffect } from "react";
+import SignInPopup from "./SignInPopup";
 
 const notesData = [
   { subject: "6th STD Question Papers", resources: 30, type: "QuestionPaper" },
@@ -13,12 +13,22 @@ const notesData = [
 
 export default function Notes() {
   const navigate = useNavigate();
-  const { isSignedIn } = useAuth(); // kept for future use
   const [filter, setFilter] = useState("All");
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
 
-  // 🚫 No sign-in check for now
-  const handleClick = (subject: string) => {
-    navigate(`/notes/${subject}`);
+  // Optional: persist sign-in across reloads
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    setIsSignedIn(loggedIn);
+  }, []);
+
+  const handleCardClick = (subject: string) => {
+    if (!isSignedIn) {
+      setShowSignIn(true);
+    } else {
+      navigate(`/notes/${subject}`);
+    }
   };
 
   const filteredData =
@@ -34,6 +44,18 @@ export default function Notes() {
 
   return (
     <div>
+      {/* Show sign-in popup if not logged in */}
+      {showSignIn && (
+        <SignInPopup
+          onClose={() => setShowSignIn(false)}
+          onSuccess={(phone) => {
+            localStorage.setItem("isLoggedIn", "true");
+            setIsSignedIn(true);
+            setShowSignIn(false);
+          }}
+        />
+      )}
+
       {/* Banner Section */}
       <div className="relative py-16">
         <div
@@ -81,7 +103,7 @@ export default function Notes() {
             <div
               key={idx}
               className="flex justify-between items-center border border-gray-100 shadow-md rounded-lg p-4 hover:shadow-lg transition cursor-pointer"
-              onClick={() => handleClick(note.subject)}
+              onClick={() => handleCardClick(note.subject)}
             >
               <div>
                 <div className="flex items-center space-x-2 text-[#0B2C4D] font-semibold text-md">
@@ -93,7 +115,10 @@ export default function Notes() {
                 </p>
               </div>
 
-              {/* 🔒 Removed lock icon */}
+              {/* Lock Icon if not signed in */}
+              {!isSignedIn && (
+                <span className="text-gray-400 text-xl">🔒</span>
+              )}
             </div>
           ))}
         </div>

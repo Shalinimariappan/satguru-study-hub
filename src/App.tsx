@@ -53,7 +53,6 @@ const App = () => (
                   <Route path="/notes/:subject" element={<NoteResources />} />
                   <Route path="/contact" element={<Contact />} />
                 </Route>
-                <Route path="/signin" element={<SignIn />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>

@@ -1,98 +1,141 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
-import { useAuth } from "../AuthContext";
+import { useState, useEffect, useRef } from "react";
+import { auth } from "../firebase";
+import {
+  signInWithPhoneNumber,
+  RecaptchaVerifier,
+  ConfirmationResult,
+} from "firebase/auth";
 
-const scriptURL =
-  "https://script.google.com/macros/s/AKfycbzVBXyI186t_o70NzKTwwHZ2jV-WuL9Hv78iTYoYklv0kWIcD8qpJRp7EP7XRA1ywO0Kg/exec";
+interface Props {
+  onSuccess: (phone: string) => void;
+  onClose: () => void;
+}
 
-const SignInPopup = () => {
+export default function SignInPopup({ onSuccess, onClose }: Props) {
   const [phone, setPhone] = useState("");
-  const [scriptLoaded, setScriptLoaded] = useState(false);
-  const navigate = useNavigate();
-  const { signIn } = useAuth();
+  const [otp, setOtp] = useState("");
+  const [confirmation, setConfirmation] = useState<ConfirmationResult | null>(null);
+  const recaptchaVerifier = useRef<RecaptchaVerifier | null>(null);
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
 
-  // Load OTPless script once
+  // ✅ Render reCAPTCHA only when DOM is ready
   useEffect(() => {
-    const existingScript = document.getElementById("otpless-script");
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.id = "otpless-script";
-      script.src = "https://otpless.com/auth.js";
-      script.async = true;
-      script.onload = () => setScriptLoaded(true);
-      document.body.appendChild(script);
-    } else {
-      setScriptLoaded(true);
+    if (!recaptchaVerifier.current && document.getElementById("recaptcha-container")) {
+      recaptchaVerifier.current = new RecaptchaVerifier(
+        "recaptcha-container",
+        {
+          size: "invisible",
+          callback: () => {
+            console.log("reCAPTCHA solved automatically");
+          },
+        },
+        auth
+      );
+      recaptchaVerifier.current.render().then(() => {
+        setRecaptchaReady(true); // Now you can send OTP
+      });
     }
+  }, []);
 
-    // Callback function from OTPless after successful login
-    (window as any).otpless = (otplessUser: any) => {
-      const verifiedPhone = otplessUser?.mobile?.number;
-      if (verifiedPhone) {
-        localStorage.setItem("userPhone", verifiedPhone);
-        signIn();
-        navigate("/notes");
-      }
-    };
-  }, [navigate, signIn]);
-
-  const handleContinue = () => {
-    if (!phone || phone.length < 10) {
-      alert("Please enter a valid phone number.");
+  const sendOtp = async () => {
+    if (!phone.match(/^\d{10}$/)) {
+      alert("Enter a valid 10-digit phone number");
       return;
     }
 
-    const fullPhone = "+" + phone;
+    if (!recaptchaReady || !recaptchaVerifier.current) {
+      alert("reCAPTCHA is not ready yet. Please wait a second and try again.");
+      return;
+    }
 
-    // Store number in Google Sheets
-    fetch(scriptURL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ phone: fullPhone }),
-    });
+    const fullPhone = `+91${phone}`;
+    try {
+      const result = await signInWithPhoneNumber(auth, fullPhone, recaptchaVerifier.current);
+      setConfirmation(result);
+      alert("OTP sent successfully!");
+    } catch (err) {
+      console.error("OTP send failed:", err);
+      alert("Failed to send OTP. Try again.");
+    }
+  };
 
-    // Pass phone to OTPless
-    (window as any).otplessUserNumber = fullPhone;
+  const verifyOtp = async () => {
+    if (!otp) {
+      alert("Enter OTP");
+      return;
+    }
 
-    // Trigger OTPless login (invisible mode)
-    if ((window as any).otplessInit && scriptLoaded) {
-      (window as any).otplessInit();
-    } else {
-      console.error("OTPless script not ready.");
+    try {
+      const result = await confirmation?.confirm(otp);
+      const number = result?.user.phoneNumber || "";
+
+      await fetch("https://script.google.com/macros/s/AKfycbxaB5FXCXoEVI1qiwJHCW5fCB7Y9S4i6UTE37Kgq-bd6LT-E4QUWH5Akum67YNQrQW0/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: number }),
+      });
+
+      localStorage.setItem("isLoggedIn", "true");
+      onSuccess(number);
+      onClose();
+    } catch (err) {
+      console.error("OTP verification failed:", err);
+      alert("Incorrect OTP");
     }
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-20 p-4 border rounded-md shadow">
-      <h2 className="text-xl font-semibold mb-4 text-center">Let's Sign In</h2>
+    <>
+      {/* ✅ Always-rendered hidden reCAPTCHA container */}
+      <div id="recaptcha-container" className="hidden" />
 
-      <PhoneInput
-        country={"in"}
-        value={phone}
-        onChange={setPhone}
-        inputClass="w-full p-2 border rounded"
-        inputStyle={{ width: "100%" }}
-        inputProps={{
-          required: true,
-          autoFocus: true,
-        }}
-      />
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="bg-white p-6 rounded shadow w-96">
+          <h2 className="text-lg font-semibold mb-4 text-center">Login to Access Notes</h2>
 
-      <button
-        onClick={handleContinue}
-        className="w-full mt-4 bg-gray-400 text-white font-semibold py-2 rounded-md hover:bg-gray-500"
-      >
-        Continue
-      </button>
+          {!confirmation ? (
+            <>
+              <input
+                type="text"
+                placeholder="Enter phone (10 digits)"
+                className="border px-3 py-2 w-full mb-4"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <button
+                onClick={sendOtp}
+                disabled={!recaptchaReady}
+                className="bg-blue-600 text-white px-4 py-2 rounded w-full"
+              >
+                {recaptchaReady ? "Send OTP" : "Please wait..."}
+              </button>
+            </>
+          ) : (
+            <>
+              <input
+                type="text"
+                placeholder="Enter OTP"
+                className="border px-3 py-2 w-full mb-4"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+              />
+              <button
+                onClick={verifyOtp}
+                className="bg-green-600 text-white px-4 py-2 rounded w-full"
+              >
+                Verify OTP
+              </button>
+            </>
+          )}
 
-      <div id="otpless-login-page" className="hidden"></div>
-    </div>
+          <button
+            onClick={onClose}
+            className="mt-4 text-sm text-gray-600 hover:underline w-full"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </>
   );
-};
-
-export default SignInPopup;
+}
