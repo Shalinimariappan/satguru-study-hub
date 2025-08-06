@@ -55,15 +55,11 @@ We help every student build a strong foundation for the future.
           
           <div className="relative">
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
-             <video
-  className="w-full h-full object-cover"
-  autoPlay
-  muted
-  loop
->
-  <source src="assets/child.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+            <img 
+                src="assets/child.JPG" 
+                alt="Students studying" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute -bottom-4 -right-4 w-48 h-48 bg-satguru rounded-lg opacity-20"></div>
             <div className="absolute -top-4 -left-4 w-32 h-32 bg-satguru-light rounded-lg opacity-20"></div>
