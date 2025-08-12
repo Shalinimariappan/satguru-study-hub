@@ -1,30 +1,36 @@
+// src/pages/Notes.tsx  (your existing code modified minimally)
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "../AuthContext";
+import SignInPopup from "./SignInPopup"; // adjust path
 
 const notesData = [
-  { subject: "6th STD Question Papers", resources: 30, type: "QuestionPaper" },
-  { subject: "7th STD Question Papers", resources: 30, type: "QuestionPaper" },
-  { subject: "8th STD Question Papers", resources: 30, type: "QuestionPaper" },
-  { subject: "9th STD Question Papers", resources: 30, type: "QuestionPaper" },
-  { subject: "10th STD Question Papers", resources: 40, type: "QuestionPaper" },
-  { subject: "11th STD Commerce Question Papers", resources: 50, type: "QuestionPaper" },
+  { subject: "6th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
+  { subject: "7th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
+  { subject: "8th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
+  { subject: "9th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
+  { subject: "10th-Std-Question-Papers", resources: 40, type: "QuestionPaper" },
+  { subject: "11th-Std-Commerce-Question-Papers", resources: 50, type: "QuestionPaper" },
 ];
 
 export default function Notes() {
   const navigate = useNavigate();
-  const { isSignedIn } = useAuth(); // kept for future use
   const [filter, setFilter] = useState("All");
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [pendingSubject, setPendingSubject] = useState<string | null>(null);
 
-  // 🚫 No sign-in check for now
   const handleClick = (subject: string) => {
-  navigate(`/notes/${subject}`);
-};
+    // check if user logged-in (client-side)
+    const logged = window.localStorage.getItem("isLoggedIn") === "true";
+    if (logged) {
+      navigate(`/notes/${subject}`);
+    } else {
+      setPendingSubject(subject);
+      setShowSignIn(true);
+    }
+  };
 
   const filteredData =
-    filter === "All"
-      ? notesData
-      : notesData.filter((note) => note.type === filter);
+    filter === "All" ? notesData : notesData.filter((note) => note.type === filter);
 
   const getHeadingText = () => {
     if (filter === "Notes") return "Notes";
@@ -34,23 +40,24 @@ export default function Notes() {
 
   return (
     <div>
+      {showSignIn && (
+        <SignInPopup
+          pendingSubject={pendingSubject || undefined}
+          onClose={() => setShowSignIn(false)}
+        />
+      )}
+
       {/* Banner Section */}
       <div className="relative py-16">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{
-            backgroundImage: "url('/assets/banner.jpg')",
-          }}
+          style={{ backgroundImage: "url('/assets/banner.jpg')" }}
         />
-        <div
-          className="absolute inset-0 bg-satguru"
-          style={{ opacity: 0.65 }}
-        />
+        <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }} />
         <div className="relative container mx-auto px-4 text-center text-white">
           <h1 className="text-4xl font-bold mb-4">Notes</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Learn more about Satguru Study Centre and our commitment to
-            educational excellence
+            Learn more about Satguru Study Centre and our commitment to educational excellence
           </p>
         </div>
       </div>
@@ -59,11 +66,7 @@ export default function Notes() {
       <div className="p-8 sm:p-16">
         <div className="flex items-center mb-4 space-x-2">
           <label className="font-medium text-[#0B2C4D]">Select Notes:</label>
-          <select
-            className="border px-3 py-1 rounded"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-          >
+          <select className="border px-3 py-1 rounded" value={filter} onChange={(e) => setFilter(e.target.value)}>
             <option value="All">All</option>
             <option value="Notes">Notes Only</option>
             <option value="QuestionPaper">Question Papers</option>
@@ -75,7 +78,6 @@ export default function Notes() {
           <span>{getHeadingText()}</span>
         </h2>
 
-        {/* Notes Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredData.map((note, idx) => (
             <div
@@ -88,12 +90,8 @@ export default function Notes() {
                   <span>📘</span>
                   <span>{note.subject}</span>
                 </div>
-                <p className="text-sm text-gray-500">
-                  {note.resources} Resources
-                </p>
+                <p className="text-sm text-gray-500">{note.resources} Resources</p>
               </div>
-
-              {/* 🔒 Removed lock icon */}
             </div>
           ))}
         </div>

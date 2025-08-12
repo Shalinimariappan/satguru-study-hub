@@ -1,141 +1,86 @@
-/*import { useState, useEffect, useRef } from "react";
+// src/components/SignInPopup.tsx
+import React, { useState } from "react";
 import { auth } from "../firebase";
-import {
-  signInWithPhoneNumber,
-  RecaptchaVerifier,
-  ConfirmationResult,
-} from "firebase/auth";
+import { sendSignInLinkToEmail } from "firebase/auth";
 
 interface Props {
-  onSuccess: (phone: string) => void;
   onClose: () => void;
+  emailCallback?: (email: string) => void; // optional
+  pendingSubject?: string; // subject user clicked to access
 }
 
-export default function SignInPopup({ onSuccess, onClose }: Props) {
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVy96yOj_3S5cpm61fdK4B4SuALy3OoCOiwSO13orTW_oVQwz2hfo_Krk9LJnFHpah/exec"; // replace
+const ACTION_URL_BASE = "https://satgurustudycentre.com/FinishSignIn"; // replace with your finish URL (or localhost)
+
+export default function SignInPopup({ onClose, pendingSubject }: Props) {
+  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [otp, setOtp] = useState("");
-  const [confirmation, setConfirmation] = useState<ConfirmationResult | null>(null);
-  const recaptchaVerifier = useRef<RecaptchaVerifier | null>(null);
-  const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
 
-  // ✅ Render reCAPTCHA only when DOM is ready
-  useEffect(() => {
-    if (!recaptchaVerifier.current && document.getElementById("recaptcha-container")) {
-      recaptchaVerifier.current = new RecaptchaVerifier(
-        "recaptcha-container",
-        {
-          size: "invisible",
-          callback: () => {
-            console.log("reCAPTCHA solved automatically");
-          },
-        },
-        auth
-      );
-      recaptchaVerifier.current.render().then(() => {
-        setRecaptchaReady(true); // Now you can send OTP
-      });
-    }
-  }, []);
-
-  const sendOtp = async () => {
-    if (!phone.match(/^\d{10}$/)) {
-      alert("Enter a valid 10-digit phone number");
-      return;
-    }
-
-    if (!recaptchaReady || !recaptchaVerifier.current) {
-      alert("reCAPTCHA is not ready yet. Please wait a second and try again.");
-      return;
-    }
-
-    const fullPhone = `+91${phone}`;
-    try {
-      const result = await signInWithPhoneNumber(auth, fullPhone, recaptchaVerifier.current);
-      setConfirmation(result);
-      alert("OTP sent successfully!");
-    } catch (err) {
-      console.error("OTP send failed:", err);
-      alert("Failed to send OTP. Try again.");
-    }
+  const actionCodeSettings = {
+    // After sign-in, the user will be redirected to this URL.
+    url: `${ACTION_URL_BASE}?email=${encodeURIComponent(email)}&subject=${encodeURIComponent(pendingSubject || "")}`,
+    handleCodeInApp: true,
   };
 
-  const verifyOtp = async () => {
-    if (!otp) {
-      alert("Enter OTP");
+  const handleSubmit = async () => {
+    if (!name || !phone || !email) {
+      alert("Please fill name, phone and email.");
+      return;
+    }
+
+    // Save pending row to Google Sheets
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          action: "pending",
+          email,
+          name,
+          phone,
+          subject: pendingSubject || "",
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to save pending:", err);
+      alert("Failed to start sign-in. Try again.");
       return;
     }
 
     try {
-      const result = await confirmation?.confirm(otp);
-      const number = result?.user.phoneNumber || "";
-
-      await fetch("https://script.google.com/macros/s/AKfycbxaB5FXCXoEVI1qiwJHCW5fCB7Y9S4i6UTE37Kgq-bd6LT-E4QUWH5Akum67YNQrQW0/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone: number }),
-      });
-
-      localStorage.setItem("isLoggedIn", "true");
-      onSuccess(number);
-      onClose();
+      await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+      // Save email locally so we can use it when completing sign-in on same device
+      window.localStorage.setItem("emailForSignIn", email);
+      setSent(true);
+      alert("Sign-in link sent to your email. Please open the email and click the link to complete sign-in.");
     } catch (err) {
-      console.error("OTP verification failed:", err);
-      alert("Incorrect OTP");
+      console.error("sendSignInLinkToEmail error:", err);
+      alert("Failed to send sign-in link. Check your Firebase configuration and authorized domain.");
     }
   };
 
   return (
-    <>
-      }
-      <div id="recaptcha-container" className="hidden" />
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded w-96">
+        <h3 className="text-lg font-semibold mb-4">Sign in to access notes</h3>
 
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div className="bg-white p-6 rounded shadow w-96">
-          <h2 className="text-lg font-semibold mb-4 text-center">Login to Access Notes</h2>
+        {!sent ? (
+          <>
+            <input className="border p-2 w-full mb-2" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input className="border p-2 w-full mb-2" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input className="border p-2 w-full mb-2" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <button className="bg-blue-600 text-white px-4 py-2 w-full rounded" onClick={handleSubmit}>Send verification email</button>
+          </>
+        ) : (
+          <div>
+            <p>Verification link sent to <strong>{email}</strong>. Open it to complete sign-in.</p>
+            <p className="mt-2 text-sm text-gray-600">If you clicked the link on another device, open the same link here and your details will be confirmed automatically.</p>
+          </div>
+        )}
 
-          {!confirmation ? (
-            <>
-              <input
-                type="text"
-                placeholder="Enter phone (10 digits)"
-                className="border px-3 py-2 w-full mb-4"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-              <button
-                onClick={sendOtp}
-                disabled={!recaptchaReady}
-                className="bg-blue-600 text-white px-4 py-2 rounded w-full"
-              >
-                {recaptchaReady ? "Send OTP" : "Please wait..."}
-              </button>
-            </>
-          ) : (
-            <>
-              <input
-                type="text"
-                placeholder="Enter OTP"
-                className="border px-3 py-2 w-full mb-4"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-              />
-              <button
-                onClick={verifyOtp}
-                className="bg-green-600 text-white px-4 py-2 rounded w-full"
-              >
-                Verify OTP
-              </button>
-            </>
-          )}
-
-          <button
-            onClick={onClose}
-            className="mt-4 text-sm text-gray-600 hover:underline w-full"
-          >
-            Cancel
-          </button>
-        </div>
+        <button className="mt-4 text-sm text-gray-600" onClick={onClose}>Cancel</button>
       </div>
-    </>
+    </div>
   );
-}*/
+}

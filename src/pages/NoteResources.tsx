@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 const notesResources: Record<string, { title: string; url: string }[]> = {
-  "6th STD Question Papers": [
+  "6th-Std-Question-Papers": [
   // 1ST MID TERM
   { title: "6th First Midterm English", url: "/pdfs/6TH/1ST MID TERM/6th First Midterm English question paper.pdf" },
   { title: "6th First Midterm Maths", url: "/pdfs/6TH/1ST MID TERM/6th First Midterm Maths question paper.pdf" },
@@ -45,7 +45,7 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { title: "6th Third Term Tamil", url: "/pdfs/6TH/3RD TERM/6th தமிழ் Third Term Question Paper.pdf" },
 ],
 
-"7th STD Question Papers": [
+"7th-Std-Question-Papers": [
   // 1ST MID TERM
   { title: "7th First Midterm English", url: "/pdfs/7TH/1ST MID TERM/7th First Midterm English question paper.pdf" },
   { title: "7th First Midterm Maths", url: "/pdfs/7TH/1ST MID TERM/7th First Midterm MATHS question paper.pdf" },
@@ -88,7 +88,7 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { title: "7th Third Term Tamil", url: "/pdfs/7TH/3RD TERM/7th Social Tamil Third Term Question Paper.pdf" },
 ],
 
-"8th STD Question Papers": [
+"8th-Std-Question-Papers": [
   // 1ST MID TERM
   { title: "8th First Midterm English", url: "/pdfs/8TH/1ST MID TERM/8th English First Mid term question paper.pdf" },
   { title: "8th First Midterm Maths", url: "/pdfs/8TH/1ST MID TERM/8th Maths First Mid term question paper.pdf" },
@@ -131,7 +131,7 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { title: "8th Quarterly Social", url: "/pdfs/8TH/QUATERLY/8th Quarterly SOCIAL question paper 2024 -2025.pdf" },
   { title: "8th Quarterly Tamil", url: "/pdfs/8TH/QUATERLY/8th Quarterly TAMIL question paper 2024 -2025.pdf" },
 ],
-"10th STD Question Papers": [
+"10th-Std-Question-Papers": [
   // 1ST REVISION
   { title: "10th First Revision English", url: "/pdfs/10TH/1ST REV/10th First Revision English Question paper.pdf" },
   { title: "10th First Revision Maths", url: "/pdfs/10TH/1ST REV/10th First Revision Maths question paper.pdf" },
@@ -189,7 +189,7 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { title: "10th Unit Test 3 Tamil", url: "/pdfs/10TH/UNIT - 3/10th Unit test 3 தமிழ் Question paper.pdf" }
 ],
 
-"11th STD Commerce Question Papers": [
+"11th-Std-Commerce-Question-Papers": [
   // 1ST REVISION
   { title: "11th First Revision Accountancy", url: "/pdfs/11TH COM/1ST REV/11th Revision Accountancy Question paper 24-25.pdf" },
   { title: "11th First Revision Business Maths", url: "/pdfs/11TH COM/1ST REV/11th Revision Business Maths Question paper 24-25.pdf" },
