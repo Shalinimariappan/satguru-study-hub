@@ -14,8 +14,6 @@ import Events from "./pages/Events";
 import Courses from "./pages/Courses";
 import Notes from "./pages/Notes";
 import Contact from "./pages/Contact";
-import SignInPopup from "./pages/SignInPopup";
-import FinishSignIn from "./pages/FinishSignIn";
 import NotFound from "./pages/NotFound";
 import NoteResources from "./pages/NoteResources";
 import { AuthProvider } from "./AuthContext";
@@ -51,7 +49,6 @@ const App = () => (
                   <Route path="/events" element={<Events />} />
                   <Route path="/courses" element={<Courses />} />
                   <Route path="/notes" element={<Notes />} />
-                  <Route path="/finish-signin" element={<FinishSignIn />} />
                   <Route path="/notes/:subject" element={<NoteResources />} />
                   <Route path="/contact" element={<Contact />} />
                 </Route>

@@ -1,7 +1,8 @@
-// src/pages/Notes.tsx  (your existing code modified minimally)
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import SignInPopup from "./SignInPopup"; // adjust path
+import { auth } from "./firebase";
+import { createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged } from "firebase/auth";
+import { useAuth } from "../AuthContext";
 
 const notesData = [
   { subject: "6th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
@@ -14,23 +15,48 @@ const notesData = [
 
 export default function Notes() {
   const navigate = useNavigate();
+  const { isSignedIn } = useAuth(); // kept for future use
   const [filter, setFilter] = useState("All");
+
+  // New state for sign-in
   const [showSignIn, setShowSignIn] = useState(false);
-  const [pendingSubject, setPendingSubject] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [selectedSubject, setSelectedSubject] = useState("");
 
   const handleClick = (subject: string) => {
-    // check if user logged-in (client-side)
-    const logged = window.localStorage.getItem("isLoggedIn") === "true";
-    if (logged) {
-      navigate(`/notes/${subject}`);
+    // Require sign-in for 6th & 7th only
+    if (subject.startsWith("6th") || subject.startsWith("7th")) {
+      setSelectedSubject(subject);
+      onAuthStateChanged(auth, (user) => {
+        if (user && user.emailVerified) {
+          navigate(`/notes/${subject}`);
+        } else {
+          setShowSignIn(true);
+        }
+      });
     } else {
-      setPendingSubject(subject);
-      setShowSignIn(true);
+      navigate(`/notes/${subject}`);
+    }
+  };
+
+  const handleSignIn = async () => {
+    try {
+      // Temporary password
+      const userCredential = await createUserWithEmailAndPassword(auth, email, "password123");
+      await sendEmailVerification(userCredential.user);
+      setMessage("Verification email sent. Please check your inbox.");
+    } catch (err: any) {
+      setMessage(err.message);
     }
   };
 
   const filteredData =
-    filter === "All" ? notesData : notesData.filter((note) => note.type === filter);
+    filter === "All"
+      ? notesData
+      : notesData.filter((note) => note.type === filter);
 
   const getHeadingText = () => {
     if (filter === "Notes") return "Notes";
@@ -40,13 +66,6 @@ export default function Notes() {
 
   return (
     <div>
-      {showSignIn && (
-        <SignInPopup
-          pendingSubject={pendingSubject || undefined}
-          onClose={() => setShowSignIn(false)}
-        />
-      )}
-
       {/* Banner Section */}
       <div className="relative py-16">
         <div
@@ -66,7 +85,11 @@ export default function Notes() {
       <div className="p-8 sm:p-16">
         <div className="flex items-center mb-4 space-x-2">
           <label className="font-medium text-[#0B2C4D]">Select Notes:</label>
-          <select className="border px-3 py-1 rounded" value={filter} onChange={(e) => setFilter(e.target.value)}>
+          <select
+            className="border px-3 py-1 rounded"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
             <option value="All">All</option>
             <option value="Notes">Notes Only</option>
             <option value="QuestionPaper">Question Papers</option>
@@ -78,6 +101,7 @@ export default function Notes() {
           <span>{getHeadingText()}</span>
         </h2>
 
+        {/* Notes Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredData.map((note, idx) => (
             <div
@@ -96,6 +120,43 @@ export default function Notes() {
           ))}
         </div>
       </div>
+
+      {/* Sign-in Modal */}
+      {showSignIn && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <h3 className="text-lg font-bold mb-4">Sign in to view {selectedSubject}</h3>
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border p-2 mb-3 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="border p-2 mb-3 w-full"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="border p-2 mb-3 w-full"
+            />
+            <button
+              onClick={handleSignIn}
+              className="bg-blue-500 text-white px-4 py-2 rounded w-full"
+            >
+              Send Verification Email
+            </button>
+            {message && <p className="text-sm text-gray-600 mt-3">{message}</p>}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
