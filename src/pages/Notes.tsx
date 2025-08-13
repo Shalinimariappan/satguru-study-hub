@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { auth } from "./firebase";
-import { createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged } from "firebase/auth";
-import { useAuth } from "../AuthContext";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { FaLock } from "react-icons/fa";
 
 const notesData = [
   { subject: "6th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
@@ -15,36 +19,36 @@ const notesData = [
 
 export default function Notes() {
   const navigate = useNavigate();
-  const { isSignedIn } = useAuth(); // kept for future use
   const [filter, setFilter] = useState("All");
 
-  // New state for sign-in
+  // Sign-in modal state
   const [showSignIn, setShowSignIn] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
+  const [userVerified, setUserVerified] = useState(false);
+
+  // Track user authentication status
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUserVerified(!!(user && user.emailVerified));
+    });
+    return unsubscribe;
+  }, []);
 
   const handleClick = (subject: string) => {
-    // Require sign-in for 6th & 7th only
-    if (subject.startsWith("6th") || subject.startsWith("7th")) {
-      setSelectedSubject(subject);
-      onAuthStateChanged(auth, (user) => {
-        if (user && user.emailVerified) {
-          navigate(`/notes/${subject}`);
-        } else {
-          setShowSignIn(true);
-        }
-      });
-    } else {
+    setSelectedSubject(subject);
+    if (userVerified) {
       navigate(`/notes/${subject}`);
+    } else {
+      setShowSignIn(true);
     }
   };
 
   const handleSignIn = async () => {
     try {
-      // Temporary password
       const userCredential = await createUserWithEmailAndPassword(auth, email, "password123");
       await sendEmailVerification(userCredential.user);
       setMessage("Verification email sent. Please check your inbox.");
@@ -106,7 +110,7 @@ export default function Notes() {
           {filteredData.map((note, idx) => (
             <div
               key={idx}
-              className="flex justify-between items-center border border-gray-100 shadow-md rounded-lg p-4 hover:shadow-lg transition cursor-pointer"
+              className="relative flex justify-between items-center border border-gray-100 shadow-md rounded-lg p-4 hover:shadow-lg transition cursor-pointer"
               onClick={() => handleClick(note.subject)}
             >
               <div>
@@ -116,6 +120,9 @@ export default function Notes() {
                 </div>
                 <p className="text-sm text-gray-500">{note.resources} Resources</p>
               </div>
+              {!userVerified && (
+                <FaLock className="text-gray-500 absolute top-3 right-3" />
+              )}
             </div>
           ))}
         </div>
