@@ -4,36 +4,19 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    name: "Priya Sharma",
+    name: "Priya",
     role: "Parent of Class X Student",
-    image: "https://randomuser.me/api/portraits/women/79.jpg",
     quote: "Satguru Study Centre has been instrumental in my child's academic growth. The teachers are highly qualified and provide individual attention. My son's grades have improved significantly since joining.",
-    video: "https://www.youtube.com/shorts/HhwNYTJ0mtE" // sample
+    video: "https://www.youtube.com/embed/mIKKG0s4hOg"
   },
   {
     id: 2,
     name: "Rajesh Kumar",
     role: "Parent of Class XII Student",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-    quote: "The dedication of teachers at Satguru Study Centre is commendable. They not only focus on academics but also on the overall development of students. My daughter scored 95% in her board exams thanks to their guidance.",
-    video: "https://www.youtube.com/shorts/mIKKG0s4hOg"
+    quote: "The dedication of teachers at Satguru Study Centre is truly commendable. They not only focus on academics but also nurture the overall development of students. My son showed remarkable progress, improving his academic performance by 50%, thanks to their expert guidance and constant support.",
+    video: "https://www.youtube.com/embed/HhwNYTJ0mtE"
   },
-  {
-    id: 3,
-    name: "Anita Patel",
-    role: "Parent of Primary Student",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
-    quote: "What sets Satguru Study Centre apart is their personalized approach to teaching. They understand each child's learning pace and adapt their methods accordingly. Highly recommended for young learners.",
-    video: "https://www.youtube.com/embed/ScMzIvxBSi4"
-  },
-  {
-    id: 4,
-    name: "Vikram Singh",
-    role: "Parent of Class XI Student",
-    image: "https://randomuser.me/api/portraits/men/67.jpg",
-    quote: "The study materials provided by Satguru Study Centre are comprehensive and well-structured. The regular tests and feedback have helped my son develop good study habits and improve his performance.",
-    video: "https://www.youtube.com/embed/kXYiU_JCYtU"
-  }
+  
 ];
 
 export default function TestimonialsSection() {
@@ -98,19 +81,14 @@ export default function TestimonialsSection() {
                       </div>
                     )}
 
-                    <div className="flex items-center justify-center">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full mr-4"
-                      />
+                    
                       <div>
-                        <h4 className="font-semibold">{testimonial.name}</h4>
-                        <p className="text-gray-500 text-sm">{testimonial.role}</p>
+                        <h4 className="font-semibold flex items-center justify-center">{testimonial.name}</h4>
+                        <p className="text-gray-500 text-sm flex items-center justify-center">{testimonial.role}</p>
                       </div>
                     </div>
                   </div>
-                </div>
+               
               ))}
             </div>
           </div>
