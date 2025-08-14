@@ -8,7 +8,7 @@ const testimonials = [
     role: "Parent of Class X Student",
     image: "https://randomuser.me/api/portraits/women/79.jpg",
     quote: "Satguru Study Centre has been instrumental in my child's academic growth. The teachers are highly qualified and provide individual attention. My son's grades have improved significantly since joining.",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ" // sample
+    video: "https://www.youtube.com/shorts/HhwNYTJ0mtE" // sample
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const testimonials = [
     role: "Parent of Class XII Student",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
     quote: "The dedication of teachers at Satguru Study Centre is commendable. They not only focus on academics but also on the overall development of students. My daughter scored 95% in her board exams thanks to their guidance.",
-    video: "https://www.youtube.com/embed/tgbNymZ7vqY"
+    video: "https://www.youtube.com/shorts/mIKKG0s4hOg"
   },
   {
     id: 3,

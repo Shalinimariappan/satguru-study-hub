@@ -1,4 +1,3 @@
-
 import { GraduationCap, Users, Award, Clock, BookOpen, Target, Component } from "lucide-react";
 import { Link } from 'react-router-dom';
 
