@@ -1,12 +1,17 @@
+// src/Notes.tsx
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { auth } from "./firebase";
 import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
   onAuthStateChanged,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
+  setPersistence,
+  browserLocalPersistence,
+  signOut,
 } from "firebase/auth";
 import { FaLock } from "react-icons/fa";
+import SignInPopup from "./SignInPopup";
 
 const notesData = [
   { subject: "6th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
@@ -20,47 +25,50 @@ const notesData = [
 export default function Notes() {
   const navigate = useNavigate();
   const [filter, setFilter] = useState("All");
-
-  // Sign-in modal state
   const [showSignIn, setShowSignIn] = useState(false);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
-  const [userVerified, setUserVerified] = useState(false);
+  const [user, setUser] = useState<any>(null);
 
-  // Track user authentication status
+  // Handle auth state + email link sign-in
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUserVerified(!!(user && user.emailVerified));
+    // Persist session in local storage
+    setPersistence(auth, browserLocalPersistence);
+
+    // Check if user is returning via email link
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      let email = window.localStorage.getItem("email");
+      if (!email) {
+        email = window.prompt("Please confirm your email for login");
+      }
+      if (email) {
+        signInWithEmailLink(auth, email, window.location.href)
+          .then((result) => {
+            window.localStorage.removeItem("email"); // cleanup
+            setUser(result.user);
+          })
+          .catch((err) => console.error("Sign-in error:", err));
+      }
+    }
+
+    // Track user auth state
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
     });
+
     return unsubscribe;
   }, []);
 
   const handleClick = (subject: string) => {
     setSelectedSubject(subject);
-    if (userVerified) {
+    if (user) {
       navigate(`/notes/${subject}`);
     } else {
       setShowSignIn(true);
     }
   };
 
-  const handleSignIn = async () => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, "password123");
-      await sendEmailVerification(userCredential.user);
-      setMessage("Verification email sent. Please check your inbox.");
-    } catch (err: any) {
-      setMessage(err.message);
-    }
-  };
-
   const filteredData =
-    filter === "All"
-      ? notesData
-      : notesData.filter((note) => note.type === filter);
+    filter === "All" ? notesData : notesData.filter((note) => note.type === filter);
 
   const getHeadingText = () => {
     if (filter === "Notes") return "Notes";
@@ -98,6 +106,15 @@ export default function Notes() {
             <option value="Notes">Notes Only</option>
             <option value="QuestionPaper">Question Papers</option>
           </select>
+
+          {user && (
+            <button
+              className="ml-auto bg-red-500 text-white px-3 py-1 rounded"
+              onClick={() => signOut(auth)}
+            >
+              Sign Out
+            </button>
+          )}
         </div>
 
         <h2 className="text-xl font-semibold mb-6 flex items-center space-x-2 text-[#0B2C4D]">
@@ -120,7 +137,7 @@ export default function Notes() {
                 </div>
                 <p className="text-sm text-gray-500">{note.resources} Resources</p>
               </div>
-              {!userVerified && (
+              {!user && (
                 <FaLock className="text-gray-500 absolute top-3 right-3" />
               )}
             </div>
@@ -128,42 +145,8 @@ export default function Notes() {
         </div>
       </div>
 
-      {/* Sign-in Modal */}
-      {showSignIn && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <h3 className="text-lg font-bold mb-4">Sign in to view {selectedSubject}</h3>
-            <input
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="border p-2 mb-3 w-full"
-            />
-            <input
-              type="text"
-              placeholder="Phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="border p-2 mb-3 w-full"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="border p-2 mb-3 w-full"
-            />
-            <button
-              onClick={handleSignIn}
-              className="bg-blue-500 text-white px-4 py-2 rounded w-full"
-            >
-              Send Verification Email
-            </button>
-            {message && <p className="text-sm text-gray-600 mt-3">{message}</p>}
-          </div>
-        </div>
-      )}
+      {/* Sign-in Popup */}
+      {showSignIn && <SignInPopup onSuccess={() => setShowSignIn(false)} />}
     </div>
   );
 }
