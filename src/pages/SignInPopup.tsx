@@ -2,16 +2,16 @@
 import { useState } from "react";
 import { auth } from "./firebase";
 import { sendSignInLinkToEmail } from "firebase/auth";
-import { FaTimes } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6"; // modern X icon (black)
 
-export default function SignInPopup({ onSuccess }) {
+export default function SignInPopup({ onSuccess, onBack, subject }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
   const actionCodeSettings = {
-    url: "https://satgurustudycentre.com/notes",
-    handleCodeInApp: true
+    url: `https://satgurustudycentre.com/notes/${subject}`, // redirect back to that subject
+    handleCodeInApp: true,
   };
 
   const handleSubmit = async (e) => {
@@ -21,7 +21,7 @@ export default function SignInPopup({ onSuccess }) {
       window.localStorage.setItem("name", name);
       window.localStorage.setItem("phone", phone);
       window.localStorage.setItem("email", email);
-      alert("Verification link sent to your email! Check your spam folder if not found.");
+      alert("Verification link sent to your email! Check spam folder if not found.");
       onSuccess();
     } catch (error) {
       console.error(error);
@@ -37,7 +37,7 @@ export default function SignInPopup({ onSuccess }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        zIndex: 1000
+        zIndex: 1000,
       }}
     >
       <div
@@ -46,13 +46,13 @@ export default function SignInPopup({ onSuccess }) {
           background: "#fff",
           padding: "20px",
           borderRadius: "8px",
-          width: "300px",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.2)"
+          width: "320px",
+          boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
         }}
       >
-        {/* Close Button */}
+        {/* Back / Close Button */}
         <button
-          onClick={onSuccess}
+          onClick={onBack}
           style={{
             position: "absolute",
             top: "10px",
@@ -60,21 +60,53 @@ export default function SignInPopup({ onSuccess }) {
             background: "transparent",
             border: "none",
             cursor: "pointer",
-            padding: 0
+            padding: 0,
           }}
         >
-          <FaTimes size={24} color="#ff0000" />
+          <FaXmark size={20} color="#000000" />
         </button>
 
-        <h3 style={{ fontWeight: "bold", marginBottom: "10px" }}>
-          Sign in to view
+        <h3 style={{ fontWeight: "bold", marginBottom: "10px", textAlign: "center" }}>
+          Sign in to view {subject}
         </h3>
 
-        <form style={{ display: "flex", flexDirection: "column", gap: "10px" }} onSubmit={handleSubmit}>
-          <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" required />
-          <input value={phone} onChange={e => setPhone(e.target.value)} placeholder="Phone" required />
-          <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" type="email" required />
-          <button type="submit">Send Verification Link</button>
+        <form
+          style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          onSubmit={handleSubmit}
+        >
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Name"
+            required
+          />
+          <input
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Phone"
+            required
+          />
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            type="email"
+            required
+          />
+          <button
+            type="submit"
+            style={{
+              background: "#2563eb",
+              color: "white",
+              padding: "10px",
+              borderRadius: "6px",
+              fontWeight: "600",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Send Verification Email
+          </button>
         </form>
       </div>
     </div>

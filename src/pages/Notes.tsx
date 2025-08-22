@@ -29,28 +29,22 @@ export default function Notes() {
   const [selectedSubject, setSelectedSubject] = useState("");
   const [user, setUser] = useState<any>(null);
 
-  // Handle auth state + email link sign-in
   useEffect(() => {
-    // Persist session in local storage
     setPersistence(auth, browserLocalPersistence);
 
-    // Check if user is returning via email link
+    // Handle email link login (no prompt, use stored email)
     if (isSignInWithEmailLink(auth, window.location.href)) {
-      let email = window.localStorage.getItem("email");
-      if (!email) {
-        email = window.prompt("Please confirm your email for login");
-      }
+      const email = window.localStorage.getItem("email");
       if (email) {
         signInWithEmailLink(auth, email, window.location.href)
           .then((result) => {
-            window.localStorage.removeItem("email"); // cleanup
+            window.localStorage.removeItem("email");
             setUser(result.user);
           })
           .catch((err) => console.error("Sign-in error:", err));
       }
     }
 
-    // Track user auth state
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
@@ -146,7 +140,13 @@ export default function Notes() {
       </div>
 
       {/* Sign-in Popup */}
-      {showSignIn && <SignInPopup onSuccess={() => setShowSignIn(false)} />}
+      {showSignIn && (
+        <SignInPopup
+          onSuccess={() => setShowSignIn(false)}
+          subject={selectedSubject}
+          onBack={() => setShowSignIn(false)}
+        />
+      )}
     </div>
   );
 }
