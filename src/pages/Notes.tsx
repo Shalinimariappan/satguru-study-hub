@@ -1,4 +1,3 @@
-// src/Notes.tsx
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { auth } from "./firebase";
@@ -33,7 +32,6 @@ export default function Notes() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Ensure persistence across refresh/reopen
     (async () => {
       await setPersistence(auth, browserLocalPersistence);
 
@@ -41,10 +39,8 @@ export default function Notes() {
       if (isSignInWithEmailLink(auth, window.location.href)) {
         let email = window.localStorage.getItem("email");
         if (!email) {
-          // if email not stored (e.g. different device), ask user
           email = window.prompt("Please provide your email for confirmation") || "";
         }
-
         if (email) {
           try {
             const result = await signInWithEmailLink(auth, email, window.location.href);
@@ -56,7 +52,7 @@ export default function Notes() {
         }
       }
 
-      // Auth state listener
+      // Listen for auth state changes
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
         setLoading(false);
@@ -90,7 +86,7 @@ export default function Notes() {
 
   return (
     <div className="relative">
-      {/* Back button (black X) */}
+      {/* Back button */}
       <button
         onClick={() => window.history.back()}
         className="absolute top-4 right-4 text-black hover:opacity-70"
@@ -98,7 +94,7 @@ export default function Notes() {
         <X size={28} />
       </button>
 
-      {/* Banner Section */}
+      {/* Banner */}
       <div className="relative py-16">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
@@ -113,7 +109,7 @@ export default function Notes() {
         </div>
       </div>
 
-      {/* Content Section */}
+      {/* Content */}
       <div className="p-8 sm:p-16">
         <div className="flex items-center mb-4 space-x-2">
           <label className="font-medium text-[#0B2C4D]">Select Notes:</label>
@@ -157,9 +153,7 @@ export default function Notes() {
                 </div>
                 <p className="text-sm text-gray-500">{note.resources} Resources</p>
               </div>
-              {!user && (
-                <FaLock className="text-gray-500 absolute top-3 right-3" />
-              )}
+              {!user && <FaLock className="text-gray-500 absolute top-3 right-3" />}
             </div>
           ))}
         </div>
@@ -171,6 +165,7 @@ export default function Notes() {
           onSuccess={() => setShowSignIn(false)}
           subject={selectedSubject}
           onBack={() => setShowSignIn(false)}
+          setUser={setUser} // Pass setUser to popup
         />
       )}
     </div>

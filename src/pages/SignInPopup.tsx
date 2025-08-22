@@ -1,16 +1,15 @@
-// src/SignInPopup.tsx
 import { useState } from "react";
 import { auth } from "./firebase";
-import { sendSignInLinkToEmail } from "firebase/auth";
-import { FaXmark } from "react-icons/fa6"; // modern X icon (black)
+import { sendSignInLinkToEmail, onAuthStateChanged, User } from "firebase/auth";
+import { FaXmark } from "react-icons/fa6";
 
-export default function SignInPopup({ onSuccess, onBack, subject }) {
+export default function SignInPopup({ onSuccess, onBack, subject, setUser }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
   const actionCodeSettings = {
-    url: `https://satgurustudycentre.com/notes/${subject}`, // redirect back to that subject
+    url: `https://satgurustudycentre.com/notes/${subject}`,
     handleCodeInApp: true,
   };
 
@@ -22,9 +21,18 @@ export default function SignInPopup({ onSuccess, onBack, subject }) {
       window.localStorage.setItem("phone", phone);
       window.localStorage.setItem("email", email);
       alert("Verification link sent to your email! Check spam folder if not found.");
-      onSuccess();
+
+      // Listen for sign-in completion
+      const unsubscribe = onAuthStateChanged(auth, (currentUser: User | null) => {
+        if (currentUser) {
+          setUser(currentUser); // update parent state
+          unsubscribe(); // stop listening
+          onSuccess(); // close popup
+        }
+      });
     } catch (error) {
       console.error(error);
+      alert("Failed to send verification email. Try again.");
     }
   };
 
@@ -50,7 +58,6 @@ export default function SignInPopup({ onSuccess, onBack, subject }) {
           boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
         }}
       >
-        {/* Back / Close Button */}
         <button
           onClick={onBack}
           style={{
