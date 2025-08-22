@@ -2,17 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { auth } from "./firebase";
 import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
   onAuthStateChanged,
-  isSignInWithEmailLink,
-  signInWithEmailLink,
-  setPersistence,
-  browserLocalPersistence,
-  signOut,
-  User,
 } from "firebase/auth";
 import { FaLock } from "react-icons/fa";
-import SignInPopup from "./SignInPopup";
-import { X } from "lucide-react";
 
 const notesData = [
   { subject: "6th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
@@ -26,53 +20,47 @@ const notesData = [
 export default function Notes() {
   const navigate = useNavigate();
   const [filter, setFilter] = useState("All");
+
+  // Sign-in modal state
   const [showSignIn, setShowSignIn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [userVerified, setUserVerified] = useState(false);
 
+  // Track user authentication status
   useEffect(() => {
-    (async () => {
-      await setPersistence(auth, browserLocalPersistence);
-
-      // Handle email link login
-      if (isSignInWithEmailLink(auth, window.location.href)) {
-        let email = window.localStorage.getItem("email");
-        if (!email) {
-          email = window.prompt("Please provide your email for confirmation") || "";
-        }
-        if (email) {
-          try {
-            const result = await signInWithEmailLink(auth, email, window.location.href);
-            window.localStorage.removeItem("email");
-            setUser(result.user);
-          } catch (err) {
-            console.error("Sign-in error:", err);
-          }
-        }
-      }
-
-      // Listen for auth state changes
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-        setLoading(false);
-      });
-
-      return unsubscribe;
-    })();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUserVerified(!!(user && user.emailVerified));
+    });
+    return unsubscribe;
   }, []);
 
   const handleClick = (subject: string) => {
     setSelectedSubject(subject);
-    if (user) {
+    if (userVerified) {
       navigate(`/notes/${subject}`);
     } else {
       setShowSignIn(true);
     }
   };
 
+  const handleSignIn = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, "password123");
+      await sendEmailVerification(userCredential.user);
+      setMessage("Verification email sent. Please check your inbox.");
+    } catch (err: any) {
+      setMessage(err.message);
+    }
+  };
+
   const filteredData =
-    filter === "All" ? notesData : notesData.filter((note) => note.type === filter);
+    filter === "All"
+      ? notesData
+      : notesData.filter((note) => note.type === filter);
 
   const getHeadingText = () => {
     if (filter === "Notes") return "Notes";
@@ -80,21 +68,9 @@ export default function Notes() {
     return "Government Question Paper and Notes";
   };
 
-  if (loading) {
-    return <p className="p-6">Loading...</p>;
-  }
-
   return (
-    <div className="relative">
-      {/* Back button */}
-      <button
-        onClick={() => window.history.back()}
-        className="absolute top-4 right-4 text-black hover:opacity-70"
-      >
-        <X size={28} />
-      </button>
-
-      {/* Banner */}
+    <div>
+      {/* Banner Section */}
       <div className="relative py-16">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
@@ -109,7 +85,7 @@ export default function Notes() {
         </div>
       </div>
 
-      {/* Content */}
+      {/* Content Section */}
       <div className="p-8 sm:p-16">
         <div className="flex items-center mb-4 space-x-2">
           <label className="font-medium text-[#0B2C4D]">Select Notes:</label>
@@ -122,15 +98,6 @@ export default function Notes() {
             <option value="Notes">Notes Only</option>
             <option value="QuestionPaper">Question Papers</option>
           </select>
-
-          {user && (
-            <button
-              className="ml-auto bg-red-500 text-white px-3 py-1 rounded"
-              onClick={() => signOut(auth)}
-            >
-              Sign Out
-            </button>
-          )}
         </div>
 
         <h2 className="text-xl font-semibold mb-6 flex items-center space-x-2 text-[#0B2C4D]">
@@ -153,20 +120,49 @@ export default function Notes() {
                 </div>
                 <p className="text-sm text-gray-500">{note.resources} Resources</p>
               </div>
-              {!user && <FaLock className="text-gray-500 absolute top-3 right-3" />}
+              {!userVerified && (
+                <FaLock className="text-gray-500 absolute top-3 right-3" />
+              )}
             </div>
           ))}
         </div>
       </div>
 
-      {/* Sign-in Popup */}
+      {/* Sign-in Modal */}
       {showSignIn && (
-        <SignInPopup
-          onSuccess={() => setShowSignIn(false)}
-          subject={selectedSubject}
-          onBack={() => setShowSignIn(false)}
-          setUser={setUser} // Pass setUser to popup
-        />
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <h3 className="text-lg font-bold mb-4">Sign in to view {selectedSubject}</h3>
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border p-2 mb-3 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="border p-2 mb-3 w-full"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="border p-2 mb-3 w-full"
+            />
+            <button
+              onClick={handleSignIn}
+              className="bg-blue-500 text-white px-4 py-2 rounded w-full"
+            >
+              Send Verification Email
+            </button>
+            {message && <p className="text-sm text-gray-600 mt-3">{message}</p>}
+          </div>
+        </div>
       )}
     </div>
   );
