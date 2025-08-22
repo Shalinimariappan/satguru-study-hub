@@ -9,9 +9,11 @@ import {
   setPersistence,
   browserLocalPersistence,
   signOut,
+  User,
 } from "firebase/auth";
 import { FaLock } from "react-icons/fa";
 import SignInPopup from "./SignInPopup";
+import { X } from "lucide-react";
 
 const notesData = [
   { subject: "6th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
@@ -27,29 +29,41 @@ export default function Notes() {
   const [filter, setFilter] = useState("All");
   const [showSignIn, setShowSignIn] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState("");
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setPersistence(auth, browserLocalPersistence);
+    // Ensure persistence across refresh/reopen
+    (async () => {
+      await setPersistence(auth, browserLocalPersistence);
 
-    // Handle email link login (no prompt, use stored email)
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      const email = window.localStorage.getItem("email");
-      if (email) {
-        signInWithEmailLink(auth, email, window.location.href)
-          .then((result) => {
+      // Handle email link login
+      if (isSignInWithEmailLink(auth, window.location.href)) {
+        let email = window.localStorage.getItem("email");
+        if (!email) {
+          // if email not stored (e.g. different device), ask user
+          email = window.prompt("Please provide your email for confirmation") || "";
+        }
+
+        if (email) {
+          try {
+            const result = await signInWithEmailLink(auth, email, window.location.href);
             window.localStorage.removeItem("email");
             setUser(result.user);
-          })
-          .catch((err) => console.error("Sign-in error:", err));
+          } catch (err) {
+            console.error("Sign-in error:", err);
+          }
+        }
       }
-    }
 
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
+      // Auth state listener
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+        setLoading(false);
+      });
 
-    return unsubscribe;
+      return unsubscribe;
+    })();
   }, []);
 
   const handleClick = (subject: string) => {
@@ -70,8 +84,20 @@ export default function Notes() {
     return "Government Question Paper and Notes";
   };
 
+  if (loading) {
+    return <p className="p-6">Loading...</p>;
+  }
+
   return (
-    <div>
+    <div className="relative">
+      {/* Back button (black X) */}
+      <button
+        onClick={() => window.history.back()}
+        className="absolute top-4 right-4 text-black hover:opacity-70"
+      >
+        <X size={28} />
+      </button>
+
       {/* Banner Section */}
       <div className="relative py-16">
         <div
