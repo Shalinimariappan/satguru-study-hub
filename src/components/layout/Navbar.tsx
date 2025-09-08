@@ -23,22 +23,22 @@ export default function Navbar() {
 
         {/* Right side: Social Icons */}
         <div className="flex items-center space-x-2 text-white text-base">
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <a href="https://www.youtube.com/@SatguruVirtualClasses" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
             <Youtube className="w-4 h-4 hover:text-gray-200 transition" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a href="https://www.instagram.com/satguru_study_centre_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <Instagram className="w-4 h-4 hover:text-gray-200 transition" />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/sat-guru-582281338/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <Linkedin className="w-4 h-4 hover:text-gray-200 transition" />
           </a>
           <a href="https://maps.app.goo.gl/zFHjdo6ePwuZCHBEA" target="_blank" rel="noopener noreferrer" aria-label="MapPin">
             <MapPin className="w-4 h-4 hover:text-gray-200 transition" />
           </a>
-          <a href="tel:+919876543210" aria-label="Phone">
+          <a href="tel:+917200015773" aria-label="Phone">
             <Phone className="w-4 h-4 hover:text-gray-200 transition" />
           </a>
-          <a href="mailto:info@satguru.com" aria-label="Email">
+          <a href="mailto:satguru162019@gmail.com" aria-label="Email">
             <Mail className="w-4 h-4 hover:text-gray-200 transition" />
           </a>
         </div>
@@ -50,7 +50,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/258a9587-e030-4708-9a22-c5eb53234bc6.png" 
+                src="/lovable-uploads/registeredlogo.jpg" 
                 alt="Satguru Study Centre Logo" 
                 className="h-16"
               /> <span
@@ -60,7 +60,7 @@ export default function Navbar() {
                 fontSize: '1.25rem', // You can adjust size as needed
               }}
             >
-              SATGURU STUDY CENTRE
+
             </span>
             </Link>
 
@@ -160,13 +160,6 @@ export default function Navbar() {
                       onClick={() => setIsOpen(false)}
                     >
                       Events
-                    </Link>
-                    <Link 
-                      to="/gallery" 
-                      className="block text-gray-700 hover:text-satguru py-1"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Gallery
                     </Link>
                   </div>
                 )}

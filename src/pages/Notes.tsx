@@ -14,7 +14,10 @@ const notesData = [
   { subject: "8th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
   { subject: "9th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
   { subject: "10th-Std-Question-Papers", resources: 40, type: "QuestionPaper" },
+  { subject: "11th-Std-Science-Question-Papers", resources: 50, type: "QuestionPaper" },
   { subject: "11th-Std-Commerce-Question-Papers", resources: 50, type: "QuestionPaper" },
+  { subject: "12th-Std-Commerce-Question-Papers", resources: 50, type: "QuestionPaper" },
+  { subject: "12th-Std-Science-Question-Papers", resources: 50, type: "QuestionPaper" },
 ];
 
 export default function Notes() {

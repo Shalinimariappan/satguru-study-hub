@@ -1,13 +1,18 @@
+"use client";
 
 import { 
   BookOpen, 
   Calculator, 
   Atom, 
   Globe, 
-  Languages, 
-  Code, 
-  BookMarked
+  Languages 
 } from "lucide-react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface CourseProps {
   icon: React.ReactNode;
@@ -81,14 +86,18 @@ const CourseCard = ({
 );
 
 export default function Courses() {
- 
-  
+  // 🔊 Play sound on slide change
+  const playSound = () => {
+    const audio = new Audio("/assets/slide-sound.mp3");
+    audio.play();
+  };
 
+  // 📚 Your courses data
   const lowerCourses = [
     {
       icon: <Globe className="h-6 w-6" />,
       title: "LKG",
-      description: "Specialized program for senior secondary students pursuing humanities stream.",
+      description: "Specialized program for early learners.",
       type: "StateBoard(TNSB)",
       fees: "₹450/month",
       duration: "5:15PM - 7:30PM",
@@ -97,7 +106,7 @@ export default function Courses() {
     {
       icon: <Calculator className="h-6 w-6" />,
       title: "UKG",
-      description: "Focused program for commerce students with emphasis on practical application.",
+      description: "Focused program for growing kids.",
       type: "StateBoard(TNSB)",
       fees: "₹500/month",
       duration: "5:15PM - 7:30PM",
@@ -105,37 +114,20 @@ export default function Courses() {
     },
     {
       icon: <Atom className="h-6 w-6" />,
-      title: "CLASS I",
-      description: "Rigorous program for science students preparing for competitive exams and boards.",
+      title: "Class I",
+      description: "Rigorous program for foundation building.",
       type: "StateBoard(TNSB)",
       fees: "₹550/month",
       duration: "5:15PM - 7:30PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-     {
-      icon: <Calculator className="h-6 w-6" />,
-      title: "CLASS II",
-      description: "Focused program for commerce students with emphasis on practical application.",
-      type: "StateBoard(TNSB)",
-      fees: "₹600/month",
-      duration: "5:15PM - 7:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-     {
-      icon: <Globe className="h-6 w-6" />,
-      title: "CLASS III",
-      description: "Specialized program for senior secondary students pursuing humanities stream.",
-      type: "StateBoard(TNSB)",
-      fees: "₹650/month",
-      duration: "5:15PM - 7:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
     }
   ];
-   const PreparatorCourses = [
+
+  const PreparatorCourses = [
     {
       icon: <Globe className="h-6 w-6" />,
-      title: "CLASS IV",
-      description: "Specialized program for senior secondary students pursuing humanities stream.",
+      title: "Class IV",
+      description: "Specialized program for transition years.",
       type: "StateBoard(TNSB)",
       fees: "₹700/month",
       duration: "5:15PM - 7:30PM",
@@ -143,8 +135,8 @@ export default function Courses() {
     },
     {
       icon: <Calculator className="h-6 w-6" />,
-      title: "CLASS V",
-      description: "Focused program for commerce students with emphasis on practical application.",
+      title: "Class V",
+      description: "Focused program for deeper learning.",
       type: "StateBoard(TNSB)",
       fees: "₹750/month",
       duration: "5:15PM - 7:30PM",
@@ -155,8 +147,8 @@ export default function Courses() {
   const MiddleCourses = [
     {
       icon: <Atom className="h-6 w-6" />,
-      title: "CLASS VI",
-      description: "Rigorous program for science students preparing for competitive exams and boards.",
+      title: "Class VI",
+      description: "Rigorous program preparing for middle school.",
       type: "StateBoard(TNSB)",
       fees: "₹900/month",
       duration: "5:30PM - 8:00PM",
@@ -164,180 +156,99 @@ export default function Courses() {
     },
     {
       icon: <Globe className="h-6 w-6" />,
-      title: "CLASS VII",
-      description: "Specialized program for senior secondary students pursuing humanities stream.",
+      title: "Class VII",
+      description: "Strong program to prepare for higher levels.",
       type: "StateBoard(TNSB)",
       fees: "₹1000/month",
       duration: "5:30PM - 8:00PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
     },
-    {
-      icon: <Calculator className="h-6 w-6" />,
-      title: "CLASS VIII",
-      description: "Focused program for commerce students with emphasis on practical application.",
-      type: "StateBoard(TNSB)",
-      fees: "₹1100/month",
-      duration: "5:45PM - 8:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-    {
-      icon: <Atom className="h-6 w-6" />,
-      title: "CLASS IX",
-      description: "Rigorous program for science students preparing for competitive exams and boards.",
-      type: "StateBoard(TNSB)",
-      fees: "₹1200/month",
-      duration: "5:45PM - 8:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    }
   ];
-  
-  
+
   const specialCourses = [
     {
       icon: <Languages className="h-6 w-6" />,
-      title: "CLASS X",
-      description: "Special program focused on improving language proficiency in English, Hindi, Tamil, and other languages.",
+      title: "Class X",
+      description: "Special program focused on board preparation.",
       type: "StateBoard(TNSB)",
-      fees: "₹1,300/month",
+      fees: "₹1300/month",
       duration: "6:00PM - 9:00PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-  ];
-
-const HigherCourses = [
-    {
-      icon: <Globe className="h-6 w-6" />,
-      title: "XI-SCIENCE (PCM)",
-      description: "Specialized program for senior secondary students pursuing humanities stream.",
-      type: "StateBoard(TNSB)",
-      fees: "₹450/month",
-      duration: "5:15PM - 7:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-    {
-      icon: <Calculator className="h-6 w-6" />,
-      title: "UKG",
-      description: "Focused program for commerce students with emphasis on practical application.",
-      type: "StateBoard(TNSB)",
-      fees: "₹500/month",
-      duration: "5:15PM - 7:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-    {
-      icon: <Atom className="h-6 w-6" />,
-      title: "CLASS I",
-      description: "Rigorous program for science students preparing for competitive exams and boards.",
-      type: "StateBoard(TNSB)",
-      fees: "₹550/month",
-      duration: "5:15PM - 7:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-     {
-      icon: <Calculator className="h-6 w-6" />,
-      title: "CLASS II",
-      description: "Focused program for commerce students with emphasis on practical application.",
-      type: "StateBoard(TNSB)",
-      fees: "₹600/month",
-      duration: "5:15PM - 7:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-     {
-      icon: <Globe className="h-6 w-6" />,
-      title: "CLASS III",
-      description: "Specialized program for senior secondary students pursuing humanities stream.",
-      type: "StateBoard(TNSB)",
-      fees: "₹650/month",
-      duration: "5:15PM - 7:30PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
     }
   ];
 
+  // 🎠 Carousel reusable wrapper
+  const Carousel = ({ courses }: { courses: CourseProps[] }) => (
+    <Swiper
+      modules={[Navigation, Pagination, Autoplay]}
+      spaceBetween={30}
+      slidesPerView={1.2}
+      centeredSlides={true}
+      navigation
+      pagination={{ clickable: true }}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      loop={true}
+      onSlideChange={playSound}
+      className="pb-10"
+    >
+      {courses.map((course, index) => (
+        <SwiperSlide key={index}>
+          <CourseCard {...course} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+
   return (
     <div>
+      {/* Hero Banner */}
       <div className="relative py-16">
-  {/* Background Image */}
-  <div
-    className="absolute inset-0 bg-cover bg-center opacity-40"
-    style={{
-      backgroundImage:
-        "url('/assets/banner.jpg')",
-    }}
-  ></div>
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-40"
+          style={{ backgroundImage: "url('/assets/banner.jpg')" }}
+        ></div>
+        <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }}></div>
+        <div className="relative container mx-auto px-4 text-center text-white">
+          <h1 className="text-4xl font-bold mb-4">Courses</h1>
+          <p className="text-xl max-w-2xl mx-auto">
+            Learn more about Satguru Study Centre and our commitment to educational excellence
+          </p>
+        </div>
+      </div>
 
-  {/* Color Overlay with 65% opacity */}
-  <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }}></div>
-
-  {/* Content */}
-  <div className="relative container mx-auto px-4 text-center text-white">
-    <h1 className="text-4xl font-bold mb-4">Courses</h1>
-    <p className="text-xl max-w-2xl mx-auto">
-      Learn more about Satguru Study Centre and our commitment to educational excellence
-    </p>
-  </div>
-</div>
-
-      
-
-    
-
-      {/* Senior Secondary Classes */}
+      {/* Foundational */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8">Foundational Level (LKG to II)</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {lowerCourses.map((course, index) => (
-              <CourseCard key={index} {...course} />
-            ))}
-          </div>
+          <Carousel courses={lowerCourses} />
         </div>
       </section>
 
-       <section className="py-16">
+      {/* Preparator */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8">Preparator Level (IV to VI)</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PreparatorCourses.map((course, index) => (
-              <CourseCard key={index} {...course} />
-            ))}
-          </div>
+          <Carousel courses={PreparatorCourses} />
         </div>
       </section>
 
+      {/* Middle */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8">Middle School Stage (VII to IX)</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {MiddleCourses.map((course, index) => (
-              <CourseCard key={index} {...course} />
-            ))}
-          </div>
+          <Carousel courses={MiddleCourses} />
         </div>
       </section>
 
-      {/* Special Programs */}
+      {/* Special */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">High School Stage(X)</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {specialCourses.map((course, index) => (
-              <CourseCard key={index} {...course} />
-            ))}
-          </div>
+          <h2 className="text-2xl font-bold mb-8">High School Stage (X)</h2>
+          <Carousel courses={specialCourses} />
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Higher Secondary Stage (XI to XII)</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {HigherCourses.map((course, index) => (
-              <CourseCard key={index} {...course} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Enrollment CTA */}
+      {/* CTA */}
       <section className="py-16 bg-satguru">
         <div className="container mx-auto px-4 text-center text-white">
           <h2 className="text-3xl font-bold mb-6">Ready to Enroll?</h2>
