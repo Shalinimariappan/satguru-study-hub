@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, Award } from "lucide-react";
-
+import ebinesarImg from "./assets/ebinesar.jpg";
 interface ResultTabProps {
   year: string;
   isActive: boolean;
@@ -369,7 +369,7 @@ export default function Results() {
         grade: "XI COM",
         marks: "491/600",
         percentage: "81.81%",
-        image: placeholderImg,
+        image: ebinesarImg,
         subjects: [{ name: "Mathematics", score: "96/100" },
           { name: "Science", score: "97/100" },
           { name: "Social Science", score: "95/100" },
@@ -400,7 +400,7 @@ export default function Results() {
           { name: "Economics", score: "84/100" },
           { name: "Commerce", score: "90/100" },
           { name: "Accountancy", score: "97/100" },
-          { name: "Business Maths & Statistics", score: "86/100" }],
+          { name: "Business Maths & Statistics", score: "84/100" }],
       },
     ],
   };
