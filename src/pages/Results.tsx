@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, Award } from "lucide-react";
-import ebinesarImg from "./assets/ebinesar.jpg";
 interface ResultTabProps {
   year: string;
   isActive: boolean;
@@ -148,7 +147,7 @@ export default function Results() {
         grade: "X",
         marks: "462/500",
         percentage: "92.4%",
-        image: placeholderImg,
+        image: "/assets/vishali.jpg",
         subjects: [{ name: "Mathematics", score: "96/100" },
           { name: "Science", score: "97/100" },
           { name: "Social Science", score: "95/100" },
@@ -186,7 +185,7 @@ export default function Results() {
         grade: "XI (COM)",
         marks: "560/600",
         percentage: "93.3%",
-        image: placeholderImg,
+        image: "/assets/vishali.jpg",
         subjects: [{ name: "Tamil", score: "87/100" },
           { name: "English", score: "88/100" },
           { name: "Economics", score: "100/100" },
@@ -237,7 +236,7 @@ export default function Results() {
         grade: "XI SCI",
         marks: "493/600",
         percentage: "82.1%",
-        image: placeholderImg,
+        image: "/assets/mustafa.jpg",
         subjects: [{ name: "Tamil", score: "85/100" },
           { name: "English", score: "70/100" },
           { name: "Mathematics", score: "73/100" },
@@ -250,7 +249,7 @@ export default function Results() {
         grade: "XII (COM)",
         marks: "560/600",
         percentage: "93.3%",
-        image: placeholderImg,
+        image: "/assets/vishali.jpg",
         subjects: [{ name: "Tamil", score: "85/100" },
           { name: "English", score: "83/100" },
           { name: "Economics", score: "99/100" },
@@ -279,7 +278,7 @@ export default function Results() {
         grade: "X",
         marks: "450/500",
         percentage: "90%",
-        image: placeholderImg,
+        image: "/assets/joshuaj.jpg",
         subjects: [{ name: "Tamil", score: "86/100" },
           { name: "English", score: "86/100" },
           { name: "Mathematics", score: "98/100" },
@@ -330,7 +329,7 @@ export default function Results() {
         grade: "XII SCI",
         marks: "509/600",
         percentage: "84.8%",
-        image: placeholderImg,
+        image: "/assets/mustafa.jpg",
         subjects: [{ name: "Tamil", score: "90/100" },
           { name: "English", score: "84/100" },
           { name: "Mathematics", score: "83/100" },
@@ -357,7 +356,7 @@ export default function Results() {
         grade: "XI SCI",
         marks: "510/600",
         percentage: "85%",
-        image: placeholderImg,
+        image: "/assets/joshuaj.jpg",
         subjects: [{ name: "Mathematics", score: "96/100" },
           { name: "Science", score: "97/100" },
           { name: "Social Science", score: "95/100" },
@@ -369,7 +368,7 @@ export default function Results() {
         grade: "XI COM",
         marks: "491/600",
         percentage: "81.81%",
-        image: ebinesarImg,
+        image: "/assets/ebinesar.jpg",
         subjects: [{ name: "Mathematics", score: "96/100" },
           { name: "Science", score: "97/100" },
           { name: "Social Science", score: "95/100" },
