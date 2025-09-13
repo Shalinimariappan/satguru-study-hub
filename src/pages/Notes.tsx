@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { auth } from "./firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { FaLock } from "react-icons/fa";
 
 const notesData = [
   { subject: "6th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
@@ -12,62 +13,102 @@ const notesData = [
   { subject: "11th-Std-Science-Question-Papers", resources: 50, type: "QuestionPaper" },
   { subject: "11th-Std-Commerce-Question-Papers", resources: 50, type: "QuestionPaper" },
   { subject: "12th-Std-Commerce-Question-Papers", resources: 50, type: "QuestionPaper" },
-  { subject: "12th-Std-Science-Question-Papers", resources: 50, type: "QuestionPaper" },
+  { subject: "12th-Std-Science-Question-Papers", resources: 50, type: "QuestionPaper" },
 ];
 
 export default function Notes() {
-  const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
+  const [filter, setFilter] = useState("All");
+  const [userVerified, setUserVerified] = useState(false);
 
-  // ✅ Track user login status only
+  // ✅ Track if user is logged in + verified
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser?.emailVerified) {
-        setUser(currentUser);
-      } else {
-        setUser(null);
-      }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUserVerified(!!(user && user.emailVerified));
     });
     return unsubscribe;
   }, []);
 
-  const handleLogout = async () => {
-    await signOut(auth);
-    navigate("/signin");
-  };
-
-  // ✅ When user clicks card
-  const handleCardClick = (subject: string) => {
-    if (user) {
-      navigate(`/notes/${subject}`); // go to resources
+  const handleClick = (subject) => {
+    if (userVerified) {
+      navigate(`/notes/${subject}`); // ✅ logged in → go to resources
     } else {
-      navigate("/signin"); // ask them to login/signup
+      navigate("/signin"); // ❌ not logged in → go to SignIn
     }
   };
 
+  const filteredData =
+    filter === "All"
+      ? notesData
+      : notesData.filter((note) => note.type === filter);
+
+  const getHeadingText = () => {
+    if (filter === "Notes") return "Notes";
+    if (filter === "QuestionPaper") return "Government Question Paper";
+    return "Government Question Paper and Notes";
+  };
+
   return (
-    <div className="p-8">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Notes</h1>
-        {user && (
-          <button onClick={handleLogout} className="text-sm text-red-500">
-            Logout
-          </button>
-        )}
+    <div>
+      {/* ✅ Banner Section */}
+      <div className="relative py-16">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-40"
+          style={{ backgroundImage: "url('/assets/banner.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }} />
+        <div className="relative container mx-auto px-4 text-center text-white">
+          <h1 className="text-4xl font-bold mb-4">Notes</h1>
+          <p className="text-xl max-w-2xl mx-auto">
+            Learn more about Satguru Study Centre and our commitment to
+            educational excellence
+          </p>
+        </div>
       </div>
 
-      {/* ✅ Cards visible to everyone */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {notesData.map((note, idx) => (
-          <div
-            key={idx}
-            onClick={() => handleCardClick(note.subject)}
-            className="border p-4 rounded shadow hover:shadow-lg cursor-pointer"
+      {/* ✅ Content Section */}
+      <div className="p-8 sm:p-16">
+        <div className="flex items-center mb-4 space-x-2">
+          <label className="font-medium text-[#0B2C4D]">Select Notes:</label>
+          <select
+            className="border px-3 py-1 rounded"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
           >
-            <h2 className="font-semibold">{note.subject}</h2>
-            <p className="text-sm">{note.resources} Resources</p>
-          </div>
-        ))}
+            <option value="All">All</option>
+            <option value="Notes">Notes Only</option>
+            <option value="QuestionPaper">Question Papers</option>
+          </select>
+        </div>
+
+        <h2 className="text-xl font-semibold mb-6 flex items-center space-x-2 text-[#0B2C4D]">
+          <span>🎓</span>
+          <span>{getHeadingText()}</span>
+        </h2>
+
+        {/* ✅ Notes Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {filteredData.map((note, idx) => (
+            <div
+              key={idx}
+              className="relative flex justify-between items-center border border-gray-100 shadow-md rounded-lg p-4 hover:shadow-lg transition cursor-pointer"
+              onClick={() => handleClick(note.subject)}
+            >
+              <div>
+                <div className="flex items-center space-x-2 text-[#0B2C4D] font-semibold text-md">
+                  <span>📘</span>
+                  <span>{note.subject}</span>
+                </div>
+                <p className="text-sm text-gray-500">{note.resources} Resources</p>
+              </div>
+
+              {/* 🔒 Show lock if not signed in */}
+              {!userVerified && (
+                <FaLock className="text-gray-500 absolute top-3 right-3" />
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
