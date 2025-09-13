@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -16,10 +16,24 @@ import Notes from "./pages/Notes";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import NoteResources from "./pages/NoteResources";
-import { AuthProvider } from "./AuthContext";
-import WhatsAppButton from "./pages/WhatsAppButton"; // ✅ Import added
+import { AuthProvider, useAuth } from "./AuthContext";
+import WhatsAppButton from "./pages/WhatsAppButton";
+
+// 🔑 Auth Pages
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 
 const queryClient = new QueryClient();
+
+// 🔒 Protected Route
+function PrivateRoute({ children }) {
+  const { user, loading } = useAuth();
+
+  if (loading) return <p>Loading...</p>;
+  if (!user) return <Navigate to="/signin" />;
+
+  return children;
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -39,6 +53,7 @@ const App = () => (
           <div className="relative z-10">
             <BrowserRouter>
               <Routes>
+                {/* Public Routes */}
                 <Route element={<Layout />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
@@ -48,14 +63,36 @@ const App = () => (
                   <Route path="/results" element={<Results />} />
                   <Route path="/events" element={<Events />} />
                   <Route path="/courses" element={<Courses />} />
-                  <Route path="/notes" element={<Notes />} />
-                  <Route path="/notes/:subject" element={<NoteResources />} />
                   <Route path="/contact" element={<Contact />} />
                 </Route>
+
+                {/* 🔑 Auth Routes */}
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/signin" element={<SignIn />} />
+
+                {/* 🔒 Protected Routes */}
+                <Route
+                  path="/notes"
+                  element={
+                    <PrivateRoute>
+                      <Notes />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/notes/:subject"
+                  element={
+                    <PrivateRoute>
+                      <NoteResources />
+                    </PrivateRoute>
+                  }
+                />
+
+                {/* 404 */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
-            <WhatsAppButton /> {/* ✅ WhatsApp icon added */}
+            <WhatsAppButton />
           </div>
         </div>
       </AuthProvider>

@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Rajesh Kumar",
+    name: "Elumalai",
     role: "Parent of Class XII Student",
     quote: "The dedication of teachers at Satguru Study Centre is truly commendable. They not only focus on academics but also nurture the overall development of students. My son showed remarkable progress, improving his academic performance by 50%, thanks to their expert guidance and constant support.",
     video: "https://www.youtube.com/embed/HhwNYTJ0mtE"

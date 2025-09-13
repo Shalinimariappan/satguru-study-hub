@@ -182,7 +182,7 @@ export default function Results() {
       },
       {
         name: "V. Vishal",
-        grade: "XI (COM)",
+        grade: "XI COM",
         marks: "560/600",
         percentage: "93.3%",
         image: "/assets/vishali.jpg",
@@ -246,7 +246,7 @@ export default function Results() {
       },
       {
         name: "V. Vishal",
-        grade: "XII (COM)",
+        grade: "XII COM",
         marks: "560/600",
         percentage: "93.3%",
         image: "/assets/vishali.jpg",

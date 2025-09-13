@@ -1,4 +1,3 @@
-
 import { BookOpen, School, Brain, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -10,17 +9,26 @@ interface CourseCardProps {
 }
 
 const CourseCard = ({ icon, title, description, levels }: CourseCardProps) => (
-  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-    <div className="bg-satguru/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 
+                  hover:bg-satguru hover:text-white 
+                  hover:shadow-xl transition-all duration-300 group">
+    <div className="bg-satguru/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4 
+                    group-hover:bg-white/20">
       {icon}
     </div>
-    <h3 className="text-xl font-semibold mb-2">{title}</h3>
-    <p className="text-gray-600 mb-4">{description}</p>
+    <h3 className="text-xl font-semibold mb-2 group-hover:text-white">{title}</h3>
+    <p className="text-gray-600 mb-4 group-hover:text-gray-200">{description}</p>
     <div className="mb-4">
-      <h4 className="text-sm font-semibold text-gray-500 mb-2">Available for:</h4>
+      <h4 className="text-sm font-semibold text-gray-500 mb-2 group-hover:text-gray-200">
+        Available for:
+      </h4>
       <div className="flex flex-wrap gap-2">
         {levels.map((level, index) => (
-          <span key={index} className="bg-gray-100 text-gray-700 px-2 py-1 text-xs rounded-full">
+          <span
+            key={index}
+            className="bg-gray-100 text-gray-700 px-2 py-1 text-xs rounded-full 
+                       group-hover:bg-white/20 group-hover:text-white"
+          >
             {level}
           </span>
         ))}
@@ -32,29 +40,33 @@ const CourseCard = ({ icon, title, description, levels }: CourseCardProps) => (
 export default function CoursesSection() {
   const courses = [
     {
-      icon: <BookOpen className="h-6 w-6 text-satguru" />,
+      icon: <BookOpen className="h-6 w-6 text-satguru group-hover:text-white" />,
       title: "Language Studies",
-      description: "English, Hindi, Tamil and more language courses to build strong communication skills.",
-      levels: ["LKG", "UKG", "I-V", "VI-VIII", "IX-X", "XI-XII"]
+      description:
+        "English, Hindi, Tamil and more language courses to build strong communication skills.",
+      levels: ["LKG", "UKG", "I-V", "VI-VIII", "IX-X", "XI-XII"],
     },
     {
-      icon: <Calculator className="h-6 w-6 text-satguru" />,
+      icon: <Calculator className="h-6 w-6 text-satguru group-hover:text-white" />,
       title: "Mathematics",
-      description: "Build a strong foundation in mathematics with our structured curriculum.",
-      levels: ["I-V", "VI-VIII", "IX-X", "XI-XII"]
+      description:
+        "Build a strong foundation in mathematics with our structured curriculum.",
+      levels: ["I-V", "VI-VIII", "IX-X", "XI-XII"],
     },
     {
-      icon: <Brain className="h-6 w-6 text-satguru" />,
+      icon: <Brain className="h-6 w-6 text-satguru group-hover:text-white" />,
       title: "Science",
-      description: "Physics, Chemistry, Biology and Environmental Science for all grades.",
-      levels: ["VI-VIII", "IX-X", "XI-XII"]
+      description:
+        "Physics, Chemistry, Biology and Environmental Science for all grades.",
+      levels: ["VI-VIII", "IX-X", "XI-XII"],
     },
     {
-      icon: <School className="h-6 w-6 text-satguru" />,
+      icon: <School className="h-6 w-6 text-satguru group-hover:text-white" />,
       title: "Social Studies",
-      description: "History, Geography, Civics and Economics for comprehensive learning.",
-      levels: ["VI-VIII", "IX-X", "XI-XII"]
-    }
+      description:
+        "History, Geography, Civics and Economics for comprehensive learning.",
+      levels: ["VI-VIII", "IX-X", "XI-XII"],
+    },
   ];
 
   return (
@@ -68,13 +80,13 @@ export default function CoursesSection() {
             Choose from a variety of courses designed to help students excel academically.
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {courses.map((course, index) => (
             <CourseCard key={index} {...course} />
           ))}
         </div>
-        
+
         <div className="text-center">
           <Button asChild className="bg-satguru hover:bg-satguru-light">
             <a href="/courses">View All Courses</a>
