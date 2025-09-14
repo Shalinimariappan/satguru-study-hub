@@ -13,6 +13,8 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState(""); // ✅ feedback message
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
@@ -32,12 +34,16 @@ export default function SignUp() {
         createdAt: new Date().toISOString(),
       });
 
-      alert(
-        "Signup successful! Please verify your email (Check Spam). After verification, sign in again!"
+      setIsError(false);
+      setMessage(
+        "✅ Signup successful! Please verify your email (Check Spam). Redirecting..."
       );
-      navigate("/signin");
+
+      // ⏳ Redirect after 2 seconds
+      setTimeout(() => navigate("/signin"), 2000);
     } catch (error) {
-      alert(error.message);
+      setIsError(true);
+      setMessage("❌ " + error.message);
     }
   };
 
@@ -81,7 +87,10 @@ export default function SignUp() {
           </button>
         </div>
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+        >
           Sign Up
         </button>
         <button
@@ -92,6 +101,17 @@ export default function SignUp() {
           Already have an account? Sign In
         </button>
       </form>
+
+      {/* ✅ Feedback message */}
+      {message && (
+        <p
+          className={`mt-4 text-center text-sm ${
+            isError ? "text-red-600" : "text-green-600"
+          }`}
+        >
+          {message}
+        </p>
+      )}
     </div>
   );
 }
