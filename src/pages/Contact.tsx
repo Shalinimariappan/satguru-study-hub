@@ -1,153 +1,127 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { motion } from "framer-motion";
 
 export default function Contact() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // 🔹 Replace with your deployed Web App URL
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbyuPVlp6vVTvv1GbMz0a5KXX9lkbrCQWIRaGMrnPza0kkcXSJ3OySNOV0djZMjvnfuKAQ/exec";
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+    setStatus("");
 
     try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbxarFfKr-U2Z1q_N9ECKfS0JbSaWrHIuSuKWgNTth4P5Guhx4RCGKcdL2i0kOPhVkHblQ/exec",
-        {
-          method: "POST",
-          body: new URLSearchParams(formData as any), // ✅ Converts form fields
-        }
-      );
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-      setFormSubmitted(true);
-      form.reset();
+      const result = await response.json();
+      if (result.result === "success") {
+        setStatus("✅ Message sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setStatus("❌ Failed to send message. Try again.");
+      }
     } catch (error) {
-      alert("❌ Failed to send message. Try again!");
+      console.error(error);
+      setStatus("⚠️ Error submitting form.");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
-    <div>
-      {/* Header */}
-      <div className="relative py-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{
-            backgroundImage: "url('/assets/banner.jpg')",
-          }}
-        ></div>
-        <div
-          className="absolute inset-0 bg-satguru"
-          style={{ opacity: 0.65 }}
-        ></div>
-        <div className="relative container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Learn more about Satguru Study Centre and our commitment to
-            educational excellence
-          </p>
-        </div>
-      </div>
+    <div className="p-6 flex justify-center">
+      <Card className="w-full max-w-lg shadow-xl rounded-2xl">
+        <CardContent>
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col space-y-4"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="border p-2 rounded-xl"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="border p-2 rounded-xl"
+              required
+            />
+            <input
+              type="text"
+              name="phone"
+              placeholder="Your Phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="border p-2 rounded-xl"
+            />
+            <input
+              type="text"
+              name="subject"
+              placeholder="Subject"
+              value={formData.subject}
+              onChange={handleChange}
+              className="border p-2 rounded-xl"
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              className="border p-2 rounded-xl"
+              required
+            />
+            <Button type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Send Message"}
+            </Button>
+          </motion.form>
 
-      {/* Contact Info & Form */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-            {/* Left - Info */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6">
-                Have a doubt? Let’s clear it together.
-              </h2>
-              <p className="text-gray-600 mb-8">
-                Have questions about our tuition programs? Want to enroll your
-                child? Fill out the form or contact us directly through the
-                information provided.
-              </p>
-
-              <div className="space-y-6 mb-8">
-                <div className="flex items-start">
-                  <div className="bg-satguru/10 p-3 rounded-full text-satguru mr-4">
-                    <MapPin className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Our Location</h3>
-                    <p className="text-gray-600">
-                      📍 Satguru Study Centre New Washermenpet, Chennai – 600
-                      081. Tamil Nadu, India
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-satguru/10 p-3 rounded-full text-satguru mr-4">
-                    <Mail className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Email Us</h3>
-                    <a
-                      href="mailto:satguru162019@gmail.com"
-                      className="text-gray-600 hover:text-satguru"
-                    >
-                      satguru162019@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-satguru/10 p-3 rounded-full text-satguru mr-4">
-                    <Phone className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Call Us</h3>
-                    <p className="text-gray-600">+91 72000 15773</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-satguru/10 p-3 rounded-full text-satguru mr-4">
-                    <Clock className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Opening Hours</h3>
-                    <p className="text-gray-600">5.30 p.m. to 9.30 p.m.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right - Form */}
-            <div>
-              {formSubmitted ? (
-                <div className="p-6 border border-green-200 bg-green-50 rounded-md text-green-800">
-                  ✅ Thank you! Your message has been sent.
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <Input required type="text" name="name" placeholder="Your Name" />
-                  <Input required type="email" name="email" placeholder="Your Email" />
-                  <Input required type="tel" name="phone" placeholder="Your Phone Number" />
-                  <Input required type="text" name="subject" placeholder="Subject" />
-                  <Textarea required name="message" placeholder="Your Message" rows={5} />
-                  <Button
-                    type="submit"
-                    disabled={loading}
-                    className="bg-satguru text-white hover:bg-satguru-dark"
-                  >
-                    {loading ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+          {status && (
+            <p className="text-center mt-4 text-sm font-medium">{status}</p>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }
