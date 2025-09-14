@@ -17,10 +17,10 @@ export default function Contact() {
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbyGWJffl85rxS2Ez30oxAgJzqMLRwgAaoKfzTnJ4CnlPBszvc5dxGc4oZpC_DwkuYar3g/exec",
+        "https://script.google.com/macros/s/AKfycbxarFfKr-U2Z1q_N9ECKfS0JbSaWrHIuSuKWgNTth4P5Guhx4RCGKcdL2i0kOPhVkHblQ/exec",
         {
           method: "POST",
-          body: formData, // ✅ send formData directly
+          body: new URLSearchParams(formData as any), // ✅ Converts form fields
         }
       );
 
@@ -130,36 +130,11 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <Input
-                    required
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                  />
-                  <Input
-                    required
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                  />
-                  <Input
-                    required
-                    type="tel"
-                    name="phone"
-                    placeholder="Your Phone Number"
-                  />
-                  <Input
-                    required
-                    type="text"
-                    name="subject"
-                    placeholder="Subject"
-                  />
-                  <Textarea
-                    required
-                    name="message"
-                    placeholder="Your Message"
-                    rows={5}
-                  />
+                  <Input required type="text" name="name" placeholder="Your Name" />
+                  <Input required type="email" name="email" placeholder="Your Email" />
+                  <Input required type="tel" name="phone" placeholder="Your Phone Number" />
+                  <Input required type="text" name="subject" placeholder="Subject" />
+                  <Textarea required name="message" placeholder="Your Message" rows={5} />
                   <Button
                     type="submit"
                     disabled={loading}
