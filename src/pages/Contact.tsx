@@ -14,8 +14,7 @@ export default function Contact() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
-            backgroundImage:
-              "url('/assets/banner.jpg')",
+            backgroundImage: "url('/assets/banner.jpg')",
           }}
         ></div>
         <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }}></div>
@@ -46,10 +45,13 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Our Location</h3>
-                    <p className="text-gray-600">📍 Satguru Study Centre
-New Washermenpet, Chennai – 600 081.
-Tamil Nadu, India 
-</p>
+                    <p className="text-gray-600">
+                      📍 Satguru Study Centre
+                      <br />
+                      New Washermenpet, Chennai – 600 081.
+                      <br />
+                      Tamil Nadu, India
+                    </p>
                   </div>
                 </div>
 
@@ -59,7 +61,10 @@ Tamil Nadu, India
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email Us</h3>
-                    <a href="mailto:satguru162019@gmail.com" className="text-gray-600 hover:text-satguru">
+                    <a
+                      href="mailto:satguru162019@gmail.com"
+                      className="text-gray-600 hover:text-satguru"
+                    >
                       satguru162019@gmail.com
                     </a>
                   </div>
@@ -91,53 +96,30 @@ Tamil Nadu, India
             <div>
               {formSubmitted ? (
                 <div className="p-6 border border-green-200 bg-green-50 rounded-md text-green-800">
-                  Thank you! Your message has been sent.
+                  ✅ Thank you! Your message has been sent.
                 </div>
               ) : (
                 <form
-                  action="https://getform.io/f/bwnqlrja" // Replace {your_form_id} with your actual form ID from Getform.io
+                  action="https://getform.io/f/bwnqlrja"
                   method="POST"
                   className="space-y-6"
                   onSubmit={() => setFormSubmitted(true)}
                 >
                   {/* Hidden Config */}
                   <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_next" value={typeof window !== "undefined" ? window.location.href : ""} />
+                  <input
+                    type="hidden"
+                    name="_next"
+                    value={typeof window !== "undefined" ? window.location.href : ""}
+                  />
 
-                  <Input
-                    required
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                  />
-                  <Input
-                    required
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                  />
-                  <Input
-                    required
-                    type="tel"
-                    name="phone"
-                    placeholder="Your Phone Number"
-                  />
-                  <Input
-                    required
-                    type="text"
-                    name="subject"
-                    placeholder="Subject"
-                  />
-                  <Textarea
-                    required
-                    name="message"
-                    placeholder="Your Message"
-                    rows={5}
-                  />
-                  <Button
-                    type="submit"
-                    className="bg-satguru text-white hover:bg-satguru-dark"
-                  >
+                  <Input required type="text" name="name" placeholder="Your Name" />
+                  <Input required type="email" name="email" placeholder="Your Email" />
+                  <Input required type="tel" name="phone" placeholder="Your Phone Number" />
+                  <Input required type="text" name="subject" placeholder="Subject" />
+                  <Textarea required name="message" placeholder="Your Message" rows={5} />
+
+                  <Button type="submit" className="bg-satguru text-white hover:bg-satguru-dark">
                     Send Message
                   </Button>
                 </form>
