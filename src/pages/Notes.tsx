@@ -44,8 +44,8 @@ export default function Notes() {
 
   const getHeadingText = () => {
     if (filter === "Notes") return "Notes";
-    if (filter === "QuestionPaper") return "Government Question Paper";
-    return "Government Question Paper and Notes";
+    if (filter === "QuestionPaper") return "Government Question Paper 2024-2025";
+    return "Government Question Paper 2024-2025 and Notes";
   };
 
   return (
