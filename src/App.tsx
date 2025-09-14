@@ -18,7 +18,6 @@ import NotFound from "./pages/NotFound";
 import NoteResources from "./pages/NoteResources";
 import { AuthProvider, useAuth } from "./AuthContext";
 import WhatsAppButton from "./pages/WhatsAppButton";
-import ExportUsers from "./pages/ExportUsers";
 
 // 🔑 Auth Pages
 import SignUp from "./pages/SignUp";
@@ -66,7 +65,6 @@ const App = () => (
                   <Route path="/events" element={<Events />} />
                   <Route path="/courses" element={<Courses />} />
                   <Route path="/contact" element={<Contact />} />
-                  <Route path="/admin/export"element={<PrivateRoute><ExportUsers /></PrivateRoute>}/>
                 </Route>
 
                 {/* 🔑 Auth Routes */}
