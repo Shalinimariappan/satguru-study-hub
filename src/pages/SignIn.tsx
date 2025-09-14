@@ -16,7 +16,7 @@ export default function SignIn() {
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
       if (!userCred.user.emailVerified) {
-        alert("Please verify your email before signing in.");
+        alert("Please verify your email(Check Spam Folder) before signing in.");
         await signOut(auth);
         return;
       }
