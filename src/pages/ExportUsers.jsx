@@ -20,7 +20,15 @@ export default function ExportUsers() {
   }, []);
 
   const handleExport = () => {
-    const worksheet = XLSX.utils.json_to_sheet(users);
+    if (users.length === 0) return;
+
+    // Only include Email and Phone
+    const dataToExport = users.map(({ email, phone }) => ({
+      Email: email,
+      "Phone Number": phone,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(dataToExport);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
     XLSX.writeFile(workbook, "users.xlsx");
@@ -36,7 +44,10 @@ export default function ExportUsers() {
       <h1 className="text-2xl font-bold mb-4">Admin Export Panel</h1>
       <button
         onClick={handleExport}
-        className="bg-blue-600 text-white px-4 py-2 rounded shadow"
+        disabled={users.length === 0}
+        className={`bg-blue-600 text-white px-4 py-2 rounded shadow ${
+          users.length === 0 ? "opacity-50 cursor-not-allowed" : ""
+        }`}
       >
         Export Users to Excel
       </button>
