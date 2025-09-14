@@ -2,10 +2,12 @@ import { useState } from "react";
 import { auth } from "./firebase";
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // icon import
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // password toggle
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
@@ -13,7 +15,7 @@ export default function SignUp() {
     try {
       const userCred = await createUserWithEmailAndPassword(auth, email, password);
       await sendEmailVerification(userCred.user);
-      alert("Signup successful! Please verify your email(Check Spam Folder).After verified your email, Signin Again!");
+      alert("Signup successful! Please verify your email (Check Spam Folder). After verified your email, Sign in again!");
       navigate("/signin");
     } catch (error) {
       alert(error.message);
@@ -32,14 +34,22 @@ export default function SignUp() {
           required
           className="border p-2 rounded"
         />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="border p-2 rounded"
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="border p-2 rounded w-full"
+          />
+          <span
+            className="absolute right-2 top-2 cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+          </span>
+        </div>
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">
           Sign Up
         </button>
