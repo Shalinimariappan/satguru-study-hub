@@ -15,25 +15,15 @@ export default function Contact() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
-
     try {
       await fetch(
         "https://script.google.com/macros/s/AKfycbyGWJffl85rxS2Ez30oxAgJzqMLRwgAaoKfzTnJ4CnlPBszvc5dxGc4oZpC_DwkuYar3g/exec",
         {
           method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          body: formData, // ✅ send formData directly
         }
       );
+
       setFormSubmitted(true);
       form.reset();
     } catch (error) {
