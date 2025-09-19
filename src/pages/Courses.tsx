@@ -20,6 +20,7 @@ interface CourseProps {
   description: string;
   type: string;
   fees: string;
+  admission?: string;
   duration: string;
   subjects: string[];
 }
@@ -30,6 +31,7 @@ const CourseCard = ({
   description, 
   type, 
   fees, 
+  admission, 
   duration, 
   subjects 
 }: CourseProps) => (
@@ -73,6 +75,7 @@ const CourseCard = ({
         <div>
           <span className="text-sm text-gray-500">Monthly Fee</span>
           <p className="text-xl font-bold text-satguru">{fees}</p>
+          {admission && <p className="text-sm text-gray-500">Admission: {admission}</p>}
         </div>
         <a 
           href="/contact" 
@@ -92,7 +95,7 @@ export default function Courses() {
     audio.play();
   };
 
-  // 📚 Your courses data
+  // 📚 Updated courses data
   const lowerCourses = [
     {
       icon: <Globe className="h-6 w-6" />,
@@ -100,7 +103,8 @@ export default function Courses() {
       description: "Specialized program for early learners.",
       type: "StateBoard(TNSB)",
       fees: "₹450/month",
-      duration: "5:15PM - 7:30PM",
+      admission: "₹90",
+      duration: "5:30PM - 8:30PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
     },
     {
@@ -109,7 +113,8 @@ export default function Courses() {
       description: "Focused program for growing kids.",
       type: "StateBoard(TNSB)",
       fees: "₹500/month",
-      duration: "5:15PM - 7:30PM",
+      admission: "₹100",
+      duration: "5:30PM - 8:30PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
     },
     {
@@ -118,7 +123,48 @@ export default function Courses() {
       description: "Rigorous program for foundation building.",
       type: "StateBoard(TNSB)",
       fees: "₹550/month",
-      duration: "5:15PM - 7:30PM",
+      admission: "₹110",
+      duration: "5:30PM - 8:30PM",
+      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
+    },
+    {
+      icon: <BookOpen className="h-6 w-6" />,
+      title: "Class II",
+      description: "Strong foundation program.",
+      type: "StateBoard(TNSB)",
+      fees: "₹600/month",
+      admission: "₹120",
+      duration: "5:30PM - 8:30PM",
+      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
+    },
+    {
+      icon: <Globe className="h-6 w-6" />,
+      title: "Class III",
+      description: "Transition learning stage.",
+      type: "StateBoard(TNSB)",
+      fees: "₹650/month",
+      admission: "₹130",
+      duration: "5:30PM - 8:30PM",
+      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
+    },
+    {
+      icon: <Calculator className="h-6 w-6" />,
+      title: "Class IV",
+      description: "Specialized program for transition years.",
+      type: "StateBoard(TNSB)",
+      fees: "₹700/month",
+      admission: "₹140",
+      duration: "5:30PM - 8:30PM",
+      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
+    },
+    {
+      icon: <Atom className="h-6 w-6" />,
+      title: "Class V",
+      description: "Focused program for deeper learning.",
+      type: "StateBoard(TNSB)",
+      fees: "₹750/month",
+      admission: "₹150",
+      duration: "5:30PM - 8:30PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
     }
   ];
@@ -126,54 +172,99 @@ export default function Courses() {
   const PreparatorCourses = [
     {
       icon: <Globe className="h-6 w-6" />,
-      title: "Class IV",
-      description: "Specialized program for transition years.",
-      type: "StateBoard(TNSB)",
-      fees: "₹700/month",
-      duration: "5:15PM - 7:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-    {
-      icon: <Calculator className="h-6 w-6" />,
-      title: "Class V",
-      description: "Focused program for deeper learning.",
-      type: "StateBoard(TNSB)",
-      fees: "₹750/month",
-      duration: "5:15PM - 7:30PM",
-      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
-    },
-  ];
-
-  const MiddleCourses = [
-    {
-      icon: <Atom className="h-6 w-6" />,
       title: "Class VI",
       description: "Rigorous program preparing for middle school.",
       type: "StateBoard(TNSB)",
       fees: "₹900/month",
-      duration: "5:30PM - 8:00PM",
+      admission: "₹180",
+      duration: "5:30PM - 9:00PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
     },
     {
-      icon: <Globe className="h-6 w-6" />,
+      icon: <Calculator className="h-6 w-6" />,
       title: "Class VII",
       description: "Strong program to prepare for higher levels.",
       type: "StateBoard(TNSB)",
       fees: "₹1000/month",
-      duration: "5:30PM - 8:00PM",
+      admission: "₹200",
+      duration: "5:30PM - 9:00PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
     },
+    {
+      icon: <Atom className="h-6 w-6" />,
+      title: "Class VIII",
+      description: "Intensive program for board prep foundation.",
+      type: "StateBoard(TNSB)",
+      fees: "₹1100/month",
+      admission: "₹220",
+      duration: "5:30PM - 9:00PM",
+      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
+    },
+    {
+      icon: <BookOpen className="h-6 w-6" />,
+      title: "Class IX",
+      description: "Advanced learning program before SSC.",
+      type: "StateBoard(TNSB)",
+      fees: "₹1200/month",
+      admission: "₹240",
+      duration: "5:30PM - 9:00PM",
+      subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
+    }
   ];
 
-  const specialCourses = [
+  const SSC = [
     {
       icon: <Languages className="h-6 w-6" />,
-      title: "Class X",
+      title: "Class X (SSC)",
       description: "Special program focused on board preparation.",
       type: "StateBoard(TNSB)",
       fees: "₹1300/month",
-      duration: "6:00PM - 9:00PM",
+      admission: "₹260",
+      duration: "6:00PM - 9:30PM",
       subjects: ["Tamil","English", "Mathematics", "Science", "Social Science"]
+    }
+  ];
+
+  const HSC = [
+    {
+      icon: <Globe className="h-6 w-6" />,
+      title: "Class XI (Commerce)",
+      description: "Higher Secondary Commerce program.",
+      type: "StateBoard(TNSB)",
+      fees: "₹1400/month",
+      admission: "₹280",
+      duration: "6:00PM - 9:30PM",
+      subjects: ["Accountancy", "Commerce", "Economics", "English", "Business Maths", "Tamil", "Computer Application"]
+    },
+    {
+      icon: <Atom className="h-6 w-6" />,
+      title: "Class XI (Science)",
+      description: "Higher Secondary Science program.",
+      type: "StateBoard(TNSB)",
+      fees: "₹1500/month",
+      admission: "₹300",
+      duration: "6:00PM - 9:30PM",
+      subjects: ["Physics", "Chemistry", "Biology","Maths", "English", "Tamil","Computer Science"]
+    },
+    {
+      icon: <Globe className="h-6 w-6" />,
+      title: "Class XII (Commerce)",
+      description: "Final year Commerce program.",
+      type: "StateBoard(TNSB)",
+      fees: "₹1600/month",
+      admission: "₹320",
+      duration: "6:00PM - 9:30PM",
+      subjects: ["Accountancy", "Commerce", "Economics", "English", "Business Maths", "Tamil", "Computer Application"]
+    },
+    {
+      icon: <Atom className="h-6 w-6" />,
+      title: "Class XII (Science)",
+      description: "Final year Science program.",
+      type: "StateBoard(TNSB)",
+      fees: "₹1700/month",
+      admission: "₹340",
+      duration: "6:00PM - 9:30PM",
+      subjects: ["Physics", "Chemistry", "Biology","Maths", "English", "Tamil","Computer Science"]
     }
   ];
 
@@ -216,10 +307,20 @@ export default function Courses() {
         </div>
       </div>
 
+    {/* Special Note */}
+<div className="container mx-auto px-4 mt-8 flex items-center">
+  <div className="bg-blue-100 border border-blue-300 rounded-md px-3 py-2 text-left shadow-sm">
+    <p className="text-sm font-medium text-blue-800">
+      💡Note: Single parent fees charge will be 70% (Save 30%)
+    </p>
+  </div>
+</div>
+
+
       {/* Foundational */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Foundational Level (LKG to II)</h2>
+          <h2 className="text-2xl font-bold mb-8">Foundational Level (LKG to V)</h2>
           <Carousel courses={lowerCourses} />
         </div>
       </section>
@@ -227,24 +328,24 @@ export default function Courses() {
       {/* Preparator */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Preparator Level (IV to VI)</h2>
+          <h2 className="text-2xl font-bold mb-8">Preparator Level (VI to IX)</h2>
           <Carousel courses={PreparatorCourses} />
         </div>
       </section>
 
-      {/* Middle */}
+      {/* SSC */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Middle School Stage (VII to IX)</h2>
-          <Carousel courses={MiddleCourses} />
+          <h2 className="text-2xl font-bold mb-8">Secondary School (SSC - Class X)</h2>
+          <Carousel courses={SSC} />
         </div>
       </section>
 
-      {/* Special */}
+      {/* HSC */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">High School Stage (X)</h2>
-          <Carousel courses={specialCourses} />
+          <h2 className="text-2xl font-bold mb-8">Higher Secondary (HSC - XI & XII)</h2>
+          <Carousel courses={HSC} />
         </div>
       </section>
 
