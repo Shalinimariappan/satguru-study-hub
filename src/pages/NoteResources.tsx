@@ -519,32 +519,33 @@ export default function NoteResources() {
         <p>No resources available for this subject.</p>
       ) : (
         <ul className="space-y-4">
-          {resources.map((res, idx) => (
-            <li
-              key={idx}
-              className="border rounded-lg p-4 shadow-sm flex justify-between items-center"
-            >
-              <span className="text-[#0B2C4D] font-medium">{res.title}</span>
-              <div className="space-x-2">
-                {/* View Button */}
-<button
-  onClick={() => window.open(res.url, "_blank", "noopener,noreferrer")}
-  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
->
-  View
-</button>
+  {resources.map((res, idx) => (
+    <li
+      key={idx}
+      className="border rounded-lg p-4 shadow-sm flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3"
+    >
+      {/* Title */}
+      <span className="text-[#0B2C4D] font-medium">{res.title}</span>
 
-{/* Download Button */}
-<a href={res.url} download>
-  <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
-    Download
-  </button>
-</a>
+      {/* Buttons */}
+      <div className="flex flex-wrap gap-2">
+        <button
+          onClick={() => window.open(res.url, "_blank", "noopener,noreferrer")}
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition w-full sm:w-auto"
+        >
+          View
+        </button>
 
-              </div>
-            </li>
-          ))}
-        </ul>
+        <a href={res.url} download className="w-full sm:w-auto">
+          <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition w-full sm:w-auto">
+            Download
+          </button>
+        </a>
+      </div>
+    </li>
+  ))}
+</ul>
+
       )}
     </div>
   );
