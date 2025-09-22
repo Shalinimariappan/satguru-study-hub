@@ -109,9 +109,9 @@ export default function Events() {
 
         {/* Content */}
         <div className="relative container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">Events</h1>
+          <h1 className="text-4xl font-bold mb-4">Our Events</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Learn more about Satguru Study Centre and our commitment to educational excellence
+            Celebrating learning, achievements, and the journey of our students at Satguru Study Centre
           </p>
         </div>
       </div>

@@ -98,7 +98,7 @@ const StudentResultCard = ({
 };
 
 export default function Results() {
-  const [activeYear, setActiveYear] = useState("2023-2024");
+  const [activeYear, setActiveYear] = useState("2024-2025");
 
   const placeholderImg = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png";
 
@@ -412,7 +412,8 @@ export default function Results() {
         <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }} />
         <div className="relative container mx-auto px-4 text-center text-white">
           <h1 className="text-4xl font-bold mb-4">Our Results</h1>
-          <p className="text-xl max-w-2xl mx-auto">Learn more about Satguru Study Centre and our commitment to educational excellence</p>
+          <p className="text-xl max-w-2xl mx-auto"> At Satguru Study Centre, we are proud of our students’ outstanding
+          performances. Here are some of our achievers from recent years.</p>
         </div>
       </div>
 

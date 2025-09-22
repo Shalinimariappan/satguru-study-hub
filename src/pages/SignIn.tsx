@@ -3,7 +3,6 @@ import { auth } from "./firebase";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import contact from "./Contact";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -28,7 +27,15 @@ export default function SignIn() {
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md relative">
+        {/* Close Button */}
+        <button
+          onClick={() => navigate("/notes")}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl font-bold"
+        >
+          ×
+        </button>
+
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
 
         <form onSubmit={handleSignIn} className="flex flex-col gap-5">
@@ -41,7 +48,7 @@ export default function SignIn() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400 focus:outline-none transition"
+              className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-satguru focus:outline-none transition"
             />
           </div>
 
@@ -55,7 +62,7 @@ export default function SignIn() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-400 focus:outline-none transition"
+                className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-satguru focus:outline-none transition"
               />
               <span
                 className="absolute right-3 top-2.5 text-gray-500 hover:text-gray-700 cursor-pointer"
@@ -69,7 +76,7 @@ export default function SignIn() {
           {/* Sign In Button */}
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium shadow-md transition"
+            className="w-full bg-satguru hover:bg-blue-800 text-white py-2 rounded-lg font-medium shadow-md transition"
           >
             Sign In
           </button>
@@ -79,7 +86,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={() => navigate("/Contact")}
-              className="hover:text-green-600 transition"
+              className="hover:text-blue-800 transition"
             >
               Forgot Password?Contact Admin
             </button>
@@ -92,7 +99,7 @@ export default function SignIn() {
           <button
             type="button"
             onClick={() => navigate("/signup")}
-            className="w-full border border-green-600 text-green-600 py-2 rounded-lg font-medium hover:bg-green-50 transition"
+            className="w-full border border-satguru text-satguru py-2 rounded-lg font-medium hover:bg-blue-50 transition"
           >
             New user? Sign Up
           </button>

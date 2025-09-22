@@ -526,21 +526,21 @@ export default function NoteResources() {
             >
               <span className="text-[#0B2C4D] font-medium">{res.title}</span>
               <div className="space-x-2">
-                <a
-                  href={res.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline"
-                >
-                  View
-                </a>
-                <a
-                  href={res.url}
-                  download
-                  className="text-green-600 underline"
-                >
-                  Download
-                </a>
+                {/* View Button */}
+<button
+  onClick={() => window.open(res.url, "_blank", "noopener,noreferrer")}
+  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+>
+  View
+</button>
+
+{/* Download Button */}
+<a href={res.url} download>
+  <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
+    Download
+  </button>
+</a>
+
               </div>
             </li>
           ))}

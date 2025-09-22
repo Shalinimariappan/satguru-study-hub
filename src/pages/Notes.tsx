@@ -33,7 +33,7 @@ export default function Notes() {
     if (userVerified) {
       navigate(`/notes/${subject}`); // ✅ logged in → go to resources
     } else {
-      navigate("/signin"); // ❌ not logged in → go to SignIn
+      navigate("/signup"); // ❌ not logged in → go to SignIn
     }
   };
 

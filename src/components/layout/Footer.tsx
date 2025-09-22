@@ -1,10 +1,18 @@
-
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  
+  const [visitorCount, setVisitorCount] = useState(0);
+
+  useEffect(() => {
+    const count = Number(localStorage.getItem("visitorCount") || 0);
+    const newCount = count + 1;
+    localStorage.setItem("visitorCount", newCount.toString());
+    setVisitorCount(newCount);
+  }, []);
+
   return (
     <footer className="bg-black text-white pt-12 pb-8">
       <div className="container mx-auto px-4">
@@ -19,8 +27,8 @@ export default function Footer() {
                 className="h-16 bg-white rounded-full p-1"
               />
             </div>
-            <p className="text-gray-300 mb-4">
-              Professional tuition centre with 6 years of experience and a 98% success rate for students from LKG to XII.
+            <p className="text-gray-300 mb-2">
+              A premier tuition centre for students from LKG to XII. We focus on holistic learning and academic growth. Empowering every student to reach their full potential.
             </p>
           </div>
           
@@ -28,21 +36,11 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-300 hover:text-satguru-light">Home</Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-300 hover:text-satguru-light">About Us</Link>
-              </li>
-              <li>
-                <Link to="/courses" className="text-gray-300 hover:text-satguru-light">Courses</Link>
-              </li>
-              <li>
-                <Link to="/results" className="text-gray-300 hover:text-satguru-light">Results</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-300 hover:text-satguru-light">Contact Us</Link>
-              </li>
+              <li><Link to="/" className="text-gray-300 hover:text-satguru-light">Home</Link></li>
+              <li><Link to="/about" className="text-gray-300 hover:text-satguru-light">About Us</Link></li>
+              <li><Link to="/courses" className="text-gray-300 hover:text-satguru-light">Courses</Link></li>
+              <li><Link to="/results" className="text-gray-300 hover:text-satguru-light">Results</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-satguru-light">Contact Us</Link></li>
             </ul>
           </div>
           
@@ -68,19 +66,22 @@ export default function Footer() {
           </div>
           
           {/* Social Media */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full">
-                <Twitter className="h-5 w-5" />
-              </a>
+          <div className="flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Follow Us</h3>
+              <div className="flex space-x-4">
+                <a href="#" className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full">
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a href="#" className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full">
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="#" className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full">
+                  <Twitter className="h-5 w-5" />
+                </a>
+              </div>
             </div>
+            <p className="text-gray-400 text-sm mt-6 text-center">Website visitors: {visitorCount}</p>
           </div>
         </div>
         

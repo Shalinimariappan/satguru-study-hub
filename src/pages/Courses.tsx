@@ -300,9 +300,9 @@ export default function Courses() {
         ></div>
         <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }}></div>
         <div className="relative container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">Courses</h1>
+          <h1 className="text-4xl font-bold mb-4">Our Courses</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Learn more about Satguru Study Centre and our commitment to educational excellence
+            From Class LKG to XII – strong foundations, smart learning, and proven results.
           </p>
         </div>
       </div>
