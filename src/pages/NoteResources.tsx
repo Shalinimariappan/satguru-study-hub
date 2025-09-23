@@ -545,7 +545,6 @@ export default function NoteResources() {
     </li>
   ))}
 </ul>
-
       )}
     </div>
   );

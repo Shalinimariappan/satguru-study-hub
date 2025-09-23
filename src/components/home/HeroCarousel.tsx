@@ -32,7 +32,7 @@ export default function HeroCarousel() {
   };
 
   return (
-    <div className="relative min-h-[400px] md:h-[600px] overflow-hidden">
+    <div className="relative min-h-[250px] sm:min-h-[350px] md:min-h-[500px] lg:min-h-[600px] overflow-hidden">
       {/* Slides */}
       {carouselItems.map((item, index) => (
         <div
@@ -54,27 +54,29 @@ export default function HeroCarousel() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 
+        bg-black/30 hover:bg-black/50 text-white p-1 sm:p-2 rounded-full"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 
+        bg-black/30 hover:bg-black/50 text-white p-1 sm:p-2 rounded-full"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
 
       {/* Indicators */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1 sm:space-x-2">
         {carouselItems.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
               index === currentSlide ? "bg-satguru" : "bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
