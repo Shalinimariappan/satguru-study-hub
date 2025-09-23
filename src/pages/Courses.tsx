@@ -42,27 +42,30 @@ const CourseCard = ({
           {icon}
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-2">{title}</h3>
-          <p className="text-gray-600 mb-4">{description}</p>
+          <h3 className="text-lg sm:text-xl font-semibold mb-2">{title}</h3>
+          <p className="text-gray-600 text-sm sm:text-base mb-4">{description}</p>
         </div>
       </div>
       
       <div className="mt-6 grid grid-cols-2 gap-4">
         <div>
-          <h4 className="text-sm font-semibold text-gray-500 mb-1">Type</h4>
-          <p className="font-medium">{type}</p>
+          <h4 className="text-xs sm:text-sm font-semibold text-gray-500 mb-1">Type</h4>
+          <p className="font-medium text-sm sm:text-base">{type}</p>
         </div>
         <div>
-          <h4 className="text-sm font-semibold text-gray-500 mb-1">Timing</h4>
-          <p className="font-medium">{duration}</p>
+          <h4 className="text-xs sm:text-sm font-semibold text-gray-500 mb-1">Timing</h4>
+          <p className="font-medium text-sm sm:text-base">{duration}</p>
         </div>
       </div>
       
       <div className="mt-4">
-        <h4 className="text-sm font-semibold text-gray-500 mb-2">Subjects Covered</h4>
+        <h4 className="text-xs sm:text-sm font-semibold text-gray-500 mb-2">Subjects Covered</h4>
         <div className="flex flex-wrap gap-2">
           {subjects.map((subject, index) => (
-            <span key={index} className="bg-gray-100 px-2 py-1 text-xs rounded-full text-gray-700">
+            <span 
+              key={index} 
+              className="bg-gray-100 px-2 py-1 text-[10px] sm:text-xs rounded-full text-gray-700"
+            >
               {subject}
             </span>
           ))}
@@ -71,15 +74,15 @@ const CourseCard = ({
     </div>
     
     <div className="bg-gray-50 py-4 px-6 border-t border-gray-100">
-      <div className="flex justify-between items-center">
-        <div>
-          <span className="text-sm text-gray-500">Monthly Fee</span>
-          <p className="text-xl font-bold text-satguru">{fees}</p>
-          {admission && <p className="text-sm text-gray-500">Admission: {admission}</p>}
+      <div className="flex justify-between items-center flex-col sm:flex-row gap-3 sm:gap-0">
+        <div className="text-center sm:text-left">
+          <span className="text-xs sm:text-sm text-gray-500">Monthly Fee</span>
+          <p className="text-lg sm:text-xl font-bold text-satguru">{fees}</p>
+          {admission && <p className="text-xs sm:text-sm text-gray-500">Admission: {admission}</p>}
         </div>
         <a 
           href="/contact" 
-          className="bg-satguru hover:bg-satguru-dark text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm"
+          className="bg-satguru hover:bg-satguru-dark text-white px-4 py-2 rounded-lg font-medium transition-colors text-xs sm:text-sm"
         >
           Enquire Now
         </a>
@@ -272,8 +275,8 @@ export default function Courses() {
   const Carousel = ({ courses }: { courses: CourseProps[] }) => (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
-      spaceBetween={30}
-      slidesPerView={1.2}
+      spaceBetween={20}
+      slidesPerView={1.1}
       centeredSlides={true}
       navigation
       pagination={{ clickable: true }}
@@ -281,6 +284,22 @@ export default function Courses() {
       loop={true}
       onSlideChange={playSound}
       className="pb-10"
+      breakpoints={{
+        0: {          // 📱 Mobile 360px+
+          slidesPerView: 1,
+          spaceBetween: 12,
+          centeredSlides: false,
+        },
+        640: {       // 📲 Tablet
+          slidesPerView: 1.2,
+          spaceBetween: 20,
+          centeredSlides: true,
+        },
+        1024: {      // 💻 Desktop
+          slidesPerView: 1.5,
+          spaceBetween: 30,
+        }
+      }}
     >
       {courses.map((course, index) => (
         <SwiperSlide key={index}>
@@ -293,72 +312,71 @@ export default function Courses() {
   return (
     <div>
       {/* Hero Banner */}
-      <div className="relative py-16">
+      <div className="relative py-12 sm:py-16">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{ backgroundImage: "url('/assets/banner.jpg')" }}
         ></div>
         <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }}></div>
         <div className="relative container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">Our Courses</h1>
-          <p className="text-xl max-w-2xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4">Our Courses</h1>
+          <p className="text-lg sm:text-xl max-w-2xl mx-auto">
             From Class LKG to XII – strong foundations, smart learning, and proven results.
           </p>
         </div>
       </div>
 
-    {/* Special Note */}
-<div className="container mx-auto px-4 mt-8 flex items-center">
-  <div className="bg-blue-100 border border-blue-300 rounded-md px-3 py-2 text-left shadow-sm">
-    <p className="text-sm font-medium text-blue-800">
-      💡Note: Single parent fees charge will be 70% (Save 30%)
-    </p>
-  </div>
-</div>
-
+      {/* Special Note */}
+      <div className="container mx-auto px-4 mt-6 sm:mt-8 flex items-center">
+        <div className="bg-blue-100 border border-blue-300 rounded-md px-3 py-2 w-full text-left shadow-sm">
+          <p className="text-xs sm:text-sm font-medium text-blue-800">
+            💡Note: Single parent fees charge will be 70% (Save 30%)
+          </p>
+        </div>
+      </div>
 
       {/* Foundational */}
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Foundational Level (LKG to V)</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Foundational Level (LKG to V)</h2>
           <Carousel courses={lowerCourses} />
         </div>
       </section>
 
       {/* Preparator */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 sm:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Preparator Level (VI to IX)</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Preparator Level (VI to IX)</h2>
           <Carousel courses={PreparatorCourses} />
         </div>
       </section>
 
       {/* SSC */}
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Secondary School (SSC - Class X)</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Secondary School (SSC - Class X)</h2>
           <Carousel courses={SSC} />
         </div>
       </section>
 
       {/* HSC */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 sm:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Higher Secondary (HSC - XI & XII)</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Higher Secondary (HSC - XI & XII)</h2>
           <Carousel courses={HSC} />
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-satguru">
+      <section className="py-12 sm:py-16 bg-satguru">
         <div className="container mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl font-bold mb-6">Ready to Enroll?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Ready to Enroll?</h2>
+          <p className="text-base sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">
             Join Satguru Study Centre today and give your child the academic support they need to excel.
           </p>
           <a 
             href="/contact" 
-            className="bg-white text-satguru px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors inline-block"
+            className="bg-white text-satguru px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors inline-block text-sm sm:text-base"
           >
             Contact Us Now
           </a>

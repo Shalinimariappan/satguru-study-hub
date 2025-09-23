@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-
+import { useParams, useNavigate } from "react-router-dom";
+import { X } from "lucide-react"; // ❌ close/back icon
 const notesResources: Record<string, { title: string; url: string }[]> = {
   "6th-Std-Question-Papers": [
   // 1ST MID TERM
@@ -508,9 +508,18 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
 export default function NoteResources() {
   const { subject } = useParams();
   const resources = notesResources[subject || ""] || [];
+  const navigate = useNavigate();
 
   return (
     <div className="p-6">
+       {/* Back Button */}
+      <button
+        onClick={() => navigate(-1)} // go back to previous page
+        className="flex items-center gap-2 text-red-600 hover:text-red-800 mb-4"
+      >
+        <X className="w-5 h-5" />
+        Back
+      </button>
       <h1 className="text-2xl font-bold text-[#0B2C4D] mb-4">
         Resources for: {subject}
       </h1>
