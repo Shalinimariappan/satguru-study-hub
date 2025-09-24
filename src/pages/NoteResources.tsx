@@ -55,7 +55,7 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
 
   // 1ST TERM
   { title: "7th First Term English", url: "/pdfs/7TH/1ST TERM/7th First Assessment ENGLISH question paper.pdf" },
-  { title: "7th First Term Maths", url: "/pdfs/7TH/1ST TERM/7th First Assessment MATHS Qsuection paper.pdf" },
+  { title: "7th First Term Maths", url: "/pdfs/7TH/1ST TERM/7th First Assessment MATHS question paper.pdf" },
   { title: "7th First Term Science", url: "/pdfs/7TH/1ST TERM/7th First Assessment SCIENCE question paper.pdf" },
   { title: "7th First Term Social", url: "/pdfs/7TH/1ST TERM/7th First Assessment SOCIAL question paper.pdf" },
   { title: "7th First Term Tamil", url: "/pdfs/7TH/1ST TERM/7th First Assessment TAMIL question paper.pdf" },
@@ -140,11 +140,11 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { title: "9th Tamil First Midterm", url: "/pdfs/9TH/1ST MID TERM/9th Tamil First Midterm 2024-2025.pdf" },
 
   // 2ND MID TERM
-  { title: "9th English Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th English Second Midterm 2024-2025.pdf" },
-  { title: "9th Maths Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th Maths Second Midterm 2024-2025.pdf" },
-  { title: "9th Science Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th Science Second Midterm 2024-2025.pdf" },
-  { title: "9th Social Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th Social Second Midterm 2024-2025.pdf" },
-  { title: "9th Tamil Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th Tamil Second Midterm 2024-2025.pdf" },
+  { title: "9th English Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th English Second Midterm 2024_2025.pdf" },
+  { title: "9th Maths Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th Maths Second Midterm 2024_2025.pdf" },
+  { title: "9th Science Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th Science Second Midterm 2024_2025.pdf" },
+  { title: "9th Social Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th Social Second Midterm 2024_2025.pdf" },
+  { title: "9th Tamil Second Midterm", url: "/pdfs/9TH/2ND MID TERM/9th Tamil Second Midterm 2024_2025.pdf" },
 
   // 3RD MID TERM
   { title: "9th English Third Midterm", url: "/pdfs/9TH/3RD MID TERM/9th English 3rd Midterm question paper.pdf" },
@@ -154,11 +154,11 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { title: "9th Tamil Third Midterm", url: "/pdfs/9TH/3RD MID TERM/9th Tamil 3rd Midterm question paper.pdf" },
 
   // QUARTERLY
-  { title: "9th English Quarterly", url: "/pdfs/9TH/QUARTERLY/9th English Quarterly Question Paper.pdf" },
-  { title: "9th Maths Quarterly", url: "/pdfs/9TH/QUARTERLY/9th Mathamatics Quarterly 2024_2025.pdf" },
-  { title: "9th Science Quarterly", url: "/pdfs/9TH/QUARTERLY/9th Science Quarterly Question Paper.pdf" },
-  { title: "9th Social Quarterly", url: "/pdfs/9TH/QUARTERLY/9th Social Science Quarterly 2024_2025.pdf" },
-  { title: "9th Tamil Quarterly", url: "/pdfs/9TH/QUARTERLY/9th Tamil Quarterly Question Paper.pdf" },
+  { title: "9th English Quarterly", url: "/pdfs/9TH/QUATERLY/9th English Quarterly Question Paper.pdf" },
+  { title: "9th Maths Quarterly", url: "/pdfs/9TH/QUATERLY/9th Mathamatics Quarterly 2024_2025.pdf" },
+  { title: "9th Science Quarterly", url: "/pdfs/9TH/QUATERLY/9th Science Quarterly Question Paper.pdf" },
+  { title: "9th Social Quarterly", url: "/pdfs/9TH/QUATERLY/9th Social Science Quarterly 2024_2025.pdf" },
+  { title: "9th Tamil Quarterly", url: "/pdfs/9TH/QUATERLY/9th Tamil Quarterly Question Paper.pdf" },
 
   // HALF YEARLY
   { title: "9th English Half Yearly", url: "/pdfs/9TH/HALF YEARLY/9th Half Year2024_2025 English.pdf" },
@@ -208,7 +208,7 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { title: "10th Quarterly Maths", url: "/pdfs/10TH/QUATERLY/10th Quarterly Maths Question Paper.pdf" },
   { title: "10th Quarterly Science", url: "/pdfs/10TH/QUATERLY/10th Quarterly Science Question Paper.pdf" },
   { title: "10th Quarterly Social", url: "/pdfs/10TH/QUATERLY/10th Quarterly Social Question Paper.pdf" },
-  { title: "10th Quarterly Tamil", url: "/pdfs/10TH/QUATERLY/10th Quarterly தமிழ் Question paper.pdf" },
+  { title: "10th Quarterly Tamil", url: "/pdfs/10TH/QUATERLY/10th Quarterly தமிழ் Question Paper.pdf" },
 
   // UNIT TEST 1
   { title: "10th Unit Test 1 English", url: "/pdfs/10TH/UNIT - 1/10th Unit test 1 English Question Paper.pdf" },
@@ -233,68 +233,68 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
 ],
 "11th-Std-Science-Question-Papers": [
   // UNIT TEST 1
-  { title: "11th Unit Test 1 Biology", url: "/pdfs/11TH/UNIT-1/11th Unit Test 1 Biology Question Paper.pdf" },
-  { title: "11th Unit Test 1 Chemistry", url: "/pdfs/11TH/UNIT-1/11th Unit Test 1 Chemistry Question Paper.pdf" },
-  { title: "11th Unit Test 1 Computer Science", url: "/pdfs/11TH/UNIT-1/11th Unit Test 1 Computer Science Question Paper.pdf" },
-  { title: "11th Unit Test 1 English", url: "/pdfs/11TH/UNIT-1/11th Unit Test 1 English Question Paper.pdf" },
-  { title: "11th Unit Test 1 Maths", url: "/pdfs/11TH/UNIT-1/11th Unit Test 1 Maths Question Paper.pdf" },
-  { title: "11th Unit Test 1 Physics", url: "/pdfs/11TH/UNIT-1/11th Unit Test 1 Physics Question Paper.pdf" },
-  { title: "11th Unit Test 1 Tamil", url: "/pdfs/11TH/UNIT-1/11th Unit Test 1 தமிழ் Question Paper.pdf" },
+  { title: "11th Unit Test 1 Biology", url: "/pdfs/11TH SCI/UNIT - 1/11th Unit Test 1 Biology Question Paper.pdf" },
+  { title: "11th Unit Test 1 Chemistry", url: "/pdfs/11TH SCI/UNIT - 1/11th Unit Test 1 Chemistry Question Paper.pdf" },
+  { title: "11th Unit Test 1 Computer Science", url: "/pdfs/11TH SCI/UNIT - 1/11th Unit Test 1 Computer Science Question Paper.pdf" },
+  { title: "11th Unit Test 1 English", url: "/pdfs/11TH SCI/UNIT - 1/11th Unit Test 1 English Question Paper.pdf" },
+  { title: "11th Unit Test 1 Maths", url: "/pdfs/11TH SCI/UNIT - 1/11th Unit Test 1 Maths Question Paper.pdf" },
+  { title: "11th Unit Test 1 Physics", url: "/pdfs/11TH SCI/UNIT - 1/11th Unit Test 1 Physics Question Paper.pdf" },
+  { title: "11th Unit Test 1 Tamil", url: "/pdfs/11TH SCI/UNIT - 1/11th Unit Test 1 தமிழ் Question Paper.pdf" },
 
   // UNIT TEST 2
-  { title: "11th Unit Test 2 Biology", url: "/pdfs/11TH/UNIT-2/11th Unit Test 2 Biology Question Paper.pdf" },
-  { title: "11th Unit Test 2 Chemistry", url: "/pdfs/11TH/UNIT-2/11th Unit Test 2 Chemistry Question Paper.pdf" },
-  { title: "11th Unit Test 2 Computer Science", url: "/pdfs/11TH/UNIT-2/11th Unit Test 2 Computer Science Question Paper.pdf" },
-  { title: "11th Unit Test 2 English", url: "/pdfs/11TH/UNIT-2/11th Unit Test 2 English Question Paper.pdf" },
-  { title: "11th Unit Test 2 Maths", url: "/pdfs/11TH/UNIT-2/11th Unit Test 2 Maths Question Paper.pdf" },
-  { title: "11th Unit Test 2 Physics", url: "/pdfs/11TH/UNIT-2/11th Unit Test 2 Physics Question Paper.pdf" },
-  { title: "11th Unit Test 2 Tamil", url: "/pdfs/11TH/UNIT-2/11th Unit Test 2 தமிழ் Question Paper.pdf" },
+  { title: "11th Unit Test 2 Biology", url: "/pdfs/11TH SCI/UNIT - 2/11th Unit Test 2 Biology Question Paper.pdf" },
+  { title: "11th Unit Test 2 Chemistry", url: "/pdfs/11TH SCI/UNIT - 2/11th Unit Test 2 Chemistry Question Paper.pdf" },
+  { title: "11th Unit Test 2 Computer Science", url: "/pdfs/11TH SCI/UNIT - 2/11th Unit Test 2 Computer Science Question Paper.pdf" },
+  { title: "11th Unit Test 2 English", url: "/pdfs/11TH SCI/UNIT - 2/11th Unit Test 2 English Question Paper.pdf" },
+  { title: "11th Unit Test 2 Maths", url: "/pdfs/11TH SCI/UNIT - 2/11th Unit Test 2 Maths Question Paper.pdf" },
+  { title: "11th Unit Test 2 Physics", url: "/pdfs/11TH SCI/UNIT - 2/11th Unit Test 2 Physics Question Paper.pdf" },
+  { title: "11th Unit Test 2 Tamil", url: "/pdfs/11TH SCI/UNIT - 2/11th Unit Test 2 தமிழ் Question Paper.pdf" },
 
   // UNIT TEST 3
-  { title: "11th Unit Test 3 Biology", url: "/pdfs/11TH/UNIT-3/11th Unit Test 3 Biology Question Paper.pdf" },
-  { title: "11th Unit Test 3 Chemistry", url: "/pdfs/11TH/UNIT-3/11th Unit Test 3 Chemistry Question Paper.pdf" },
-  { title: "11th Unit Test 3 Computer Science", url: "/pdfs/11TH/UNIT-3/11th Unit Test 3 Computer Science Question Paper.pdf" },
-  { title: "11th Unit Test 3 English", url: "/pdfs/11TH/UNIT-3/11th Unit Test 3 English Question Paper.pdf" },
-  { title: "11th Unit Test 3 Maths", url: "/pdfs/11TH/UNIT-3/11th Unit Test 3 Maths Question Paper.pdf" },
-  { title: "11th Unit Test 3 Physics", url: "/pdfs/11TH/UNIT-3/11th Unit Test 3 Physics Question Paper.pdf" },
-  { title: "11th Unit Test 3 Tamil", url: "/pdfs/11TH/UNIT-3/11th Unit Test 3 தமிழ் Question Paper.pdf" },
+  { title: "11th Unit Test 3 Biology", url: "/pdfs/11TH SCI/UNIT - 3/11th Unit Test 3 Biology Question Paper.pdf" },
+  { title: "11th Unit Test 3 Chemistry", url: "/pdfs/11TH SCI/UNIT - 3/11th Unit Test 3 Chemistry Question Paper.pdf" },
+  { title: "11th Unit Test 3 Computer Science", url: "/pdfs/11TH SCI/UNIT - 3/11th Unit Test 3 Computer Science Question Paper.pdf" },
+  { title: "11th Unit Test 3 English", url: "/pdfs/11TH SCI/UNIT - 3/11th Unit Test 3 English Question Paper.pdf" },
+  { title: "11th Unit Test 3 Maths", url: "/pdfs/11TH SCI/UNIT - 3/11th Unit Test 3 Maths Question Paper.pdf" },
+  { title: "11th Unit Test 3 Physics", url: "/pdfs/11TH SCI/UNIT - 3/11th Unit Test 3 Physics Question Paper.pdf" },
+  { title: "11th Unit Test 3 Tamil", url: "/pdfs/11TH SCI/UNIT - 3/11th Unit Test 3 தமிழ் Question Paper.pdf" },
 
   // QUARTERLY
-  { title: "11th Quarterly Biology", url: "/pdfs/11TH/QUARTERLY/11th Biology Quarterly Question Paper 24-25.pdf" },
-  { title: "11th Quarterly Chemistry", url: "/pdfs/11TH/QUARTERLY/11th Chemistry Quarterly Question Paper 24-25.pdf" },
-  { title: "11th Quarterly Computer Science", url: "/pdfs/11TH/QUARTERLY/11th Computer Science Quarterly Question Paper 24-25.pdf" },
-  { title: "11th Quarterly English", url: "/pdfs/11TH/QUARTERLY/11th English Quarterly Question Paper 24-25.pdf" },
-  { title: "11th Quarterly Maths", url: "/pdfs/11TH/QUARTERLY/11th Maths Quarterly Question Paper 24-25.pdf" },
-  { title: "11th Quarterly Physics", url: "/pdfs/11TH/QUARTERLY/11th Physics Quarterly Question Paper 24-25.pdf" },
-  { title: "11th Quarterly Tamil", url: "/pdfs/11TH/QUARTERLY/11th தமிழ் Quarterly Question Paper 24-25.pdf" },
+  { title: "11th Quarterly Biology", url: "/pdfs/11TH SCI/QUATERLY/11th Biology Quarterly Question Paper 24-25.pdf" },
+  { title: "11th Quarterly Chemistry", url: "/pdfs/11TH SCI/QUATERLY/11th Chemistry Quarterly Question paper 24-25.pdf" },
+  { title: "11th Quarterly Computer Science", url: "/pdfs/11TH SCI/QUATERLY/11th Computer Science Quarterly Question Paper 24-25.pdf" },
+  { title: "11th Quarterly English", url: "/pdfs/11TH SCI/QUATERLY/11th English Quarterly Question paper 24-25.pdf" },
+  { title: "11th Quarterly Maths", url: "/pdfs/11TH SCI/QUATERLY/11th Maths Quarterly Question paper 24-25.pdf" },
+  { title: "11th Quarterly Physics", url: "/pdfs/11TH SCI/QUATERLY/11th Physics Quarterly Question paper 24-25.pdf" },
+  { title: "11th Quarterly Tamil", url: "/pdfs/11TH SCI/QUATERLY/11th தமிழ் Quarterly Question paper 24-25.pdf" },
 
   // REVISION
-  { title: "11th Revision Biology", url: "/pdfs/11TH/REVISION/11th Revision Biology Question Paper 24-25.pdf" },
-  { title: "11th Revision Chemistry", url: "/pdfs/11TH/REVISION/11th Revision Chemistry Question Paper 24-25.pdf" },
-  { title: "11th Revision Computer Science", url: "/pdfs/11TH/REVISION/11th Revision Computer Science Question Paper 24-25.pdf" },
-  { title: "11th Revision English", url: "/pdfs/11TH/REVISION/11th Revision English Question Paper 24-25.pdf" },
-  { title: "11th Revision Maths", url: "/pdfs/11TH/REVISION/11th Revision Maths Question Paper 24-25.pdf" },
-  { title: "11th Revision Physics", url: "/pdfs/11TH/REVISION/11th Revision Physics Question Paper 24-25.pdf" },
-  { title: "11th Revision Tamil", url: "/pdfs/11TH/REVISION/11th Revision தமிழ் Question Paper 24-25.pdf" },
+  { title: "11th Revision Biology", url: "/pdfs/11TH SCI/REVISION/11th Revision Biology Question paper 24-25.pdf" },
+  { title: "11th Revision Chemistry", url: "/pdfs/11TH SCI/REVISION/11th Revision Chemistry Question paper 24-25.pdf" },
+  { title: "11th Revision Computer Science", url: "/pdfs/11TH SCI/REVISION/11th Revision Computer Science Question paper 24-25.pdf" },
+  { title: "11th Revision English", url: "/pdfs/11TH SCI/REVISION/11th Revision English Question paper 24-25.pdf" },
+  { title: "11th Revision Maths", url: "/pdfs/11TH SCI/REVISION/11th Revision Maths Question paper 24-25.pdf" },
+  { title: "11th Revision Physics", url: "/pdfs/11TH SCI/REVISION/11th Revision Physics Question paper 24-25.pdf" },
+  { title: "11th Revision Tamil", url: "/pdfs/11TH SCI/REVISION/11th Revision தமிழ் Question paper 24-25.pdf" },
 
   // HALF YEARLY
-  { title: "11th Half Yearly Biology", url: "/pdfs/11TH/HALF YEARLY/11th Biology Half Yearly Question Paper 24-25.pdf" },
-  { title: "11th Half Yearly Chemistry", url: "/pdfs/11TH/HALF YEARLY/11th Chemistry Half Yearly Question Paper 24-25.pdf" },
-  { title: "11th Half Yearly Computer Science", url: "/pdfs/11TH/HALF YEARLY/11th Computer Science Half Yearly Question Paper 24-25.pdf" },
-  { title: "11th Half Yearly English", url: "/pdfs/11TH/HALF YEARLY/11th English Half Yearly Question Paper 24-25.pdf" },
-  { title: "11th Half Yearly Maths", url: "/pdfs/11TH/HALF YEARLY/11th Maths Half Yearly Question Paper 24-25.pdf" },
-  { title: "11th Half Yearly Physics", url: "/pdfs/11TH/HALF YEARLY/11th Physics Half Yearly Question Paper 24-25.pdf" },
-  { title: "11th Half Yearly Tamil", url: "/pdfs/11TH/HALF YEARLY/11th தமிழ் Half Yearly Question Paper 24-25.pdf" },
+  { title: "11th Half Yearly Biology", url: "/pdfs/11TH SCI/HALF YEARLY/11th Biology Half Yearly Question paper 24-25.pdf" },
+  { title: "11th Half Yearly Chemistry", url: "/pdfs/11TH SCI/HALF YEARLY/11th Chemistry Half Yearly Question paper 24-25.pdf" },
+  { title: "11th Half Yearly Computer Science", url: "/pdfs/11TH SCI/HALF YEARLY/11th Computer Science Half Yearly Question paper 24-25.pdf" },
+  { title: "11th Half Yearly English", url: "/pdfs/11TH SCI/HALF YEARLY/11th English Half Yearly Question paper 24-25.pdf" },
+  { title: "11th Half Yearly Maths", url: "/pdfs/11TH SCI/HALF YEARLY/11th Maths Half Yearly Question paper 24-25.pdf" },
+  { title: "11th Half Yearly Physics", url: "/pdfs/11TH SCI/HALF YEARLY/11th Physics Half Yearly Question paper 24-25.pdf" },
+  { title: "11th Half Yearly Tamil", url: "/pdfs/11TH SCI/HALF YEARLY/11th தமிழ் Half Yearly Question paper 24-25.pdf" },
 
   // PUBLIC EXAM
-  { title: "11th Public Exam Biology", url: "/pdfs/11TH/PUBLIC EXAM/11th Biology Public Question Paper 24-25.pdf" },
-  { title: "11th Public Exam Chemistry", url: "/pdfs/11TH/PUBLIC EXAM/11th Chemistry Public Question Paper 24-25.pdf" },
-  { title: "11th Public Exam Computer Science", url: "/pdfs/11TH/PUBLIC EXAM/11th Computer Science Public Question Paper 24-25.pdf" },
-  { title: "11th Public Exam English", url: "/pdfs/11TH/PUBLIC EXAM/11th English Public Question Paper 24-25.pdf" },
-  { title: "11th Public Exam French", url: "/pdfs/11TH/PUBLIC EXAM/11th French Public Question Paper 24-25.pdf" },
-  { title: "11th Public Exam Maths", url: "/pdfs/11TH/PUBLIC EXAM/11th Maths Public Question Paper 24-25.pdf" },
-  { title: "11th Public Exam Physics", url: "/pdfs/11TH/PUBLIC EXAM/11th Physics Public Question Paper 24-25.pdf" },
-  { title: "11th Public Exam Tamil", url: "/pdfs/11TH/PUBLIC EXAM/11th தமிழ் Public Question Paper 24-25.pdf" }
+  { title: "11th Public Exam Biology", url: "/pdfs/11TH SCI/PUBLIC EXAM/11th Biology Public Question paper 24-25.pdf" },
+  { title: "11th Public Exam Chemistry", url: "/pdfs/11TH SCI/PUBLIC EXAM/11th Chemistry Public Question paper 24-25.pdf" },
+  { title: "11th Public Exam Computer Science", url: "/pdfs/11TH SCI/PUBLIC EXAM/11th Computer Science Public Question paper 24-25.pdf" },
+  { title: "11th Public Exam English", url: "/pdfs/11TH SCI/PUBLIC EXAM/11th English Public Question paper 24-25.pdf" },
+  { title: "11th Public Exam French", url: "/pdfs/11TH SCI/PUBLIC EXAM/11th French Public Question paper 24-25.pdf" },
+  { title: "11th Public Exam Maths", url: "/pdfs/11TH SCI/PUBLIC EXAM/11th Maths Public Question paper 24-25.pdf" },
+  { title: "11th Public Exam Physics", url: "/pdfs/11TH SCI/PUBLIC EXAM/11th Physics Public Question paper 24-25.pdf" },
+  { title: "11th Public Exam Tamil", url: "/pdfs/11TH SCI/PUBLIC EXAM/11th தமிழ் Public Question paper 24-25.pdf" }
 ],
 "11th-Std-Commerce-Question-Papers": [
   // 1ST REVISION
@@ -398,39 +398,39 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { "title": "12th Tamil Public Exam", "url": "/pdfs/12TH COM/PUBLIC EXAM/12th தமிழ் Public Question paper 24-25.pdf" },
 
   // QUARTERLY
-  { "title": "12th English Quarterly", "url": "/pdfs/12TH COM/QUARTERLY/12th English Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Accountancy Quarterly", "url": "/pdfs/12TH COM/QUARTERLY/12th Accountancy Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Business Maths Quarterly", "url": "/pdfs/12TH COM/QUARTERLY/12th Business Maths Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Commerce Quarterly", "url": "/pdfs/12TH COM/QUARTERLY/12th Commerce Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Computer Application Quarterly", "url": "/pdfs/12TH COM/QUARTERLY/12th Computer application Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Economics Quarterly", "url": "/pdfs/12TH COM/QUARTERLY/12th Economics Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Tamil Quarterly", "url": "/pdfs/12TH COM/QUARTERLY/12th தமிழ் Quarterly Question paper 24-25.pdf" },
+  { "title": "12th English Quarterly", "url": "/pdfs/12TH COM/QUATERLY/12th English Quarterly Question Paper 24-25.pdf" },
+  { "title": "12th Accountancy Quarterly", "url": "/pdfs/12TH COM/QUATERLY/12th Accountancy Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Business Maths Quarterly", "url": "/pdfs/12TH COM/QUATERLY/12th Business Maths Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Commerce Quarterly", "url": "/pdfs/12TH COM/QUATERLY/12th Commerce Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Computer Application Quarterly", "url": "/pdfs/12TH COM/QUATERLY/12th Computer application Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Economics Quarterly", "url": "/pdfs/12TH COM/QUATERLY/12th Economics Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Tamil Quarterly", "url": "/pdfs/12TH COM/QUATERLY/12th தமிழ் Quarterly Question paper 24-25.pdf" },
 
   // UNIT TEST - 1
-  { "title": "12th Unit Test 1 Accountancy", "url": "/pdfs/12TH COM/UNIT - 1/12th Accountancy Unit Test-1 Question paper 24-25.pdf" },
+  { "title": "12th Unit Test 1 Accountancy", "url": "/pdfs/12TH COM/UNIT - 1/12th Accountancy Unit Test-1 Question Paper 24-25.pdf" },
   { "title": "12th Unit Test 1 English", "url": "/pdfs/12TH COM/UNIT - 1/12th English Unit-1 Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 1 Business Maths", "url": "/pdfs/12TH COM/UNIT - 1/12th Unit Test-1 Business Maths Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 1 Computer Application", "url": "/pdfs/12TH COM/UNIT - 1/12th Unit Test-1 CA Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 1 Commerce", "url": "/pdfs/12TH COM/UNIT - 1/12th Unit Test-1 Commerce Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 1 Economics", "url": "/pdfs/12TH COM/UNIT - 1/12th Unit Test-1 Economics Question paper 24-25.pdf" },
+  { "title": "12th Unit Test 1 Business Maths", "url": "/pdfs/12TH COM/UNIT - 1/12th Unit Test-1 Business Maths Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 1 Computer Application", "url": "/pdfs/12TH COM/UNIT - 1/12th Unit Test-1 CA Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 1 Commerce", "url": "/pdfs/12TH COM/UNIT - 1/12th Unit Test-1 Commerce Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 1 Economics", "url": "/pdfs/12TH COM/UNIT - 1/12th Unit Test-1 Economics Question Paper 24-25.pdf" },
   { "title": "12th Unit Test 1 Tamil", "url": "/pdfs/12TH COM/UNIT - 1/12th தமிழ் Unit-1 Question paper 24-25.pdf" },
 
   // UNIT TEST - 2
-  { "title": "12th Unit Test 2 Accountancy", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 Accountancy Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 2 Business Maths", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 Business Maths Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 2 Commerce", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 Commerce Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 2 Economics", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 Economic Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 2 English", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 English Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 2 Computer Application", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test-2 CA Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 2 Tamil", "url": "/pdfs/12TH COM/UNIT - 2/12th தமிழ் Unit Test-2 Question paper 24-25.pdf" },
+  { "title": "12th Unit Test 2 Accountancy", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 Accountancy Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 2 Business Maths", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 Business Maths Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 2 Commerce", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 Commerce Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 2 Economics", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 Economic Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 2 English", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 English Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 2 Computer Application", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test-2 CA Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 2 Tamil", "url": "/pdfs/12TH COM/UNIT - 2/12th Unit Test - 2 தமிழ் Question Paper 24-25.pdf" },
 
   // UNIT TEST - 3
-  { "title": "12th Unit Test 3 Accountancy", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test - 3 Accountancy Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Commerce", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test - 3 Commerce Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 English", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test - 3 English Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Tamil", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test - 3 தமிழ் Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Business Maths", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test 3 Business Maths Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Economics", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test 3 Economics Question paper.pdf" }
+  { "title": "12th Unit Test 3 Accountancy", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test - 3 Accountancy Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 Commerce", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test - 3 Commerce Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 English", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test - 3 English Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 Tamil", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test - 3 தமிழ் Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 Business Maths", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test 3 Business Maths Question Paper.pdf" },
+  { "title": "12th Unit Test 3 Economics", "url": "/pdfs/12TH COM/UNIT - 3/12th Unit Test 3 Economics Question Paper.pdf" }
 ],
 "12th-Std-Science-Question-Papers": [
   // 1ST REVISION
@@ -465,12 +465,12 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { "title": "12th Tamil Public Exam", "url": "/pdfs/12TH SCI/PUBLIC EXAM/12th தமிழ் Public Question paper 24-25.pdf" },
 
   // QUARTERLY
-  { "title": "12th English Quarterly", "url": "/pdfs/12TH SCI/QUARTERLY/12th English Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Biology Quarterly", "url": "/pdfs/12TH SCI/QUARTERLY/12th Biology Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Chemistry Quarterly", "url": "/pdfs/12TH SCI/QUARTERLY/12th Chemistry Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Mathematics Quarterly", "url": "/pdfs/12TH SCI/QUARTERLY/12th Mathematics Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Physics Quarterly", "url": "/pdfs/12TH SCI/QUARTERLY/12th Physics Quarterly Question paper 24-25.pdf" },
-  { "title": "12th Tamil Quarterly", "url": "/pdfs/12TH SCI/QUARTERLY/12th தமிழ் Quarterly Question paper 24-25.pdf" },
+  { "title": "12th English Quarterly", "url": "/pdfs/12TH SCI/QUATERLY/12th English Quarterly Question Paper 24-25.pdf" },
+  { "title": "12th Biology Quarterly", "url": "/pdfs/12TH SCI/QUATERLY/12th Biology Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Chemistry Quarterly", "url": "/pdfs/12TH SCI/QUATERLY/12th Chemistry Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Mathematics Quarterly", "url": "/pdfs/12TH SCI/QUATERLY/12th Mathematics Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Physics Quarterly", "url": "/pdfs/12TH SCI/QUATERLY/12th Physics Quarterly Question paper 24-25.pdf" },
+  { "title": "12th Tamil Quarterly", "url": "/pdfs/12TH SCI/QUATERLY/12th தமிழ் Quarterly Question paper 24-25.pdf" },
 
   // UNIT TEST - 1
   { "title": "12th Unit Test 1 Biology", "url": "/pdfs/12TH SCI/UNIT - 1/12th Biology Unit-1 Question paper 24-25.pdf" },
@@ -487,17 +487,17 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { "title": "12th Unit Test 2 English", "url": "/pdfs/12TH SCI/UNIT - 2/12th Unit Test - 2 English Question paper 24-25.pdf" },
   { "title": "12th Unit Test 2 Mathematics", "url": "/pdfs/12TH SCI/UNIT - 2/12th Unit Test - 2 Mathematics Question paper 24-25.pdf" },
   { "title": "12th Unit Test 2 Physics", "url": "/pdfs/12TH SCI/UNIT - 2/12th Unit Test - 2 Physics Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 2 Tamil", "url": "/pdfs/12TH SCI/UNIT - 2/12th தமிழ் Unit Test-2 Question paper 24-25.pdf" },
+  { "title": "12th Unit Test 2 Tamil", "url": "/pdfs/12TH SCI/UNIT - 2/12th Unit Test - 2 தமிழ் Question Paper 24-25.pdf" },
   { "title": "12th Unit Test 2 Chemistry", "url": "/pdfs/12TH SCI/UNIT - 2/12th Unit Test - 2 Chemistry Question paper 24-25.pdf" },
 
   // UNIT TEST - 3
-  { "title": "12th Unit Test 3 Biology", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Biology Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Chemistry", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Chemistry Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Computer Science", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Computer Science Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 English", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 English Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Mathematics", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Mathematics Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Physics", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Physics Question paper 24-25.pdf" },
-  { "title": "12th Unit Test 3 Tamil", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 தமிழ் Question paper 24-25.pdf" }
+  { "title": "12th Unit Test 3 Biology", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Biology Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 Chemistry", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Chemistry Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 Computer Science", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Computer Science Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 English", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 English Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 Mathematics", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Mathematics Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 Physics", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 Physics Question Paper 24-25.pdf" },
+  { "title": "12th Unit Test 3 Tamil", "url": "/pdfs/12TH SCI/UNIT - 3/12th Unit Test - 3 தமிழ் Question Paper 24-25.pdf" }
 ]
 
 
