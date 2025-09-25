@@ -367,9 +367,9 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { "title": "12th 1st Revision Business Maths", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision Business Maths Question paper 24-25.pdf" },
   { "title": "12th 1st Revision Commerce", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision Commerce Question paper 24-25.pdf" },
   { "title": "12th 1st Revision Computer Application", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision Computer Application Question paper 24-25.pdf" },
-  { "title": "12th 1st Revision Economics", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision Economics Question paper 24-25.pdf" },
-  { "title": "12th 1st Revision English", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision English Question paper 24-25.pdf" },
-  { "title": "12th 1st Revision Tamil", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision தமிழ் Question paper 24-25.pdf" },
+  { "title": "12th 1st Revision Economics", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision Economics Question Paper 24-25.pdf" },
+  { "title": "12th 1st Revision English", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision English Question Paper 24-25.pdf" },
+  { "title": "12th 1st Revision Tamil", "url": "/pdfs/12TH COM/1ST REV/12th 1st Revision தமிழ் Question Paper 24-25.pdf" },
 
   // 2ND REVISION
   { "title": "12th 2nd Revision Accountancy", "url": "/pdfs/12TH COM/2ND REV/12th 2nd Revision Accountancy Question paper 24-25.pdf" },
@@ -437,10 +437,10 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { "title": "12th 1st Revision Biology", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision Biology Question paper 24-25.pdf" },
   { "title": "12th 1st Revision Chemistry", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision Chemistry Question paper 24-25.pdf" },
   { "title": "12th 1st Revision Computer Science", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision Computer Science Question paper 24-25.pdf" },
-  { "title": "12th 1st Revision English", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision English Question paper 24-25.pdf" },
+  { "title": "12th 1st Revision English", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision English Question Paper 24-25.pdf" },
   { "title": "12th 1st Revision Mathematics", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision Mathematics Question paper 24-25.pdf" },
-  { "title": "12th 1st Revision Physics", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision Physics Question paper 24-25.pdf" },
-  { "title": "12th 1st Revision Tamil", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision தமிழ் Question paper 24-25.pdf" },
+  { "title": "12th 1st Revision Physics", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision Physics Question Paper 24-25.pdf" },
+  { "title": "12th 1st Revision Tamil", "url": "/pdfs/12TH SCI/1ST REV/12th 1st Revision தமிழ் Question Paper 24-25.pdf" },
 
   // 2ND REVISION
   { "title": "12th 2nd Revision Biology", "url": "/pdfs/12TH SCI/2ND REV/12th 2nd Revision Biology Question paper 24-25.pdf" },
@@ -454,7 +454,7 @@ const notesResources: Record<string, { title: string; url: string }[]> = {
   { "title": "12th Chemistry Half Yearly", "url": "/pdfs/12TH SCI/HALF YEARLY/12th Chemistry Half Yearly Question paper 24-25.pdf" },
   { "title": "12th Computer Science Half Yearly", "url": "/pdfs/12TH SCI/HALF YEARLY/12th Computer Science Half Yearly Question paper 24-25.pdf" },
   { "title": "12th English Half Yearly", "url": "/pdfs/12TH SCI/HALF YEARLY/12th English Half Yearly Question paper 24-25.pdf" },
-  { "title": "12th Mathematics Half Yearly", "url": "/pdfs/12TH SCI/HALF YEARLY/12th Mathematics Half Yearly Question paper 24-25.pdf" },
+  { "title": "12th Mathematics Half Yearly", "url": "/pdfs/12TH SCI/HALF YEARLY/12th Mathematic Half Yearly Question paper 24-25.pdf" },
   { "title": "12th Physics Half Yearly", "url": "/pdfs/12TH SCI/HALF YEARLY/12th Physics Half Yearly Question paper 24-25.pdf" },
   { "title": "12th Tamil Half Yearly", "url": "/pdfs/12TH SCI/HALF YEARLY/12th தமிழ் Half Yearly Question paper 24-25.pdf" },
 
