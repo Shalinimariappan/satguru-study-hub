@@ -42,7 +42,7 @@ export default function About() {
                 Established in 2019, Satguru Study Centre started with a vision to provide high-quality education for school and college students in <strong>Chennai</strong>. What began as a small classroom in <strong>New Washermenpet</strong> has now grown into one of the <strong>best tuition centres in Chennai</strong>, trusted by over 200+ students every year.
               </p>
               <p className="text-gray-600 mb-4">
-                With 6+ years of excellence and a 98% success rate in board exams, we focus on personalized coaching, doubt-clearing sessions, and result-oriented study plans.
+                With 6+ years of excellence and a 99.2% success rate in board exams, we focus on personalized coaching, doubt-clearing sessions, and result-oriented study plans.
               </p>
               <p className="text-gray-600">
                 Parents across Chennai choose us because we combine experienced teachers, modern teaching techniques, and individual mentoring to ensure student success.
@@ -50,7 +50,7 @@ export default function About() {
             </div>
             <div className="relative">
               <img
-                src="assets/students.JPG"
+                src="assets/banner.jpg"
                 alt="Students studying at Satguru Study Centre"
                 className={`rounded-lg shadow-xl transition-transform duration-1000 ${
                   photoAnimate ? "translate-y-1 scale-105" : "translate-y-0 scale-100"
@@ -111,8 +111,8 @@ export default function About() {
             {/* Metric Cards */}
             {[
               { Icon: Clock, value: "6+", text: "Years of Experience" },
-              { Icon: Users, value: "200+", text: "Students Enrolled" },
-              { Icon: Award, value: "98%", text: "Success Rate" },
+              { Icon: Users, value: "1000+", text: "Students Enrolled" },
+              { Icon: Award, value: "99.2%", text: "Success Rate" },
               { Icon: GraduationCap, value: "20+", text: "Expert Teachers" },
             ].map((card, i) => (
               <div key={i} className="group bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center transition-all duration-300 hover:bg-satguru cursor-pointer">
