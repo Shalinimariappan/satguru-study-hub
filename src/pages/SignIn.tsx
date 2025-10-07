@@ -104,6 +104,24 @@ export default function SignIn() {
             New user? Sign Up
           </button>
         </form>
+        {/* 🎥 Demo Video Info */}
+        <div className="mt-8 text-center bg-blue-50 border border-blue-100 rounded-xl py-3 px-4 shadow-sm">
+          <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+            🎥 Want to learn how to{" "}
+            <span className="font-semibold text-[#0B2C4D]">
+            access notes?
+            </span>{" "}
+            Watch our quick demo video below:
+          </p>
+          <a
+            href="https://www.youtube.com/watch?v=aMk8ogn7JA4"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-3 bg-[#0B2C4D] text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-blue-900 transition"
+          >
+            ▶ Watch Demo Video
+          </a>
+        </div>
       </div>
     </div>
   );

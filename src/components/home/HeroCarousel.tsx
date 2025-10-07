@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const carouselItems = [
-  { id: 1, image: "/assets/banner1.jpg" },
+  { id: 1, image: "/assets/banner.jpg" },
   { id: 2, image: "/assets/banner2.jpg" },
-   { id: 3, image: "/assets/banner.jpg" },
+   { id: 3, image: "/assets/banner1.jpg" },
 ];
 
 export default function HeroCarousel() {

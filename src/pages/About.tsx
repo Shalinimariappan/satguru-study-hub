@@ -111,7 +111,7 @@ export default function About() {
             {/* Metric Cards */}
             {[
               { Icon: Clock, value: "6+", text: "Years of Experience" },
-              { Icon: Users, value: "1000+", text: "Students Enrolled" },
+              { Icon: Users, value: "1400+", text: "Students Enrolled" },
               { Icon: Award, value: "99.2%", text: "Success Rate" },
               { Icon: GraduationCap, value: "20+", text: "Expert Teachers" },
             ].map((card, i) => (

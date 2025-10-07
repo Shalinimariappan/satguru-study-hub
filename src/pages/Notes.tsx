@@ -64,6 +64,7 @@ export default function Notes() {
           </p>
         </div>
       </div>
+     
 
       {/* ✅ Content Section */}
       <div className="p-8 sm:p-16">
@@ -79,6 +80,7 @@ export default function Notes() {
             <option value="QuestionPaper">Question Papers</option>
           </select>
         </div>
+        
 
         <h2 className="text-xl font-semibold mb-6 flex items-center space-x-2 text-[#0B2C4D]">
           <span>🎓</span>
@@ -108,6 +110,26 @@ export default function Notes() {
             </div>
           ))}
         </div>
+        {/* 🎥 Demo Video Info */}
+<div className="mt-10 flex justify-center">
+  <div className="w-full sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] text-center bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-2xl py-6 px-6 shadow-lg hover:shadow-xl transition-all duration-300">
+    <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+      🎥 Want to learn how to{" "}
+      <span className="font-semibold text-[#0B2C4D]">access notes?</span>{" "}
+      Watch our quick demo video below:
+    </p>
+
+    <a
+      href="https://www.youtube.com/watch?v=aMk8ogn7JA4"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block mt-4 bg-[#0B2C4D] text-white text-sm sm:text-base font-medium px-6 py-2.5 rounded-full hover:bg-blue-900 transition-all duration-300"
+    >
+      ▶ Watch Demo Video
+    </a>
+  </div>
+</div>
+
       </div>
     </div>
   );
