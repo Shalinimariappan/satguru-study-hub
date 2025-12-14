@@ -6,16 +6,48 @@ import { Megaphone, Youtube, Linkedin } from "lucide-react";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // Visitor counter starting from 1000
-  const [visitorCount, setVisitorCount] = useState(1000);
+  // Base starting number shown on site
+  const BASE_COUNT = 1000;
+
+  const [visitorCount, setVisitorCount] = useState(BASE_COUNT);
+  // Flip to true to see debug logs in console
+  const DEBUG = false;
 
   useEffect(() => {
-    // Increment visitor count automatically every 5 seconds (optional)
-    const interval = setInterval(() => {
-      setVisitorCount(prev => prev + 1);
-    }, 5000);
+    const STORAGE_KEY = "satguru_total_visitors";
+    const VISITED_FLAG = "satguru_has_visited";
 
-    return () => clearInterval(interval);
+    try {
+      // read saved count
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const parsed = Number(raw);
+
+      // if parsed is a finite number, use it; otherwise fallback to BASE_COUNT
+      let count = Number.isFinite(parsed) ? parsed : BASE_COUNT;
+
+      if (DEBUG) console.debug("[Footer] loaded count from localStorage:", raw, "=>", count);
+
+      // if user hasn't visited from this browser, increment and save
+      const hasVisited = localStorage.getItem(VISITED_FLAG);
+
+      if (!hasVisited) {
+        count = count + 1;
+        try {
+          localStorage.setItem(STORAGE_KEY, String(count));
+          localStorage.setItem(VISITED_FLAG, "true");
+          if (DEBUG) console.debug("[Footer] incremented and saved new count:", count);
+        } catch (err) {
+          // localStorage write failed (maybe private mode) — still update UI
+          if (DEBUG) console.debug("[Footer] failed to write localStorage:", err);
+        }
+      }
+
+      setVisitorCount(count);
+    } catch (err) {
+      // localStorage read failed (e.g. disabled) — fallback gracefully
+      if (DEBUG) console.debug("[Footer] error reading localStorage, fallback to BASE_COUNT:", err);
+      setVisitorCount(BASE_COUNT);
+    }
   }, []);
 
   return (
@@ -26,9 +58,9 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Satguru Study Centre</h3>
             <div className="flex items-center mb-4">
-              <img 
-                src="/lovable-uploads/258a9587-e030-4708-9a22-c5eb53234bc6.png" 
-                alt="Satguru Study Centre Logo" 
+              <img
+                src="/lovable-uploads/258a9587-e030-4708-9a22-c5eb53234bc6.png"
+                alt="Satguru Study Centre Logo"
                 className="h-16 bg-white rounded-full p-1"
               />
             </div>
@@ -77,30 +109,30 @@ export default function Footer() {
             <div>
               <h3 className="text-xl font-bold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
-                <a 
-                  href="https://www.instagram.com/satguru_study_centre_official/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://www.instagram.com/satguru_study_centre_official/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Instagram"
                   className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full"
                 >
                   <Instagram className="h-5 w-5 text-white" />
                 </a>
 
-                <a 
-                  href="https://www.youtube.com/@SatguruVirtualClasses" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://www.youtube.com/@SatguruVirtualClasses"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="YouTube"
                   className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full"
                 >
                   <Youtube className="h-5 w-5 text-white" />
                 </a>
 
-                <a 
-                  href="https://www.linkedin.com/in/sat-guru-582281338/?originalSubdomain=in" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://www.linkedin.com/in/sat-guru-582281338/?originalSubdomain=in"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="LinkedIn"
                   className="bg-satguru hover:bg-satguru-light transition-colors p-2 rounded-full"
                 >

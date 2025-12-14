@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound";
 import NoteResources from "./pages/NoteResources";
 import { AuthProvider, useAuth } from "./AuthContext";
 import WhatsAppButton from "./pages/WhatsAppButton";
+import ScrollToTop from "./components/ScrollToTop";
 
 // 🔑 Auth Pages
 import SignUp from "./pages/SignUp";
@@ -52,6 +53,9 @@ const App = () => (
           />
           <div className="relative z-10">
             <BrowserRouter>
+              {/* ✅ Correct Placement */}
+              <ScrollToTop />  
+
               <Routes>
                 {/* Public Routes */}
                 <Route element={<Layout />}>
@@ -61,7 +65,7 @@ const App = () => (
                   <Route path="/malini" element={<Malini />} />
                   <Route path="/keerthika" element={<Keerthika />} />
                   <Route path="/results" element={<Results />} />
-                  <Route path="/notes" element={<Notes/>} />
+                  <Route path="/notes" element={<Notes />} />
                   <Route path="/events" element={<Events />} />
                   <Route path="/courses" element={<Courses />} />
                   <Route path="/contact" element={<Contact />} />
