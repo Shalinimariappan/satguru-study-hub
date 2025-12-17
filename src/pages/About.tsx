@@ -83,7 +83,7 @@ export default function About() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end items-center text-center p-6">
           <h3 className="text-2xl font-bold text-white mb-1">Mrs. Malini</h3>
-          <p className="text-gray-200 mb-4 text-sm">Co-Founder & Academic Director</p>
+          <p className="text-gray-200 mb-4 text-sm">Founder & Managing Director</p>
           <Link
             to="/malini"
             className="bg-satguru text-white px-5 py-2 rounded-lg hover:bg-satguru-dark transition-colors"
