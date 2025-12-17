@@ -21,20 +21,17 @@ const LeadershipProfile = () => {
               Mrs. Malini
             </h1>
             <p className="text-xl text-satguru font-medium mb-2">
-              Co-Founder & Academic Director
+              Founder & Managing director
             </p>
             <p className="text-lg text-gray-700 font-medium mb-4">
-              B.Sc, MCA, B.Ed, Pursuing PhD
+              B.Sc, MCA, B.Ed
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
               Mrs. Malini is the Co-Founder and Academic Director of{" "}
               <span className="font-semibold text-satguru">
                 Satguru Study Centre (SSC)
-              </span>
-              . With a strong academic foundation and a passion for education,
-              she plays a vital role in shaping students’ learning journeys.
-              Her leadership reflects discipline, care, and a deep commitment
-              to academic excellence.
+              </span>   
+              . With a strong academic foundation and a passion for education, she plays a vital role in shaping students’ learning journeys. Her leadership reflects discipline, care, and a deep commitment to academic excellence. In addition to her role at SSC, she is also working as a Computer Science Teacher at KC Sankaralinga Nadar Higher Secondary School, where she continues to inspire and guide students with dedication and expertise.
             </p>
           </div>
         </div>
@@ -48,7 +45,7 @@ const LeadershipProfile = () => {
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed">
             Mrs. Malini has been instrumental in building and managing the
-            academic structure of Satguru Study Centre from the ground up.
+            managing structure of Satguru Study Centre from the ground up.
             As an Academic Director, she oversees curriculum planning,
             faculty coordination, and student progress with a hands-on
             approach. Her ability to balance academics and mentorship makes

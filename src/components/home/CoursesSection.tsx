@@ -43,7 +43,7 @@ export default function CoursesSection() {
       icon: <BookOpen className="h-6 w-6 text-satguru group-hover:text-white" />,
       title: "Language Studies",
       description:
-        "English, Hindi, Tamil and more language courses to build strong communication skills.",
+        "English,Tamil and more language courses to build strong communication skills.",
       levels: ["LKG", "UKG", "I-V", "VI-VIII", "IX-X", "XI-XII"],
     },
     {
@@ -51,21 +51,21 @@ export default function CoursesSection() {
       title: "Mathematics",
       description:
         "Build a strong foundation in mathematics with our structured curriculum.",
-      levels: ["I-V", "VI-VIII", "IX-X", "XI-XII"],
+      levels: ["LKG", "UKG", "I-V", "VI-VIII", "IX-X", "XI-XII"],
     },
     {
       icon: <Brain className="h-6 w-6 text-satguru group-hover:text-white" />,
       title: "Science",
       description:
         "Physics, Chemistry, Biology and Environmental Science for all grades.",
-      levels: ["VI-VIII", "IX-X", "XI-XII"],
+      levels: ["LKG", "UKG", "I-V", "VI-VIII", "IX-X", "XI-XII"],
     },
     {
       icon: <School className="h-6 w-6 text-satguru group-hover:text-white" />,
       title: "Social Studies",
       description:
         "History, Geography, Civics and Economics for comprehensive learning.",
-      levels: ["VI-VIII", "IX-X", "XI-XII"],
+      levels: ["LKG", "UKG", "I-V", "VI-VIII", "IX-X", "XI-XII"],
     },
   ];
 

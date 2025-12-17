@@ -143,7 +143,7 @@ export default function Results() {
     ],
     "2020-2021": [
       {
-        name: "V. Vishal",
+        name: "V. Vishali",
         grade: "X",
         marks: "462/500",
         percentage: "92.4%",
@@ -181,7 +181,7 @@ export default function Results() {
           { name: "Social Science", score: "88/100" },],
       },
       {
-        name: "V. Vishal",
+        name: "V. Vishali",
         grade: "XI COM",
         marks: "560/600",
         percentage: "93.3%",
@@ -245,7 +245,7 @@ export default function Results() {
           { name: "Computer Science", score: "95/100" },],
       },
       {
-        name: "V. Vishal",
+        name: "V. Vishali",
         grade: "XII COM",
         marks: "560/600",
         percentage: "93.3%",

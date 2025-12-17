@@ -31,9 +31,7 @@ const LeadershipProfile = () => {
               <span className="font-semibold text-satguru">
                 Satguru Study Centre (SSC)
               </span>
-              . With a strong background in pharmaceutical sciences and a deep
-              passion for student development, she focuses on building
-              disciplined, confident, and well-rounded learners.
+              . With a strong background in pharmaceutical sciences and a deep passion for student development, she focuses on building disciplined, confident, and well-rounded learners. Alongside her role at SSC, she is also working at Caplin Point, where she brings her professional expertise and commitment to excellence into practice.
             </p>
           </div>
         </div>
