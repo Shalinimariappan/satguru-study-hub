@@ -21,13 +21,13 @@ const LeadershipProfile = () => {
               Mrs. Malini
             </h1>
             <p className="text-xl text-satguru font-medium mb-2">
-              Founder & Managing director
+              Co-Founder & Managing director
             </p>
             <p className="text-lg text-gray-700 font-medium mb-4">
               B.Sc, MCA, B.Ed
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Mrs. Malini is the Co-Founder and Academic Director of{" "}
+              Mrs. Malini is the Co-Founder and Managing Director of{" "}
               <span className="font-semibold text-satguru">
                 Satguru Study Centre (SSC)
               </span>   

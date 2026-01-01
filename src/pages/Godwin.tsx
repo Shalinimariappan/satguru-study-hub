@@ -10,7 +10,7 @@ const LeadershipProfile = () => {
           <div className="w-full">
             <img
               src="/assets/godwin.jpeg"
-              alt="Mr. Godwin Franklin"
+              alt="Mr. Godwin"
               className="rounded-2xl object-cover w-full h-[480px] shadow-md"
             />
           </div>
@@ -18,7 +18,7 @@ const LeadershipProfile = () => {
           {/* Intro Text */}
           <div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              Mr. Godwin Franklin
+              Mr. Godwin
             </h1>
             <p className="text-xl text-satguru font-medium mb-2">
               Co-Founder & Promoter
@@ -27,7 +27,7 @@ const LeadershipProfile = () => {
               B.Com, Pursuing Chartered Accountancy (CA)
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Mr. Godwin Franklin is the Co-Founder and Promoter of{" "}
+              Mr. Godwin is the Co-Founder and Promoter of{" "}
               <span className="font-semibold text-satguru">
                 Satguru Study Centre (SSC)
               </span>
@@ -45,10 +45,10 @@ const LeadershipProfile = () => {
       <section className="container mx-auto px-6 py-16 max-w-4xl">
         <div className="mb-10">
           <h2 className="text-2xl font-semibold text-satguru mb-2">
-            About Mr. Godwin Franklin
+            About Mr. Godwin
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            As a co-founder of Satguru Study Centre, Mr. Franklin plays a vital
+            As a co-founder of Satguru Study Centre, Mr. Godwin plays a vital
             role in shaping the institution’s philosophy and growth. He is known
             for his precision in handling academics, strategic planning, and
             operations. His expertise in accountancy, coupled with his calm

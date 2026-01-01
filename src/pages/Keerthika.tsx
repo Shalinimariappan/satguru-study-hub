@@ -21,13 +21,13 @@ const LeadershipProfile = () => {
               Ms. Keerthika
             </h1>
             <p className="text-xl text-satguru font-medium mb-2">
-              Co-Founder & Student Success Head
+              Chief Operating Officer(COO)
             </p>
             <p className="text-lg text-gray-700 font-medium mb-4">
               M.Pharm
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Ms. Keerthika is the Co-Founder and Student Success Head of{" "}
+              Ms. Keerthika is the CoO of{" "}
               <span className="font-semibold text-satguru">
                 Satguru Study Centre (SSC)
               </span>
