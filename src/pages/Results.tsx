@@ -380,7 +380,7 @@ export default function Results() {
           { name: "Economics", score: "86/100" },
           { name: "Commerce", score: "84/100" },
           { name: "Accountancy", score: "85/100" },
-          { name: "Computer Applocation", score: "84/100" },],
+          { name: "Computer Application", score: "84/100" },],
       },
       {
         name: "D. Tharun",
