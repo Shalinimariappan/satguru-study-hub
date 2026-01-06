@@ -141,10 +141,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Visitor Counter */}
-            <p className="text-gray-400 text-sm mt-6 text-center">
-              Website visitors: {visitorCount}
-            </p>
+            
           </div>
         </div>
 
