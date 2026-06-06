@@ -35,7 +35,7 @@ export default function AboutSection() {
             <h3 className="text-2xl font-semibold mb-4">Empowering Minds since 2019</h3>
             <p className="text-gray-600 mb-4">
               Satguru Study Centre is one of the most trusted educational institutions in New Washermenpet, Chennai. 
-              For over 6 years, we have been committed to shaping the academic journey of students from I to XII by 
+              For over 7 years, we have been committed to shaping the academic journey of students from I to XII by 
               providing structured, syllabus-oriented, and value-driven education.
             </p>
             <p className="text-gray-600 mb-6">
@@ -58,7 +58,7 @@ export default function AboutSection() {
               </div>
               <div className="flex items-center">
                 <Clock className="h-6 w-6 text-satguru mr-2" />
-                <span className="font-medium">6 Years Experience</span>
+                <span className="font-medium">7 Years Experience</span>
               </div>
             </div>
 

@@ -52,7 +52,7 @@ export default function WhyJoinSection() {
     },
     {
       icon: <Clock className="h-5 w-5" />,
-      title: "6 Years of Excellence",
+      title: "7 Years of Excellence",
       description: "Established track record of academic excellence and student success for over 6 years."
     },
     {

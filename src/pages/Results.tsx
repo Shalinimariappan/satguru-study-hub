@@ -98,7 +98,7 @@ const StudentResultCard = ({
 };
 
 export default function Results() {
-  const [activeYear, setActiveYear] = useState("2024-2025");
+  const [activeYear, setActiveYear] = useState("2025-2026");
 
   const placeholderImg = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png";
 
@@ -409,8 +409,47 @@ export default function Results() {
           { name: "Business Maths & Statistics", score: "84/100" }],
       },
     ],
+"2025-2026": [
+  {
+    name: "Deepak",
+    grade: "X",
+    marks: "464/500",
+    percentage: "92.8%",
+    image: "/assets/deepak.jpeg",
+    subjects: [{ name: "Tamil", score: "92/100" },
+          { name: "English", score: "94/100" },
+          { name: "Mathematics", score: "95/100" },
+          { name: "Science", score: "99/100" },
+          { name: "Social Science", score: "92/100" }],
+  },
+  {
+    name: "Meera Bee",
+    grade: "XII COM",
+    marks: "540/600",
+    percentage: "90%",
+    image: "/assets/Meerabee.png",
+    subjects: [{ name: "Tamil", score: "85/100" },
+          { name: "English", score: "86/100" },
+          { name: "Economics", score: "84/100" },
+          { name: "Commerce", score: "90/100" },
+          { name: "Accountancy", score: "97/100" },
+          { name: "Business Maths & Statistics", score: "84/100" }],
+  },
+  {
+    name: "J. Joshua",
+    grade: "XII SCI",
+    marks: "512/600",
+    percentage: "85.3%",
+    image: "/assets/joshuaj.jpg",
+    subjects: [{ name: "Tamil", score: "88/100" },
+          { name: "English", score: "82/100" },
+          { name: "Mathematics", score: "80/100" },
+          { name: "Physics", score: "76/100" },
+          { name: "Chemistry", score: "78/100" },
+          { name: "Computer Science", score: "96/100" }],
+  },
+]
   };
-
   return (
     <div>
       {/* Header */}

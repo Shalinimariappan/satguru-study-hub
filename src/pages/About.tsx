@@ -42,7 +42,7 @@ export default function About() {
                 Established in 2019, Satguru Study Centre started with a vision to provide high-quality education for school and college students in <strong>Chennai</strong>. What began as a small classroom in <strong>New Washermenpet</strong> has now grown into one of the <strong>best tuition centres in Chennai</strong>, trusted by over 200+ students every year.
               </p>
               <p className="text-gray-600 mb-4">
-                With 6+ years of excellence and a 99.2% success rate in board exams, we focus on personalized coaching, doubt-clearing sessions, and result-oriented study plans.
+                With 7+ years of excellence and a 99.2% success rate in board exams, we focus on personalized coaching, doubt-clearing sessions, and result-oriented study plans.
               </p>
               <p className="text-gray-600">
                 Parents across Chennai choose us because we combine experienced teachers, modern teaching techniques, and individual mentoring to ensure student success.
@@ -112,7 +112,7 @@ export default function About() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[ 
-              { Icon: Clock, value: "6+", text: "Years of Experience" },
+              { Icon: Clock, value: "7+", text: "Years of Experience" },
               { Icon: Users, value: "1400+", text: "Students Enrolled" },
               { Icon: Award, value: "99.2%", text: "Success Rate" },
               { Icon: GraduationCap, value: "20+", text: "Expert Teachers" },

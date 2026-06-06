@@ -17,7 +17,7 @@ export default function Navbar() {
     <div className="whitespace-nowrap animate-marquee">
     <span className="flex items-center gap-2">
   <Megaphone className="w-4 h-4" />
-  Admission open for 2025–2026 for all LKG to XII students
+  Admission open for 2026–2027 for all LKG to XII students
 </span>
   </div>
 
