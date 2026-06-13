@@ -14,6 +14,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Silence TypeScript 6 deprecation warnings */
+    "ignoreDeprecations": "6.0",
+
     /* Linting */
     "strict": false,
     "noUnusedLocals": false,
@@ -21,6 +24,7 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": false,
 
+    /* Path aliases */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaLock } from "react-icons/fa";
 
 const notesData = [
   { subject: "6th-Std-Question-Papers", resources: 30, type: "QuestionPaper" },
@@ -19,22 +17,9 @@ const notesData = [
 export default function Notes() {
   const navigate = useNavigate();
   const [filter, setFilter] = useState("All");
-  const [userVerified, setUserVerified] = useState(false);
-
-  // ✅ Track if user is logged in + verified
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUserVerified(!!(user && user.emailVerified));
-    });
-    return unsubscribe;
-  }, []);
 
   const handleClick = (subject) => {
-    if (userVerified) {
-      navigate(`/notes/${subject}`); // ✅ logged in → go to resources
-    } else {
-      navigate("/signup"); // ❌ not logged in → go to SignIn
-    }
+    navigate(`/notes/${subject}`);
   };
 
   const filteredData =
@@ -50,26 +35,31 @@ export default function Notes() {
 
   return (
     <div>
-      {/* ✅ Banner Section */}
+      {/* Banner Section */}
       <div className="relative py-16">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{ backgroundImage: "url('/assets/banner.jpg')" }}
         />
-        <div className="absolute inset-0 bg-satguru" style={{ opacity: 0.65 }} />
+        <div
+          className="absolute inset-0 bg-satguru"
+          style={{ opacity: 0.65 }}
+        />
         <div className="relative container mx-auto px-4 text-center text-white">
           <h1 className="text-4xl font-bold mb-4">Notes</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Unlock your true potential with Satguru Study Centre’s trusted guidance.
+            Unlock your true potential with Satguru Study Centre’s trusted
+            guidance.
           </p>
         </div>
       </div>
-     
 
-      {/* ✅ Content Section */}
+      {/* Content Section */}
       <div className="p-8 sm:p-16">
         <div className="flex items-center mb-4 space-x-2">
-          <label className="font-medium text-[#0B2C4D]">Select Notes:</label>
+          <label className="font-medium text-[#0B2C4D]">
+            Select Notes:
+          </label>
           <select
             className="border px-3 py-1 rounded"
             value={filter}
@@ -80,19 +70,18 @@ export default function Notes() {
             <option value="QuestionPaper">Question Papers</option>
           </select>
         </div>
-        
 
         <h2 className="text-xl font-semibold mb-6 flex items-center space-x-2 text-[#0B2C4D]">
           <span>🎓</span>
           <span>{getHeadingText()}</span>
         </h2>
 
-        {/* ✅ Notes Grid */}
+        {/* Notes Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredData.map((note, idx) => (
             <div
               key={idx}
-              className="relative flex justify-between items-center border border-gray-100 shadow-md rounded-lg p-4 hover:shadow-lg transition cursor-pointer"
+              className="flex justify-between items-center border border-gray-100 shadow-md rounded-lg p-4 hover:shadow-lg transition cursor-pointer"
               onClick={() => handleClick(note.subject)}
             >
               <div>
@@ -100,36 +89,13 @@ export default function Notes() {
                   <span>📘</span>
                   <span>{note.subject}</span>
                 </div>
-                <p className="text-sm text-gray-500">{note.resources} Resources</p>
+                <p className="text-sm text-gray-500">
+                  {note.resources} Resources
+                </p>
               </div>
-
-              {/* 🔒 Show lock if not signed in */}
-              {!userVerified && (
-                <FaLock className="text-gray-500 absolute top-3 right-3" />
-              )}
             </div>
           ))}
         </div>
-        {/* 🎥 Demo Video Info */}
-<div className="mt-10 flex justify-center">
-  <div className="w-full sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] text-center bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-2xl py-6 px-6 shadow-lg hover:shadow-xl transition-all duration-300">
-    <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-      🎥 Want to learn how to{" "}
-      <span className="font-semibold text-[#0B2C4D]">access notes?</span>{" "}
-      Watch our quick demo video below:
-    </p>
-
-    <a
-      href="https://www.youtube.com/watch?v=aMk8ogn7JA4"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block mt-4 bg-[#0B2C4D] text-white text-sm sm:text-base font-medium px-6 py-2.5 rounded-full hover:bg-blue-900 transition-all duration-300"
-    >
-      ▶ Watch Demo Video
-    </a>
-  </div>
-</div>
-
       </div>
     </div>
   );
